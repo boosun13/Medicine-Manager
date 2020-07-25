@@ -19,3 +19,14 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$( function(){
+    // リンクジャンプ前にモーダルウィンドウを閉じる。
+    $( 'a' ).click( function(){
+        $('.modal').modal('hide');
+        } );
+
+    $( '.btn' ).click( function(){
+        $('.modal').modal('hide');
+        } );
+    } );

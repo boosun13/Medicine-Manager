@@ -1,4 +1,42 @@
+<!-- ログインしていないときに -->
 <% unless user_signed_in? %>
-    <%= render "devise/sessions/new" %>
-    <%= render 'devise/registrations/new' %>
+<!-- ログインモーダル -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                    <%= render "devise/sessions/new" %>
+            </div>
+        </div>
+    </div>
+
+<!-- サインアップモーダル -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                    <%= render 'devise/registrations/new' %>
+            </div>
+        </div>
+    </div>
+
+<!-- フォゲットモーダル -->
+    <div class="modal fade" id="fogetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                    <%= render 'devise/passwords/new' %>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                    <%= render 'devise/registrations/new' %>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 <% end %>
