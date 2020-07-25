@@ -1,0 +1,4 @@
+<% unless user_signed_in? %>
+    <%= render "devise/sessions/new" %>
+    <%= render 'devise/registrations/new' %>
+<% end %>

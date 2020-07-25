@@ -11,4 +11,11 @@
     >
         <span class="navbar-toggler-icon"></span>
     </button>
+        <% if user_signed_in? %>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <% else %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">サインアップ</button>
+        <% end %>
 </header>
