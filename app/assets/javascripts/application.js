@@ -26,7 +26,17 @@ $( function(){
         $('.modal').modal('hide');
         } );
 
+    $( '.actions' ).click( function(){
+        $('.modal').modal('hide');
+        } );
+
     $( '.btn' ).click( function(){
         $('.modal').modal('hide');
         } );
-    } );
+
+    //エラーメッセージを自動でポップアップ
+    $(window).on('load',function(){
+        $('#errorModal').modal('show');
+        } );
+
+} );

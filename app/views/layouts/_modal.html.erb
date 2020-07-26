@@ -27,14 +27,16 @@
         </div>
     </div>
 
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- エラーモーダル -->
+<% if resource.errors.any? %>
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                    <%= render 'devise/registrations/new' %>
+                    <%= render "devise/shared/error_messages", resource: resource %>
             </div>
         </div>
     </div>
-
+<% end %>
 
 
 
