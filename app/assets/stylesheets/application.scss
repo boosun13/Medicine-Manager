@@ -19,7 +19,6 @@
 @import "devise";
 
 main {
-    height: calc(100vh - 50px);
     min-height: calc(100vh - 50px);
     padding-top: 60px;
     }
@@ -27,3 +26,7 @@ main {
 footer {
     height: 50px;
     }
+
+nav{
+    opacity: 0.9;
+}
