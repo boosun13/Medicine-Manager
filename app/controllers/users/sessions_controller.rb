@@ -10,6 +10,7 @@ class Users::SessionsController < Devise::SessionsController
     clean_up_passwords(resource)
     yield resource if block_given?
     # respond_with(resource, serialize_options(resource))
+    # redirect_to root_path(resource)
     render template: 'home/index'
 
   end

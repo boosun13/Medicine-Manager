@@ -28,7 +28,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      # respond_with resource, location: root_path(resource) 
       render template: 'home/index'
     end
   end

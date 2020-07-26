@@ -3,7 +3,7 @@
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   def new
-    super
+    self.resource = resource_class.new
   end
 
   # POST /resource/password
@@ -14,7 +14,7 @@ class Users::PasswordsController < Devise::PasswordsController
     if successfully_sent?(resource)
       respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
     else
-      render template: 'home/index'
+      respond_with(resource)
     end
   end
 
