@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2020-07-27 19:54:00
+  visit_date: 2020-07-27 19:54:00
+  hospital: MyString
+  doctor: MyString
+  pharmacy: MyString
+
+two:
+  start_time: 2020-07-27 19:54:00
+  visit_date: 2020-07-27 19:54:00
+  hospital: MyString
+  doctor: MyString
+  pharmacy: MyString

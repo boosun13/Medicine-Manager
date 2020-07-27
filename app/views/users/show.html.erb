@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+    <div class="sidemenu border bg-light col-lg-4">
+        <h4><%= current_user.name %><br>様、こんにちは<h4>
+        <h5 class="text-right"><%= render "layouts/age" %></h5>
+
+    </div>
+    <div>
+        <h1>お薬の記録一覧</h1>
+        <p>Find me in app/views/users/show.html.erb</p>
+        <%= link_to "処方", prescriptions_path %>
+        <% current_user.prescriptions.each do |prescription| %>
+            <%= prescription.start_time %>
+        <% end %>
+
+    </div>
+</div>
