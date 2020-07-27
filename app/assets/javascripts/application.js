@@ -39,4 +39,12 @@ $( function(){
         $('#errorModal').modal('show');
         } );
 
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 60) {
+            $('nav').css('opacity', '0.7');
+        } else {
+            $('nav').css('opacity', '1');
+        }
+        });
 } );

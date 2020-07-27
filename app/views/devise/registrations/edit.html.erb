@@ -1,33 +1,99 @@
+<div class="container bg-light">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+
+
+  <%if current_user.birthday %>
+    <div>
+      <p>Birthday</p>
+      <%= current_user.birthday %>
+      <p>誕生日の変更はできません。間違えてしまった場合は一度ユーザーを削除してから登録しなおしてください。</P>
+    </div>
+    <p>Age</p>
+    <div class="age" >
+      <% age_month = (Time.now.month-current_user.birthday.month).floor %>
+      <% if age_month == 0 %>
+        <% age_month = 12 %>
+      <% elsif age_month < 0 %>
+        <% age_month = 12 + age_month %>
+      <% end %>
+
+      <% if (current_user.birthday.month >= Time.now.month) %>
+        <% if (current_user.birthday.month == Time.now.month && current_user.birthday.day <= Time.now.day) %>
+          <%= "#{Time.now.year-current_user.birthday.year}歳 0ヵ月" %>
+        <% else %>
+          <%= "#{Time.now.year-current_user.birthday.year-1}歳 #{age_month}ヵ月" %>
+        <% end %>
+      <% else %>
+        <%= "#{Time.now.year-current_user.birthday.year}歳 #{age_month}ヵ月" %>
+      <% end %>
+    </div>
+  <% else %>
+  <div class="">
+      <%= f.label :birthday %><br />
+      <%= f.date_select :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1)  %>
+  </div>
+  <% end %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PassModalCenter">
+  パスワードを変更する
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="PassModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">パスワード変更</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="">
+          <%= f.label :password %> <i>(変更しない場合は空欄)</i><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %>文字以上入力してください</em>
+          <% end %>
+        </div>
+
+        <div class="">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
+</div>
+
+
+
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(情報を反映する場合はパスワードを入力してください。)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -36,8 +102,18 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    アカウント削除する場合
+</button>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<div class="collapse" id="collapseExample">
+    <div class="border p-3 m-4">
+      <h3>Cancel my account</h3>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    </div>
+</div>
 
-<%= link_to "Back", :back %>
+<br>
+<%= link_to "ユーザー詳細へ戻る", user_path(resource) %>
+
+</div>
