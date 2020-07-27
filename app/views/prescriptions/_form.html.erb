@@ -1,3 +1,5 @@
+<div class="">
+
 <%= form_with(model: prescription, local: true) do |form| %>
   <% if prescription.errors.any? %>
     <div id="error_explanation">
@@ -11,14 +13,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+  <div class="">
+    <%= "調剤日" %>
+    <%= form.date_select :start_time  %>
   </div>
 
-  <div class="field">
-    <%= form.label :visit_date %>
-    <%= form.datetime_select :visit_date %>
+  <div class="">
+    <%= "処方日" %>
+    <%= form.date_select :visit_date %>
   </div>
 
   <div class="field">
@@ -40,3 +42,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+</div>

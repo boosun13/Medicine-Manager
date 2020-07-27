@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <%= render "users/sidemenu" %>
+  <div>
+  <p>
+    <strong>Start time:</strong>
+    <%= @prescription.start_time %>
+  </p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @prescription.start_time %>
-</p>
+  <p>
+    <strong>Visit date:</strong>
+    <%= @prescription.visit_date %>
+  </p>
 
-<p>
-  <strong>Visit date:</strong>
-  <%= @prescription.visit_date %>
-</p>
+  <p>
+    <strong>Hospital:</strong>
+    <%= @prescription.hospital %>
+  </p>
 
-<p>
-  <strong>Hospital:</strong>
-  <%= @prescription.hospital %>
-</p>
+  <p>
+    <strong>Doctor:</strong>
+    <%= @prescription.doctor %>
+  </p>
 
-<p>
-  <strong>Doctor:</strong>
-  <%= @prescription.doctor %>
-</p>
+  <p>
+    <strong>Pharmacy:</strong>
+    <%= @prescription.pharmacy %>
+  </p>
 
-<p>
-  <strong>Pharmacy:</strong>
-  <%= @prescription.pharmacy %>
-</p>
+  <%= link_to 'Edit', edit_prescription_path(@prescription) %> |
+  <%= link_to "ユーザー詳細へ戻る", user_path(current_user) %>
 
-<%= link_to 'Edit', edit_prescription_path(@prescription) %> |
-<%= link_to 'Back', prescriptions_path %>
+  </div>
+</div>

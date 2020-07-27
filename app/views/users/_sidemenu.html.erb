@@ -1,0 +1,6 @@
+    <div class="sidemenu border bg-light col-lg-4" style="min-height:800px;">
+        <h4><%= current_user.name %><br>様、こんにちは<h4>
+        <h5 class="text-right">年齢<%= render "layouts/age" %></h5>
+
+        <%= link_to 'New Prescription', new_prescription_path %>
+    </div>

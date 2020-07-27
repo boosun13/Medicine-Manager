@@ -1,6 +1,12 @@
-<h1>Editing Prescription</h1>
+<div class="row">
+    <%= render "users/sidemenu" %>
 
-<%= render 'form', prescription: @prescription %>
+    <div>
+    <h1>Editing Prescription</h1>
 
-<%= link_to 'Show', @prescription %> |
-<%= link_to 'Back', prescriptions_path %>
+    <%= render 'form', prescription: @prescription %>
+
+    <%= link_to 'Show', @prescription %> |
+    <%= link_to "ユーザー詳細へ戻る", user_path(current_user) %>
+    </div>
+</div>
