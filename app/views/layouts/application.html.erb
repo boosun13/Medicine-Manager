@@ -12,14 +12,22 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <%= render "layouts/flash" %>
-    <div id="modalArea"><%= render "layouts/modal" %></div>
-    <main>
-      <div class="container-fruid h-100">
-        <%= yield %>
+    <div id="loader-bg">
+      <div id="loader">
+        <img src="/top/img-loading.gif" width="80" height="80" alt="Now Loading..." />
+        <p>Now Loading...</p>
       </div>
-    </main>
-    <%= render "layouts/footer" %>
+    </div>
+    <div id="wrap">
+      <%= render "layouts/header" %>
+      <%= render "layouts/flash" %>
+      <div id="modalArea"><%= render "layouts/modal" %></div>
+      <main>
+        <div class="container-fruid h-100">
+          <%= yield %>
+        </div>
+      </main>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
