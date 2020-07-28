@@ -1,0 +1,2 @@
+$("#prescriptionIndex").append("<%= escape_javascript(render partial: 'prescriptions/index' ) %>");
+$("#more_link").replaceWith("<%= escape_javascript(link_to_next_page(@prescriptions, 'つづきを見る', remote: true, id: 'more_link', class:"btn btn-info")) %>");

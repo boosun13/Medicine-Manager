@@ -2,5 +2,6 @@
         <h4><%= current_user.name %><br>様、こんにちは<h4>
         <h5 class="text-right">年齢<%= render "layouts/age" %></h5>
 
-        <%= link_to 'New Prescription', new_prescription_path %>
+        <h6>お薬をもらったら記録をしよう！</h6>
+        <%= link_to '処方追加', new_prescription_path , class: "btn btn-outline-info" %>
     </div>

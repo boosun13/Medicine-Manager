@@ -1,0 +1,13 @@
+<div >
+  <% @prescriptions.order(start_time: "DESC").each do |prescription| %>
+      <div class="card my-1 ml-lg-3" >
+              <%= link_to "#{prescription.start_time.strftime("%Y年%m月%d日")}調剤", prescription, class:"card-header btn btn-light text-left" %>
+          <div class="card-body" >
+              <blockquote class="blockquote mb-0">
+              <p><%= prescription.hospital %></p>
+              <footer class="blockquote-footer"><%= prescription.doctor %></footer>
+              </blockquote>
+          </div>
+      </div>
+  <% end %>
+</div>
