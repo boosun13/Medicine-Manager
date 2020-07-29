@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :medicines
   resources :prescriptions
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',

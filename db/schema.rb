@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_111847) do
+ActiveRecord::Schema.define(version: 2020_07_29_140031) do
+
+  create_table "medicines", force: :cascade do |t|
+    t.string "name"
+    t.string "usage"
+    t.integer "days"
+    t.decimal "dose"
+    t.text "effect"
+    t.text "side_effect"
+    t.integer "prescription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prescription_id"], name: "index_medicines_on_prescription_id"
+  end
 
   create_table "prescriptions", force: :cascade do |t|
     t.datetime "start_time"

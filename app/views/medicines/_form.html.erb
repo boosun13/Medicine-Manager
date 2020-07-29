@@ -1,0 +1,52 @@
+<%= form_with(model: medicine, local: true) do |form| %>
+  <% if medicine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medicine.errors.count, "error") %> prohibited this medicine from being saved:</h2>
+
+      <ul>
+      <% medicine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :days %>
+    <%= form.text_field :days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usage %>
+    <%= form.text_field :usage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :days %>
+    <%= form.number_field :days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dose %>
+    <%= form.text_area :dose %>
+  </div>
+
+  <div class="field">
+    <%= form.label :effect %>
+    <%= form.text_area :effect %>
+  </div>
+
+  <div class="field">
+    <%= form.label :side_effect %>
+    <%= form.text_area :side_effect %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prescription_id %>
+    <%= form.text_field :prescription_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
