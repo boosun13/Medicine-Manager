@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :medicines
-  resources :prescriptions
+  resources :prescriptions do
+    resources :medicines
+  end
+  
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',

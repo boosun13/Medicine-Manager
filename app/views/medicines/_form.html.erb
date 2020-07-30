@@ -1,4 +1,4 @@
-<%= form_with(model: medicine, local: true) do |form| %>
+<%= form_with(model: medicine, url: [@prescription, medicine] , remote: true) do |form| %>
   <% if medicine.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(medicine.errors.count, "error") %> prohibited this medicine from being saved:</h2>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :days %>
-    <%= form.text_field :days %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">

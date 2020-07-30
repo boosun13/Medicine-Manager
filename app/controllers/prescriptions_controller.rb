@@ -10,6 +10,7 @@ class PrescriptionsController < ApplicationController
   # GET /prescriptions/1
   # GET /prescriptions/1.json
   def show
+    @medicines = @prescription.medicines
   end
 
   # GET /prescriptions/new
