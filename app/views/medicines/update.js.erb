@@ -1,0 +1,14 @@
+// modalを閉じる処理
+$("#medicineModal").find(".modal").modal("hide");
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
+
+
+// Rails @status => true 画面の書き換え : false モーダルを再度表示
+// <% if @status %>
+$("#medicineList").html("<%= j(render 'medicines/show' ) %>");
+
+// <% else %>
+$("#medicineModal").html("<%= j(render 'edit') %>")
+$("#medicineModal").find(".modal").modal('show')
+// <% end %>

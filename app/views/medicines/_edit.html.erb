@@ -1,6 +1,9 @@
-<h1>Editing Medicine</h1>
+<div class="modal fade" id="medicineModal" tabindex="-1" role="dialog" aria-labelledby="medicineModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <h1>Editing Medicine</h1>
 
-<%= render 'form', medicine: @medicine %>
-
-<%= link_to 'Show', @medicine %> |
-<%= link_to 'Back' %>
+            <%= render 'medicines/form' %>
+        </div>
+    </div>
+</div>

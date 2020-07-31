@@ -1,10 +1,11 @@
-<%= form_with(model: medicine, url: [@prescription, medicine] , remote: true) do |form| %>
-  <% if medicine.errors.any? %>
+<div class="modal-body">
+<%= form_with(model: [@prescription, @medicine],url: [@prescription, @medicine],local: false ) do |form| %>
+  <% if @medicine.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(medicine.errors.count, "error") %> prohibited this medicine from being saved:</h2>
+      <h2><%= pluralize(@medicine.errors.count, "error") %> prohibited this @medicine from being saved:</h2>
 
       <ul>
-      <% medicine.errors.full_messages.each do |message| %>
+      <% @medicine.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,41 +13,38 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <h6>薬品名：</h6>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :usage %>
+    <h6>用法：</h6>
     <%= form.text_field :usage %>
   </div>
 
   <div class="field">
-    <%= form.label :days %>
+    <h6>処方日数：</h6>
     <%= form.number_field :days %>
   </div>
 
   <div class="field">
-    <%= form.label :dose %>
+    <h6>用量(/1日あたり)：</h6>
     <%= form.text_area :dose %>
   </div>
 
   <div class="field">
-    <%= form.label :effect %>
+    <h6>効能：</h6>
     <%= form.text_area :effect %>
   </div>
 
   <div class="field">
-    <%= form.label :side_effect %>
+    <h6>副作用：</h6>
     <%= form.text_area :side_effect %>
   </div>
 
-  <div class="field">
-    <%= form.label :prescription_id %>
-    <%= form.text_field :prescription_id %>
-  </div>
-
   <div class="actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     <%= form.submit %>
   </div>
 <% end %>
+<div>

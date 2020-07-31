@@ -4,6 +4,7 @@ class MedicinesController < ApplicationController
 
 
 
+
   # GET /medicines/1
   # GET /medicines/1.json
   def show
@@ -22,25 +23,22 @@ class MedicinesController < ApplicationController
   # POST /medicines.json
   def create
     @medicine = @prescription.medicines.new(medicine_params)
-
-    respond_to do |format|
       if @medicine.save
-        format.html { redirect_to @prescription, notice: 'Medicine was successfully created.' }
+        @status = true
+        @medicines = @prescription.medicines
       else
-        format.html { render :new }
+        @status = false
       end
-    end
   end
 
   # PATCH/PUT /medicines/1
   # PATCH/PUT /medicines/1.json
   def update
-    respond_to do |format|
-      if @medicine.update(medicine_params)
-        format.html { redirect_to @prescription, notice: 'Medicine was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @medicine.update(medicine_params)
+      @status = true
+      @medicines = @prescription.medicines
+    else
+      @status = false
     end
   end
 
@@ -48,9 +46,7 @@ class MedicinesController < ApplicationController
   # DELETE /medicines/1.json
   def destroy
     @medicine.destroy
-    respond_to do |format|
-      format.html { redirect_to @prescription, notice: 'Medicine was successfully destroyed.' }
-    end
+
   end
 
   private
@@ -60,10 +56,9 @@ class MedicinesController < ApplicationController
     end
 
     def set_prescription
-      @prescription = Prescription.find_by(params[:id])
+      @prescription = current_user.prescriptions.find_by(id: params[:prescription_id])
     end
     
-    # Only allow a list of trusted parameters through.
     def medicine_params
       params.require(:medicine).permit(:name, :usage, :days, :dose, :effect, :side_effect, :prescription_id)
     end

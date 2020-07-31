@@ -1,6 +1,6 @@
 <div class="">
 
-<%= form_with(model: prescription, local: true) do |form| %>
+<%= form_with(model: prescription, remote: true) do |form| %>
   <% if prescription.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
@@ -15,12 +15,12 @@
 
   <div class="">
     <%= "調剤日" %>
-    <%= form.date_select :start_time  %>
+    <%= form.date_field :start_time  %>
   </div>
 
   <div class="">
     <%= "処方日" %>
-    <%= form.date_select :visit_date %>
+    <%= form.date_field :visit_date %>
   </div>
 
   <div class="field">

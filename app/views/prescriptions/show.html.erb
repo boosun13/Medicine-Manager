@@ -1,6 +1,6 @@
 <div class="row m-0">
   <%= render "users/sidemenu" %>
-  <div>
+  <div class="col" >
   <p>
     <strong>Start time:</strong>
     <%= @prescription.start_time %>
@@ -26,33 +26,11 @@
     <%= @prescription.pharmacy %>
   </p>
 
-<div>
   <div id="medicineModal">
   </div>
-  <% @medicines.each_with_index do |medicine,i| %>
-    
-    <div class="card">
-      <div class="card-body">
-        <h6><%= "#{i+1})#{medicine.name}" %>,<%= medicine.dose %></h6>
-        <h6><%= medicine.usage %>,<%= medicine.days %>日分</h6>
-        <h6><%= medicine.effect %></h6>
-        <h6><%= medicine.side_effect %></h6>    
-
-        <div class="btn-group">
-          <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ●
-          </button>
-          <div class="dropdown-menu dropdown-menu-right text-middle">
-            <%= link_to "Edit", edit_prescription_medicine_path(medicine.prescription, medicine), class: "dropdown-item", remote: true %>
-            <%= link_to "Delete", prescription_medicine_path(medicine.prescription, medicine), method: :delete, class: "dropdown-item text-danger", remote: false, data: { confirm: 'Are you sure?' } %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <% end %>
-</div>
-
+  <div id="medicineList">
+    <%= render "medicines/show" %>
+  </div>
 
   <%= link_to "new medicine",new_prescription_medicine_path(@prescription), remote: true %>
 
