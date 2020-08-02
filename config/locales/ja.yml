@@ -24,3 +24,14 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+  activerecord:
+    models:
+      prescription: 処方
+    attributes:
+      prescription:
+        start_time: 調剤日
+        visit_date: 受診日
+        hospital: 医療機関
+        doctor: 処方医師
+        pharmacy: 調剤薬局

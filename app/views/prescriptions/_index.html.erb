@@ -4,11 +4,15 @@
                 <%= link_to "#{prescription.start_time.strftime("%Y年%m月%d日")}調剤", prescription, class:"card-header btn btn-light text-left" %>
             <div class="card-body" >
                 <blockquote class="blockquote mb-0">
-                <p><%= prescription.hospital %></p>
-                <% prescription.medicines.each do |medicine| %>
-                    <%= medicine.name %>
-                <% end %>
-                <footer class="blockquote-footer"><%= prescription.doctor %></footer>
+                <p><%= prescription.hospital %><br>
+                <%= prescription.doctor %>
+                </p>
+                <footer class="blockquote-footer">
+                    <% prescription.medicines.first(2).each do |medicine| %>
+                        <%= medicine.name %><br>
+                    <% end %>
+                    など
+                </footer>
                 </blockquote>
             </div>
         </div>

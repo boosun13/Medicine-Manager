@@ -1,21 +1,24 @@
 <% @medicines.each_with_index do |medicine,i| %>
-  <div class="card"   data-model_name="<%= medicine.model_name.singular %>"
-  data-id="<%= medicine.id %>">
+  <div class="card text-light my-2"  data-model_name="<%= medicine.model_name.singular %>"
+  data-id="<%= medicine.id %>" style="max-width:600px; background: rgba(0,123,255,0.6);" >
     <div class="card-body">
-      <h6><%= "#{i+1})#{medicine.name}" %>,<%= medicine.dose %></h6>
+      <h6><%= "#{i+1})" %><strong><%= "#{medicine.name}" %></strong></h6>
+
+      <div class="dropdown position-absolute" style="top: 10px; right: 10px;">
+        <button type="button" class="btn btn-outline-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right text-middle" aria-labelledby="dropdownMenuButton">
+          <%= link_to "編集", edit_prescription_medicine_path(medicine.prescription, medicine), class: "dropdown-item", remote: true %>
+          <%= link_to "削除", prescription_medicine_path(medicine.prescription, medicine), method: :delete, class: "dropdown-item text-danger", remote: true, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+
+      <h6><%= medicine.dose %></h6>
       <h6><%= medicine.usage %>,<%= medicine.days %>日分</h6>
       <h6><%= medicine.effect %></h6>
       <h6><%= medicine.side_effect %></h6>    
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-outline-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          tool
-        </button>
-        <div class="dropdown-menu dropdown-menu-right text-middle">
-          <%= link_to "Edit", edit_prescription_medicine_path(medicine.prescription, medicine), class: "dropdown-item", remote: true %>
-          <%= link_to "Delete", prescription_medicine_path(medicine.prescription, medicine), method: :delete, class: "dropdown-item text-danger", remote: true, data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
     </div>
   </div>
 

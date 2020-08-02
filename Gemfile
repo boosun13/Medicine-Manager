@@ -65,3 +65,9 @@ gem 'devise', '~> 4.2'
 
 # kaminari
 gem 'kaminari'
+
+gem 'jquery-turbolinks'
+gem 'bootstrap-sass'
+
+#バリデーションの日本語化
+gem 'rails-i18n'

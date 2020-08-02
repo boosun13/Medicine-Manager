@@ -2,35 +2,38 @@
   <%= render "users/sidemenu" %>
   <div class="col" >
   <p>
-    <strong>Start time:</strong>
-    <%= @prescription.start_time %>
+    <strong>調剤日(薬局でお薬をもらった日):</strong>
+    <%= @prescription.start_time.strftime("%Y年%m月%d日") %>
   </p>
 
   <p>
-    <strong>Visit date:</strong>
-    <%= @prescription.visit_date %>
+    <strong>処方日(病院を受診した日):</strong>
+    <%= @prescription.visit_date.strftime("%Y年%m月%d日") %>
   </p>
 
   <p>
-    <strong>Hospital:</strong>
+    <strong>医療機関(診療科):</strong>
     <%= @prescription.hospital %>
   </p>
 
   <p>
-    <strong>Doctor:</strong>
+    <strong>処方医師:</strong>
     <%= @prescription.doctor %>
   </p>
 
-  <p>
-    <strong>Pharmacy:</strong>
-    <%= @prescription.pharmacy %>
-  </p>
 
   <div id="medicineModal">
   </div>
+
+  <h6>◆処方内容◆</h6>
   <div id="medicineList">
     <%= render "medicines/show" %>
   </div>
+  
+  <p>
+    <strong>調剤薬局:</strong>
+    <%= @prescription.pharmacy %>
+  </p>
 
   <%= link_to "new medicine",new_prescription_medicine_path(@prescription), remote: true %>
 

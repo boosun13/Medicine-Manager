@@ -1,11 +1,11 @@
 <div class="row m-0">
     <%= render "users/sidemenu" %>
 
-    <div>
-    <h1>New Prescription</h1>
+    <div class="col" >
+        <h1>New Prescription</h1>
 
-    <%= render 'form', prescription: @prescription %>
+        <%= render 'form', prescription: @prescription %>
 
-    <%= link_to "ユーザー詳細へ戻る", user_path(current_user) %>
+        <%= link_to "ユーザー詳細へ戻る", user_path(current_user) %>
     </div>
 </div>

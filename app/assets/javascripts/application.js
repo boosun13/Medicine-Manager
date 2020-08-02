@@ -47,7 +47,54 @@ $( function(){
             $('nav').css('opacity', '1');
         }
         });
-} );
+    });
+
+
+$(document).on('turbolinks:load', function() {
+    $( '#hospitalBtn' ).click( function() {
+        if ($('#s_hospital').attr('disabled')) {
+            $('#s_hospital').removeAttr('disabled');
+            $('#m_hospital').attr('disabled', 10);
+        } else {
+            $('#s_hospital').attr('disabled', 10);
+            $('#m_hospital').removeAttr('disabled');
+        }
+    }); 
+    //処方医師フォーム
+    $( '#doctorBtn' ).click( function() {
+        if ($('#s_doctor').attr('disabled')) {
+            $('#s_doctor').removeAttr('disabled');
+            $('#m_doctor').attr('disabled', 10);
+        } else {
+            $('#s_doctor').attr('disabled', 10);
+            $('#m_doctor').removeAttr('disabled');
+        }
+    }); 
+    //調剤薬局フォーム
+    $( '#pharmacyBtn' ).click( function() {
+        if ($('#s_pharmacy').attr('disabled')) {
+            $('#s_pharmacy').removeAttr('disabled');
+            $('#m_pharmacy').attr('disabled', 10);
+        } else {
+            $('#s_pharmacy').attr('disabled', 10);
+            $('#m_pharmacy').removeAttr('disabled');
+        }
+    }); 
+
+    if ($('div').hasClass('field_with_errors')){
+        $('#s_pharmacy').attr('disabled', 10);
+        $('#m_pharmacy').removeAttr('disabled');
+        $('#s_doctor').attr('disabled', 10);
+        $('#m_doctor').removeAttr('disabled');
+        $('#s_hospital').attr('disabled', 10);
+        $('#m_hospital').removeAttr('disabled');
+        $('.collapse').addClass('show');
+        
+    }
+});
+
+
+
 
 $(function() {
     var h = $(window).height();
@@ -72,4 +119,4 @@ function stopload(){
     $('#wrap').css('display','block');
     $('#loader-bg').delay(900).fadeOut(800);
     $('#loader').delay(600).fadeOut(300);
-}
+};

@@ -1,42 +1,68 @@
 <div class="">
 
-<%= form_with(model: prescription, remote: true) do |form| %>
-  <% if prescription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
+<%= form_with(model: prescription) do |form| %>
+  <% prescriptions = current_user.prescriptions %>
 
-      <ul>
-      <% prescription.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="">
-    <%= "調剤日" %>
+  <div class="field row">
+    <%= "調剤日(薬局でお薬をもらった日)" %>
     <%= form.date_field :start_time  %>
+    <% if prescription.errors.include?(:start_time) %>
+      <p style="color: red;"><%= prescription.errors.full_messages_for(:start_time).first %>
+    <% end %>
   </div>
 
-  <div class="">
-    <%= "処方日" %>
-    <%= form.date_field :visit_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :hospital %>
-    <%= form.text_field :hospital %>
-  </div>
-
-  <div class="field">
-    <%= form.label :doctor %>
-    <%= form.text_field :doctor %>
+  <div class="field row" >
+    <%= "処方日(病院を受診した日)：" %>
+    <%= form.date_field :visit_date  %>
+    <% if prescription.errors.include?(:visit_date) %>
+      <p style="color: red;"><%= prescription.errors.full_messages_for(:visit_date).first %>
+    <% end %>  
   </div>
 
   <div class="field">
-    <%= form.label :pharmacy %>
-    <%= form.text_field :pharmacy %>
+    <%= "医療機関(総合病院は診療科まで)：" %><br>
+    <button type="button" class="btn btn-info m-2" id="hospitalBtn" data-toggle="collapse" data-target="#collapsehospital" aria-expanded="false" aria-controls="collapsehospital">
+      新規で入力する
+    </button>
+    <div class="collapse" id="collapsehospital">
+      <%= form.text_field :hospital, :placeholder => "", id: "m_hospital",disabled: true %>
+    </div>
+    <%= form.collection_select(:hospital, prescriptions.group(:hospital).order(id: :desc), :hospital ,:hospital,{ prompt: "過去に受診した病院"}, id: "s_hospital" ) %>
+    <% if prescription.errors.include?(:hospital) %>
+      <p style="color: red;"><%= prescription.errors.full_messages_for(:hospital).first %>
+    <% end %>  
   </div>
+
+
+  <div class="field">
+    <%= "処方医師：" %><br>
+        <button type="button" class="btn btn-info m-2" id="doctorBtn" data-toggle="collapse" data-target="#collapsedoctor" aria-expanded="false" aria-controls="collapsedoctor">
+      新規で入力する
+    </button>
+    <div class="collapse" id="collapsedoctor">
+      <%= form.text_field :doctor, id: "m_doctor",disabled: true %>
+    </div>
+      <%= form.collection_select(:doctor, prescriptions.group(:doctor).order(id: :desc), :doctor,:doctor,{ prompt: "過去に処方した医師"}, id: "s_doctor" ) %>
+    <% if prescription.errors.include?(:doctor) %>
+      <p style="color: red;"><%= prescription.errors.full_messages_for(:doctor).first %>
+    <% end %>  
+  </div>
+
+
+  <div class="field">
+    <%= "調剤薬局：" %><br>
+        <button type="button" class="btn btn-info m-2" id="pharmacyBtn" data-toggle="collapse" data-target="#collapsepharmacy" aria-expanded="false" aria-controls="collapsepharmacy">
+      新規で入力する
+    </button>
+    <div class="collapse" id="collapsepharmacy">
+      <%= form.text_field :pharmacy, id: "m_pharmacy",disabled: true %>
+    </div>
+      <%= form.collection_select(:pharmacy, prescriptions.group(:pharmacy).order(id: :desc), :pharmacy,:pharmacy,{ prompt: "過去に調剤した薬局" } ,id: "s_pharmacy" ) %>
+    <% if prescription.errors.include?(:pharmacy) %>
+      <p style="color: red;"><%= prescription.errors.full_messages_for(:pharmacy).first %>
+    <% end %>  
+  </div>
+
 
   <div class="actions">
     <%= form.submit %>

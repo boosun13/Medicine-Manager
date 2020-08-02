@@ -17,6 +17,7 @@
 @import "bootstrap";
 @import "form";
 @import "devise";
+@import url("https://use.fontawesome.com/releases/v5.8.2/css/all.css");
 
 main {
     min-height: calc(100vh - 50px);
@@ -38,16 +39,22 @@ footer {
         background: #000;
         z-index: 1;
     }
-    #loader {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        width: 200px;
-        height: 200px;
-        margin-top: -100px;
-        margin-left: -100px;
-        text-align: center;
-        color: #fff;
-        z-index: 2;
-    }
+#loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin-top: -100px;
+    margin-left: -100px;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+div.field_with_errors {
+    background-color: #fcc;
+    padding: 5px;
+    border-radius: 10px;
+}
