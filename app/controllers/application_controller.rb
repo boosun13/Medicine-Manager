@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
         user_path(current_user)
     end
 
+    def set_calendar
+        @calendars = current_user.prescriptions
+    end
+
 end

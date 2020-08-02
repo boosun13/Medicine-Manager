@@ -1,0 +1,22 @@
+.simple-calendar {
+    .current-month {
+        background-color: rgba(250, 175, 114, 0.24);
+    }
+
+
+    .today {
+        background-color: rgba(248, 211, 0, 0.363);
+    }
+
+
+    .prev-month {
+        opacity: 0.2;
+    }
+    .next-month {
+        opacity: 0.2;
+    }
+
+    .has-events {
+        background-color: rgba(248, 0, 0, 0.185);
+    }
+}

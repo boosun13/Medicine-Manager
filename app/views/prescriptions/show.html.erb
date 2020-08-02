@@ -36,7 +36,7 @@
   </p>
 
   <%= link_to "new medicine",new_prescription_medicine_path(@prescription), remote: true %><br>
-  <%= link_to 'Destroy', @prescription, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <%= link_to 'Destroy', prescription_path(@prescription), method: :delete, data: { confirm: 'Are you sure?' } %><br>
 
 
   <%= link_to 'Edit', edit_prescription_path(@prescription) %> |
