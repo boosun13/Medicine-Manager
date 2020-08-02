@@ -4,7 +4,7 @@
   <% prescriptions = current_user.prescriptions %>
 
   <div class="field row">
-    <%= "調剤日(薬局でお薬をもらった日)" %>
+    <%= "調剤日(薬局でお薬をもらった日)：　" %>
     <%= form.date_field :start_time  %>
     <% if prescription.errors.include?(:start_time) %>
       <p style="color: red;"><%= prescription.errors.full_messages_for(:start_time).first %>
@@ -12,16 +12,16 @@
   </div>
 
   <div class="field row" >
-    <%= "処方日(病院を受診した日)：" %>
+    <%= "処方日(病院を受診した日)：　" %>
     <%= form.date_field :visit_date  %>
     <% if prescription.errors.include?(:visit_date) %>
       <p style="color: red;"><%= prescription.errors.full_messages_for(:visit_date).first %>
     <% end %>  
   </div>
 
-  <div class="field">
+  <div class="field border p-3">
     <%= "医療機関(総合病院は診療科まで)：" %><br>
-    <button type="button" class="btn btn-info m-2" id="hospitalBtn" data-toggle="collapse" data-target="#collapsehospital" aria-expanded="false" aria-controls="collapsehospital">
+    <button type="button" class="btn btn-info m-2 p-1 " id="hospitalBtn" data-toggle="collapse" data-target="#collapsehospital" aria-expanded="false" aria-controls="collapsehospital">
       新規で入力する
     </button>
     <div class="collapse" id="collapsehospital">
@@ -34,9 +34,9 @@
   </div>
 
 
-  <div class="field">
+  <div class="field border p-3">
     <%= "処方医師：" %><br>
-        <button type="button" class="btn btn-info m-2" id="doctorBtn" data-toggle="collapse" data-target="#collapsedoctor" aria-expanded="false" aria-controls="collapsedoctor">
+        <button type="button" class="btn btn-info m-2 p-1" id="doctorBtn" data-toggle="collapse" data-target="#collapsedoctor" aria-expanded="false" aria-controls="collapsedoctor">
       新規で入力する
     </button>
     <div class="collapse" id="collapsedoctor">
@@ -49,9 +49,9 @@
   </div>
 
 
-  <div class="field">
+  <div class="field border p-3">
     <%= "調剤薬局：" %><br>
-        <button type="button" class="btn btn-info m-2" id="pharmacyBtn" data-toggle="collapse" data-target="#collapsepharmacy" aria-expanded="false" aria-controls="collapsepharmacy">
+        <button type="button" class="btn btn-info m-2 p-1" id="pharmacyBtn" data-toggle="collapse" data-target="#collapsepharmacy" aria-expanded="false" aria-controls="collapsepharmacy">
       新規で入力する
     </button>
     <div class="collapse" id="collapsepharmacy">
@@ -64,7 +64,7 @@
   </div>
 
 
-  <div class="actions">
+  <div class="actions" style="margin:0 40%;">
     <%= form.submit %>
   </div>
 <% end %>

@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require_tree .
 
+
+
 // Bootstrap4
 //= require jquery3
 //= require popper
@@ -81,6 +83,7 @@ $(document).on('turbolinks:load', function() {
         }
     }); 
 
+    // エラーになったら始動する
     if ($('div').hasClass('field_with_errors')){
         $('#s_pharmacy').attr('disabled', 10);
         $('#m_pharmacy').removeAttr('disabled');

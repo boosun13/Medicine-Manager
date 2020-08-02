@@ -71,3 +71,6 @@ gem 'bootstrap-sass'
 
 #バリデーションの日本語化
 gem 'rails-i18n'
+
+#カレンダー表記
+gem 'simple_calendar', '~> 2.0'

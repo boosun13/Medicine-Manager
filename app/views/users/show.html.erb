@@ -2,10 +2,9 @@
     <%= render "users/sidemenu" %>
 
 
-    <div class="col-lg-6 ml-lg-3">
-        <h1>お薬の記録一覧</h1>
-        <%= link_to 'New Prescription', new_prescription_path %>
-        <div id="prescriptionIndex">
+    <div class="col text-center">
+        <h1 class="py-4">お薬の記録一覧</h1>
+        <div id="prescriptionIndex" class="text-left">
             <%= render "prescriptions/index" %>
         </div>
         <%= link_to_next_page @prescriptions, 'つづきを見る', remote: true, id: 'more_link', class:"btn btn-info" %>
