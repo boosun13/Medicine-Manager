@@ -1,0 +1,5 @@
+<div>
+    <% @users.each do |user| %>
+        <%= link_to user.name, "admins/#{user.id}" %>
+    <% end %>
+</div>

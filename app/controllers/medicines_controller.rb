@@ -56,7 +56,7 @@ class MedicinesController < ApplicationController
     end
 
     def set_prescription
-      @prescription = current_user.prescriptions.find_by(id: params[:prescription_id])
+      @prescription = Prescription.find_by(id: params[:prescription_id])
     end
     
     def medicine_params

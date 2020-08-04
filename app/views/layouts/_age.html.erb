@@ -1,4 +1,5 @@
 <div class="age" >
+<% if current_user.birthday %>
     <% age_month = (Time.now.month-current_user.birthday.month).floor %>
     <% if age_month == 0 %>
         <% age_month = 12 %>
@@ -15,4 +16,7 @@
     <% else %>
         <%= "#{Time.now.year-current_user.birthday.year}歳 #{age_month}ヵ月" %>
     <% end %>
+<% else %>
+    <h6>(未登録)</h6>
+<% end %>
 </div>

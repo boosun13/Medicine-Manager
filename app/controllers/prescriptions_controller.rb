@@ -41,7 +41,6 @@ class PrescriptionsController < ApplicationController
   # PATCH/PUT /prescriptions/1
   # PATCH/PUT /prescriptions/1.json
   def update
-    @prescription.user_id = current_user.id
     respond_to do |format|
       if @prescription.update(prescription_params)
         format.html { redirect_to @prescription, notice: 'Prescription was successfully updated.' }

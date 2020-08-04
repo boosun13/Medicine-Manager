@@ -18,11 +18,13 @@ class ApplicationController < ActionController::Base
     end
 
     def after_inactive_sign_up_path_for(resource)
-        user_path(current_user)
+        edit_user_registration_path(current_user)
     end
 
     def set_calendar
-        @calendars = current_user.prescriptions
+        if current_user
+            @calendars = current_user.prescriptions
+        end
     end
 
 end
