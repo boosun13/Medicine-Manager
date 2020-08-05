@@ -13,6 +13,11 @@ Rails.application.routes.draw do
 
   get "/admins" => "admins#index"
   get "/admins/:id" => "admins#show"
+  get "/admins/:id/m_new" => "admins#m_new"
+  get "/admins/:id/m_edit" => "admins#m_edit"
+  post "/admins/:id/m_create" => "admins#_create"
+  patch "/admins/:id/m_update" => "admins#_update"
+
 
   root to: "home#index"
 end

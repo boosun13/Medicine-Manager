@@ -1,33 +1,37 @@
 <!--特定ユーザーの管理画面-->
 <h1><%= @user.name %></h1>
-    <div>
-    <% @prescriptions.each_with_index do |prescription, index| %>
-        <div class="card text-center mx-5 my-3" style="
-        <% if prescription.id%2 == 0 %>
-            background-color:#c882f58c;
-        <% else %>
-            background-color:#a0caa987;
-        <% end %>
-        ">
-            <div class="card-header">
-                <h5>調剤日: <%= prescription.start_time.strftime("%Y年%m月%d日") %> | 処方日: <%= prescription.visit_date.strftime("%Y年%m月%d日") %></h5>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title"><%= prescription.hospital %> | <%= prescription.doctor %></h5>
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Medicine<%=prescription.id%>" aria-expanded="false" aria-controls="collapseExample">
-                        お薬の詳細
-                    </button>
-                    <div class="collapse" id="Medicine<%=prescription.id%>">
-                        <% prescription.medicines.each do |medicine| %>
-                            <%= medicine.name %><br>
-                        <% end %>
-                    </div>
-            </div>
-            <div class="card-footer text-muted">
-                <%= prescription.pharmacy %><br>
-                <%= prescription.created_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
-                <%= prescription.updated_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
-            </div>
-        </div>
+<div id="medicineModal">
+</div>
+<div>
+<% @prescriptions.each_with_index do |prescription, index| %>
+    <div class="card text-center mx-5 my-3" style="
+    <% if prescription.id%2 == 0 %>
+        background-color:#cfc5e29c;
+    <% else %>
+        background-color:#a0caa987;
     <% end %>
+    ">
+        <div class="card-header">
+            <h5>調剤日: <%= prescription.start_time.strftime("%Y年%m月%d日") %> | 処方日: <%= prescription.visit_date.strftime("%Y年%m月%d日") %></h5>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><%= prescription.hospital %> | <%= prescription.doctor %></h5>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Medicine<%=prescription.id%>" aria-expanded="false" aria-controls="collapseExample">
+                    お薬の詳細
+                </button>
+                <div class="collapse" id="Medicine<%=prescription.id%>">
+                    <%= link_to "+ new medicine",new_prescription_medicine_path(prescription), remote: true, class: "btn btn-warning text-light text-center border-danger m-3" %><br>
+
+                    <div id="medicineList">
+                        <%= render "medicines", prescription: prescription %>
+                    </div>
+                </div>
+        </div>
+        <div class="card-footer text-muted">
+            <%= prescription.pharmacy %><br>
+            <%= prescription.created_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
+            <%= prescription.updated_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
+        </div>
     </div>
+<% end %>
+</div>

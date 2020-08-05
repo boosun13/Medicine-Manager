@@ -1,5 +1,5 @@
 <% @medicines.each_with_index do |medicine,i| %>
-  <div class="card text-light my-2"  data-model_name="<%= medicine.model_name.singular %>"
+  <div class="card text-light my-2 mx-auto"  data-model_name="<%= medicine.model_name.singular %>"
   data-id="<%= medicine.id %>" style="max-width:600px; background: rgba(0,123,255,0.6);" >
     <div class="card-body">
       <h6><%= "#{i+1})" %><strong><%= "#{medicine.name}" %></strong></h6>
