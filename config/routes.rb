@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  resources :admins
+  
+  resources :prescriptions 
+    namespace :admins do
+      resources :prescriptions
+    end
+  
+
   resources :prescriptions do
     resources :medicines
   end
@@ -10,13 +19,6 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
-
-  get "/admins" => "admins#index"
-  get "/admins/:id" => "admins#show"
-  get "/admins/:id/m_new" => "admins#m_new"
-  get "/admins/:id/m_edit" => "admins#m_edit"
-  post "/admins/:id/m_create" => "admins#_create"
-  patch "/admins/:id/m_update" => "admins#_update"
 
 
   root to: "home#index"

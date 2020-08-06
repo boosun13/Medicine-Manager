@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+    before_action :set_admin
 
     def index
         @users = User.all
@@ -9,16 +10,8 @@ class AdminsController < ApplicationController
         @prescriptions = @user.prescriptions
     end
 
-    def m_new
-    end
-
-    def m_edit
-    end
-
-    def m_create
-    end
-
-    def m_update
+    def set_admin
+        @user = User.find_by(id: params[:admin_id])
     end
 
 end
