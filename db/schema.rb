@@ -12,20 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2020_08_06_131611) do
 
-  create_table "medicines", force: :cascade do |t|
+  create_table "medicines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "usage"
     t.integer "days"
-    t.decimal "dose"
+    t.decimal "dose", precision: 10
     t.text "effect"
     t.text "side_effect"
-    t.integer "prescription_id"
+    t.bigint "prescription_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prescription_id"], name: "index_medicines_on_prescription_id"
   end
 
-  create_table "prescriptions", force: :cascade do |t|
+  create_table "prescriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "visit_date"
     t.string "hospital"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_131611) do
     t.integer "user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +66,5 @@ ActiveRecord::Schema.define(version: 2020_08_06_131611) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "medicines", "prescriptions"
 end
