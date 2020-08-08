@@ -10,6 +10,6 @@ $('.modal-backdrop').remove();
     $("#medicineList").append("<%= j(render admins/medicines) %>");
 
 // <% else %>
-    $("#prescriptionModal").html("<%= j(render 'new') %>")
+    $("#prescriptionModal").html("<%= j(render 'edit') %>")
     $("#prescriptionModal").find(".modal").modal('show')
 // <% end %>

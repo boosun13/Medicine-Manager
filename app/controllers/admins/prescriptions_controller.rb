@@ -42,14 +42,11 @@ class Admins::PrescriptionsController < ApplicationController
     # PATCH/PUT /prescriptions/1
     # PATCH/PUT /prescriptions/1.json
     def update
-        respond_to do |format|
         if @prescription.update(prescription_params)
-            format.html { redirect_to @prescription, notice: 'Prescription was successfully updated.' }
-            format.json { render :show, status: :ok, location: @prescription }
+            redirect_to admin_path(params[:admin_id]), notice: 'Prescription was successfully updated.' 
         else
-            format.html { render :edit }
-            format.json { render json: @prescription.errors, status: :unprocessable_entity }
-        end
+            @admin = User.find_by(id: params[:admin_id]) 
+            render :edit
         end
     end
 
@@ -57,16 +54,13 @@ class Admins::PrescriptionsController < ApplicationController
     # DELETE /prescriptions/1.json
     def destroy
         @prescription.destroy
-        respond_to do |format|
-        format.html { redirect_to user_path(current_user), notice: 'Prescription was successfully destroyed.' }
-        format.json { head :no_content }
-        end
+            redirect_to admin_path(params[:admin_id]), notice: 'Prescription was successfully destroyed.'
     end
 
     private
         # Use callbacks to share common setup or constraints between actions.
         def set_prescription
-            @prescription = Prescription.find(params[:id])
+            @prescription = Prescription.find_by(id: params[:id])
         end
 
         # Only allow a list of trusted parameters through.

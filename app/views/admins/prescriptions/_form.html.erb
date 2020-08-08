@@ -1,6 +1,6 @@
 <div class="">
 
-<%= form_with(model: [@admin, @prescription],url: admins_prescriptions_path) do |form| %>
+<%= form_with model: [ :admins, prescription ], local: true do |form| %>
   <%= @admin.name %>
   <%= @admin.id %>
 
