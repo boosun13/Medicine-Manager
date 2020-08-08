@@ -12,5 +12,5 @@ class Prescription < ApplicationRecord
 
 
     default_scope -> { order(created_at: :desc) }
-    paginates_per 4
+    paginates_per 2
 end

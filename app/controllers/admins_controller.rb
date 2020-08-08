@@ -4,7 +4,7 @@ class AdminsController < ApplicationController
 
     def index
         @q = User.ransack(params[:q])
-        @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+        @users = @q.result(distinct: true).page(params[:page]).per(5)
     end
 
     def show
@@ -25,7 +25,7 @@ class AdminsController < ApplicationController
 
     def search
         @q = User.search(search_params)
-        @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+        @users = @q.result(distinct: true).page(params[:page]).per(5)
     end
     
     private

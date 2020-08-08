@@ -2,15 +2,13 @@
     <h2 class="text-center">ユーザー一覧</h2>
     <div class="row">
         <div class="col">
-            <%= will_paginate @users, list_classes: %w(pagination justify-content-center) %>
             <div id="userList">
                 <%= render "users" %>
             </div>
-            <%= will_paginate @users, list_classes: %w(pagination justify-content-center) %>
         </div>
 
-        <div class="col-md-3 m-5 ml-md-0 my-auto bg-light border">
-            <h4>ユーザー検索</h4>
+        <div class="col m-5 ml-md-0 my-auto bg-light border" style="border-radius: 10px;max-width:450px;">
+            <h4 class="my-2">ユーザー検索</h4>
             <%= search_form_for @q, url:search_path ,remote: true do |f| %>
 
                 <div class="field">
@@ -19,7 +17,7 @@
                 </div>
 
                 <div class="field">
-                    <%= f.label :birthday, "生年月日" %>
+                    <%= f.label :birthday, "生年月日" %><br>
                     <%= f.date_field :birthday_gteq %> ~ <%= f.date_field :birthday_lt %>
                 </div>
 

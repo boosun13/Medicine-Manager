@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @prescriptions = current_user.prescriptions.page(params[:page]).per(2)
+    @prescriptions = current_user.prescriptions.page(params[:page]).per(3)
   end
 
 end
