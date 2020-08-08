@@ -1,5 +1,38 @@
-<div>
-    <% @users.each do |user| %>
-        <%= link_to user.name, "/admins/#{user.id}" %>
-    <% end %>
+<div class=" border my-3 mx-md-5 ">
+    <h2 class="text-center">ユーザー一覧</h2>
+    <div class="row">
+        <div class="col">
+            <%= will_paginate @users, list_classes: %w(pagination justify-content-center) %>
+            <div id="userList">
+                <%= render "users" %>
+            </div>
+            <%= will_paginate @users, list_classes: %w(pagination justify-content-center) %>
+        </div>
+
+        <div class="col-md-3 m-5 ml-md-0 my-auto bg-light border">
+            <h4>ユーザー検索</h4>
+            <%= search_form_for @q, url:search_path ,remote: true do |f| %>
+
+                <div class="field">
+                    <%= f.label :name_or_email, "氏名 または email" %>
+                    <%= f.search_field :name_or_email_cont,class:"form-control" %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :birthday, "生年月日" %>
+                    <%= f.date_field :birthday_gteq %> ~ <%= f.date_field :birthday_lt %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :admin, "権限の有無" %><br>
+                    <%= f.radio_button :admin_eq, '', {:checked => true} %>指定なし
+                    <%= f.radio_button :admin_eq, true %>管理者
+                    <%= f.radio_button :admin_eq, false %>ユーザー
+                </div>
+
+                <%= f.submit "検索", class:"btn btn-primary m-2" %>
+            <% end %>
+        </div>
+
+    </div>
 </div>

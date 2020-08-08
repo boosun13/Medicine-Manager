@@ -74,3 +74,10 @@ gem 'rails-i18n'
 
 #カレンダー表記
 gem 'simple_calendar', '~> 2.0'
+
+#ページ表記
+gem 'will_paginate',           '3.1.7'
+gem 'will_paginate-bootstrap4'
+
+#検索機能
+gem 'ransack'

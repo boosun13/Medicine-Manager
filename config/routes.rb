@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   resources :admins
-  
+  get 'search', to: 'admins#search'
+
   resources :prescriptions 
     namespace :admins do
       resources :prescriptions

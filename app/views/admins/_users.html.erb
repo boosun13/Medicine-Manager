@@ -1,0 +1,16 @@
+    <% @users.each do |user| %>
+        <div class="card u_card btn btn-light text-left m-4 ">
+            <%= link_to  admin_path(user),class:"card-body text-dark" do %>
+                <h4 class="card-title"><%= user.name %></h4>
+                <h6 class="card-title"><%= user.email %></h6>
+                <p class="card-text"><%= user.birthday %></p>
+
+                <% if user.admin %>
+                    <div class="position-absolute" style="top: 15px; right: 10%;">
+                        <p><span class="fa fa-check bg-danger"></span>権限あり
+                        </p>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>

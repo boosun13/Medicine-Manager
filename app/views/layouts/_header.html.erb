@@ -11,6 +11,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
+            <% if user_signed_in? && current_user.admin? %>
+            <li class="nav-item">
+                <a class="nav-link" href="/admins">admin</a>
+            </li>
+            <% end %>
         </ul>
         
         <% if user_signed_in? %>
