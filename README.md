@@ -1,24 +1,28 @@
-# README
+# Medicine Manager
+ 
+お薬の管理アプリです。
+ 
+# DEMO
+ 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ 
+# 特徴
+ 
 
-Things you may want to cover:
+ 
+# 使用技術
+ 
 
-* Ruby version
+ 
+ 
+# 機能一覧
+ 
 
-* System dependencies
+ 
+# 開発に意識したこと
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ 
+# 作成者情報
+ 
+ 
+# 今後の展開
