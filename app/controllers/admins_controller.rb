@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+    before_action :authenticate_user!
     before_action :if_not_admin
     before_action :set_admin
 
@@ -40,7 +41,7 @@ class AdminsController < ApplicationController
     end
 
     def if_not_admin
-        redirect_to root_path, notice: '権限がありません。' unless current_user.admin?
+        redirect_to root_path, notice: '権限がありません' unless current_user.admin?
     end
 
 end

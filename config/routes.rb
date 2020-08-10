@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'search', to: 'admins#search'
 
   resources :prescriptions 
-    namespace :admins do
-      resources :prescriptions
-    end
+
+  namespace :admins do
+    resources :prescriptions
+  end
   
 
   resources :prescriptions do
@@ -19,7 +20,11 @@ Rails.application.routes.draw do
     :passwords => 'users/passwords'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
+  resources :users do
+    resources :posts, only: [:index, :new, :create, :destroy]
+  end
+
+  resources :comments, only: [:new, :create, :destroy]
 
 
   root to: "home#index"

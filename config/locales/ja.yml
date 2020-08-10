@@ -28,6 +28,7 @@ ja:
   activerecord:
     models:
       prescription: 処方
+      post: お問い合わせ
     attributes:
       prescription:
         start_time: 調剤日
@@ -35,3 +36,5 @@ ja:
         hospital: 医療機関
         doctor: 処方医師
         pharmacy: 調剤薬局
+      post:
+        title: タイトル

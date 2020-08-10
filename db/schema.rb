@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_131611) do
+ActiveRecord::Schema.define(version: 2020_08_10_135107) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "medicines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -23,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_08_06_131611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prescription_id"], name: "index_medicines_on_prescription_id"
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sender"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "prescriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,4 +84,5 @@ ActiveRecord::Schema.define(version: 2020_08_06_131611) do
   end
 
   add_foreign_key "medicines", "prescriptions"
+  add_foreign_key "posts", "users"
 end

@@ -1,0 +1,21 @@
+<%= link_to "新規お問い合わせをする",new_user_post_path,remote: true %>
+<%= paginate @posts, theme: 'twitter-bootstrap-4',class:"justify-content-center" %>
+<% @posts.each do |post| %>
+    <div class="card my-1" >
+        
+        <button class="btn btn-light card-header text-left py-4 py-md-2" data-toggle="collapse" data-target="#Post<%= post.id %>" aria-expanded="ture" aria-controls="collapseExample">
+            <%= post.created_at.strftime("%Y年%m月%d日") %><br>
+            <%= post.title %>
+        </button>
+
+        <div class="position-absolute" style="top: 5px; right: 10%;">
+            <%= link_to "削除", user_post_path(post.user, post),  method: :delete,remote: true, class: "btn btn-outline-danger px-md-5", data: { confirm: 'Are you sure?' } %>
+            <div class="position-absolute"style="top: 35px;"><%= post.user.name %></div>
+        </div>
+
+        <div class="collapse card-body" id="Post<%= post.id %>" >
+            <%= render "comments/index", post: post %>
+        </div>
+    </div>
+<% end %>
+<%= paginate @posts, theme: 'twitter-bootstrap-4',class:"justify-content-center" %>

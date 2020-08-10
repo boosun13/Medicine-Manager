@@ -1,0 +1,24 @@
+<div class="modal fade" id="newPost" tabindex="-1" role="dialog" aria-labelledby="postaria">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>新規問い合わせ</h1>
+            </div>
+                <div class="modal-body bg-light">
+                <%= form_with(url: user_posts_path,local: false) do |f| %>
+                    <div class="field">
+                        <h6>タイトル：</h6>
+                        <%= f.text_field :title %>
+                        <% if @post.errors.include?(:title) %>
+                            <p style="color: red;" class="error"><%= @post.errors.full_messages_for(:title).first %></p>
+                        <% end %>
+                    </div>
+                    <div class="actions text-right">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <%= f.submit "投稿する" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

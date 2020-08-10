@@ -69,10 +69,12 @@ class Admins::PrescriptionsController < ApplicationController
         end
 
         def if_not_admin
-        redirect_to root_path unless current_user.admin?
+            redirect_to root_path, notice: '権限がありません' unless current_user.admin?
         end
 
         def set_admin
             @admin = User.find_by(id: params[:admin_id])
         end
+
+        
 end

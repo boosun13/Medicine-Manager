@@ -1,5 +1,7 @@
 class PrescriptionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_prescription, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /prescriptions
   # GET /prescriptions.json
@@ -71,6 +73,12 @@ class PrescriptionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def prescription_params
       params.require(:prescription).permit(:start_time, :visit_date, :hospital, :doctor, :pharmacy)
+    end
+
+    def set_user
+      if (@prescription.user_id != current_user.id)
+          redirect_to root_path, notice: '権限がありません'
+      end 
     end
 
 end

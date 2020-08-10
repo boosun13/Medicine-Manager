@@ -1,0 +1,18 @@
+// modalを閉じる処理
+$("#newPost").find(".modal").modal("hide");
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
+
+
+// Rails @status => true 画面の書き換え : false モーダルを再度表示
+// <% if @status %>
+    $("#postsList").html("<%= j(render 'postslist' ) %>");
+
+// <% else %>
+    $("#newPost").html("<%= j(render 'new') %>")
+    $("#newPost").find(".modal").modal('show')
+
+    //<% if @post.errors.include?(:title) %>
+        $('.field input').css({'background-color': '#fcc','padding': '5px','border-radius': '10px'});
+    //<% end %>
+// <% end %>

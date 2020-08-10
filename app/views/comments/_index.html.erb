@@ -1,0 +1,15 @@
+<%= link_to "内容を投稿", new_comment_path(post_id: post.id),remote: true %>
+<% post.comments.each do |comment| %>
+    <div class="card bg-light">
+        <div class="card-content py-3 px-2">
+            <%= comment.content %>
+        </div>
+        <div class="card-footer">
+            <%= comment.user.name %><br>
+            <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
+            <div class="position-absolute" style="bottom: 4px; right: 10%;">
+                <%= link_to "削除", comment_path(comment),  method: :delete,remote: true, class: "btn btn-outline-danger px-md-5", data: { confirm: 'Are you sure?' } %>
+            </div>
+        </div>
+    </div>
+<% end %>
