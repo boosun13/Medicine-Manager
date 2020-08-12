@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
         if @comment.save
             @status = true
             @post = @comment.post
+            @post.create_notification_comment!(current_user, @comment.id)
         else
             @status = false
             @post = Post.find_by(id: params[:post_id])

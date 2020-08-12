@@ -21,6 +21,7 @@
         <% if user_signed_in? %>
             <%= link_to "ユーザー詳細へ戻る", user_path(current_user) %>
             <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to 'お問い合わせ', user_posts_path(current_user) %>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
         <% else %>
             <div class="text-right nav-link">
