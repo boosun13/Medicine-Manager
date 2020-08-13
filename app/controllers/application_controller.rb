@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :set_calendar
+    before_action :set_notification
 
     protected
   
@@ -24,6 +25,13 @@ class ApplicationController < ActionController::Base
     def set_calendar
         if current_user
             @calendars = current_user.prescriptions
+        end
+    end
+
+    def set_notification
+        #current_userの投稿に紐づいた通知一覧
+        if current_user
+            @notifications = current_user.passive_notifications
         end
     end
 

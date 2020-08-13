@@ -44,13 +44,17 @@ $( function(){
 
     $(window).scroll(function() {
         if ($(this).scrollTop() > 60) {
-            $('nav').css('opacity', '0.7');
+            $('.navbar').css('opacity', '0.7');
         } else {
-            $('nav').css('opacity', '1');
+            $('.navbar').css('opacity', '1');
         }
         });
     });
 
+
+$(document).on('turbolinks:load', function() {
+    $('.drawer').drawer();
+});
 
 $(document).on('turbolinks:load', function() {
     $( '#hospitalBtn' ).click( function() {

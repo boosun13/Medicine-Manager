@@ -1,7 +1,13 @@
 <%= link_to "新規お問い合わせをする",new_user_post_path,remote: true %>
 <%= paginate @posts, theme: 'twitter-bootstrap-4',class:"justify-content-center" %>
 <% @posts.each do |post| %>
-    <div class="card my-1" >
+    <div class="card my-1
+    <% item = post
+        @not_checked = item.notifications.find_by(checked: false) %>
+    <% if @not_checked  %>
+        bg-info
+    <% end %>
+    " >
         
         <button class="btn btn-light card-header text-left py-4 py-md-2" data-toggle="collapse" data-target="#Post<%= post.id %>" aria-expanded="ture" aria-controls="collapseExample">
             <%= post.created_at.strftime("%Y年%m月%d日") %><br>

@@ -1,0 +1,26 @@
+    <%= link_to "既読を削除", notification_path(current_user), method: :delete ,remote: true  %>
+    <% @notifications.each do |notification| %>
+        <div class="card bg-light" style="
+        <% if notification.checked %>
+            opacity:0.5;
+        <% end %>
+        " >
+            <div class="card-header">
+                <%= notification.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
+            </div>
+            <div class="card-content">
+                <%= notification.id %>
+                <%= notification.checked %>
+                
+                <h5>薬剤師：<%= notification.visiter.name %>が
+                <%= link_to notification.item.title, user_posts_path(current_user)%>にコメントしました。</h5>
+
+                <% if notification.checked %>
+                    <%= link_to "未読に変更", notification_path(notification),method: :PATCH ,remote: true %>
+                <% else %>
+                    <%= link_to "既読", notification_path(notification),method: :PATCH ,remote: true %>
+                <% end %>
+
+            </div>
+        </div>
+    <%end%>

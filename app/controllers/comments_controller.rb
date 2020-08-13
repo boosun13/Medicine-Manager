@@ -27,6 +27,8 @@ class CommentsController < ApplicationController
         @comment.destroy
     end
 
+    
+
     private
 
 
