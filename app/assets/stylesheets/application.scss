@@ -27,9 +27,13 @@ body{
     margin:0;
 }
 
+main{
+    overflow:hidden;
+}
+
 main {
     min-height: calc(100vh - 50px);
-    padding-top: 60px;
+    padding-top: 40px;
     }
 
 footer {
@@ -66,3 +70,73 @@ div.field_with_errors {
     padding: 5px;
     border-radius: 10px;
 }
+
+
+@media (max-width: 768px) {
+    .calendar2 {
+        display: none;
+    }
+}
+
+@media (max-width: 798px) {
+    .calendar2 .table {
+        font-size: 10px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .calendar1 {
+        display: none;
+    }
+    .calendar2 {
+        margin-left: -10px;
+    }
+}
+
+/*1.フェードインアニメーションの指定*/
+.medicineMemo, .medicineManage, .medicineInfo {
+    opacity: 0;
+} 
+
+
+
+.fadeInDown {
+    animation-name: fadeInDown;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;         
+    }
+    100% {
+    opacity: 1;
+    transform: translate(0);
+    }
+}
+
+.fadeOutDown {
+    animation-name: fadeOutDown;
+    animation-duration: 2s;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeOutDown {
+    0% {
+        opacity: 0;         
+    }
+    100% {
+    opacity: 1;
+    transform: translate(0);
+    }
+}
+ 
+/*2.上下の動きを指定*/
+.updown {transform: translateY(-100px);}
+.downup {transform: translateY(100px);}
+ 
+/*3.左右の動きを指定*/
+.sect02{overflow: hidden;} /*横スクロールバーを隠す*/
+.slide-right {transform: translateX(200px);}
+.slide-left {transform: translateX(-200px);}

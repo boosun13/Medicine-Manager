@@ -1,21 +1,40 @@
-<div class="sidemenu border bg-light col-lg-5" style="min-height:800px; overflow: visible;">
+<div class="sidemenu border bg-light col-md-5 col-lg-4 " style="overflow: visible;">
     <h4><%= current_user.name %><br>様、こんにちは<h4>
     <h5 class="text-right">年齢<%= render "layouts/age" %></h5>
 
     <h6>お薬をもらったら記録をしよう！</h6>
     <%= link_to '処方追加', new_prescription_path , class: "btn btn-outline-info mb-5" %>
 
+    
 
-
-    <%= month_calendar events: @calendars do |date, calendars| %>
-        <%= date.day %>
-
-            <% calendars.each do |calendar| %>
-                <br><button type="button" class="btn btn-primary p-2" style="font-size:14px;" >
-                    <%= link_to "", calendar,class:"fa fa-pills text-light" %>
-                </button>
+    <nav class="calendar1 navbar navbar-light" >
+        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+            <%= month_calendar events: @calendars do |date, calendars| %>
+                <%= date.day %>
+                    <% calendars.each do |calendar| %>
+                        <br><button type="button" class="btn btn-primary p-md-1" style="font-size:14px;" >
+                            <%= link_to "", calendar,class:"fa fa-pills text-light" %>
+                        </button>
+                    <% end %>
             <% end %>
-    <% end %>
+        </div>
 
+        <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="calendar2">
+        <%= month_calendar events: @calendars do |date, calendars| %>
+            <%= date.day %>
+                <% calendars.each do |calendar| %>
+                    <br><button type="button" class="btn btn-primary p-2" style="font-size:14px;" >
+                        <%= link_to "", calendar,class:"fa fa-pills text-light" %>
+                    </button>
+                <% end %>
+        <% end %>
     </div>
+
+
+</div>
 

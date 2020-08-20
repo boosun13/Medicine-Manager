@@ -44,12 +44,57 @@ $( function(){
 
     $(window).scroll(function() {
         if ($(this).scrollTop() > 60) {
-            $('.navbar').css('opacity', '0.7');
+            $('.navbar-dark').css('opacity', '0.7');
         } else {
-            $('.navbar').css('opacity', '1');
+            $('.navbar-dark').css('opacity', '1');
         }
-        });
     });
+
+    
+});
+
+
+$(function () {
+    $(window).scroll(function () {
+
+        const wHeight = $(window).height();
+        const scrollAmount = $(window).scrollTop();
+
+        $('.medicineMemo, .medicineManage, .medicineInfo').each(function () {
+            const targetPosition = $(this).offset().top;
+            if(scrollAmount > targetPosition - wHeight + 250) {
+                $(this).removeClass("fadeOutDown");
+                $(this).addClass("fadeInDown");
+            }else if ($(this).hasClass("fadeInDown")){
+                $(this).addClass("fadeOutDown");
+                $(this).removeClass("fadeInDown");
+            }
+        });
+        
+        $(".info1, .info2, .info3, .home-btn").each(function () {
+            const targetPosition = $(this).offset().top;
+            if(scrollAmount > targetPosition - wHeight + 300) {
+                $(this).removeClass("fadeOutDown");
+                $(this).addClass("fadeInDown");
+            }else if ($(this).hasClass("fadeInDown")) {
+                $(this).addClass("fadeOutDown");
+                $(this).removeClass("fadeInDown");
+            }
+        });
+
+    });
+});
+
+
+
+$(document).on('turbolinks:load', function() {
+    $('.home-text , .home-info').hide();
+    setTimeout(function(){
+        $('.home-text').fadeIn(2000);
+        $('.home-info').fadeIn(2200);
+    },2000);
+
+});
 
 
 $(document).on('turbolinks:load', function() {
