@@ -13,6 +13,7 @@ class PrescriptionsController < ApplicationController
   # GET /prescriptions/1.json
   def show
     @medicines = @prescription.medicines
+    @user_id = current_user.id
   end
 
   # GET /prescriptions/new

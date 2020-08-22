@@ -7,12 +7,12 @@
 
     
 
-    <nav class="calendar1 navbar border navbar-light p-1 mb-1" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
+    <nav class="calendar1 navbar border navbar-light p-1 " style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
         <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
             <%= month_calendar events: @calendars do |date, calendars| %>
                 <%= date.day %>
                     <% calendars.each do |calendar| %>
-                        <br><button type="button" class="btn btn-primary p-md-1" style="font-size:14px;" >
+                        <br><button type="button" class="btn btn-primary p-md-1"  >
                             <%= link_to "", calendar,class:"fa fa-pills text-light" %>
                         </button>
                     <% end %>
@@ -28,8 +28,8 @@
         <%= month_calendar events: @calendars do |date, calendars| %>
             <%= date.day %>
                 <% calendars.each do |calendar| %>
-                    <br><button type="button" class="btn btn-primary p-2" style="font-size:14px;" >
-                        <%= link_to "", calendar,class:"fa fa-pills text-light" %>
+                    <br><button type="button" class="btn btn-primary tab-btn border-white" >
+                        <%= link_to "", calendar,class:"fa fa-pills text-light tab-icon" %>
                     </button>
                 <% end %>
         <% end %>

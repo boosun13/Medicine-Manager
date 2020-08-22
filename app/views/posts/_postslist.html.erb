@@ -19,7 +19,7 @@
         </button>
 
         <div class="position-absolute" style="top: 5px; right: 10%;">
-            <%= link_to "削除", user_post_path(post.user, post),  method: :delete,remote: true, class: "btn btn-outline-danger px-md-5", data: { confirm: 'Are you sure?' } %>
+            <%= link_to "削除", user_post_path(post.user, post),  method: :delete,remote: true, class: "btn btn-outline-danger px-md-5", data: { confirm: '削除すると内容は戻りません。本当に削除しますか？' } %>
             <div class="position-absolute"style="top: 35px;"><%= post.user.name %></div>
         </div>
 

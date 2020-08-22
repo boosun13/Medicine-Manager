@@ -47,7 +47,17 @@
     <%= link_to '処方元の記録変更', edit_prescription_path(@prescription), class: " btn btn-outline-primary " %>
     <%= link_to '処方記録を削除する', prescription_path(@prescription), method: :delete, data: { confirm: '削除した記録は戻りませんが削除してよろしいですか？' } , class: " btn btn-outline-danger "%>
 
-    
+
+    <% if current_user.prescriptions.where("id < ?", @prescription.id).order("id DESC").first.present? %>
+      <%= link_to "PREV", prescription_path(current_user.prescriptions.where("id <> ?", @prescription.id).order("id DESC").first), class: "btn_arrow_back"%>
+    <% end %>
+
+    <% if current_user.prescriptions.where("id > ?", @prescription.id).order("id ASC").first.present? %>
+      <%= link_to "NEXT",prescription_path(current_user.prescriptions.where("id > ?", @prescription.id).order("id ASC").first), class: "btn_arrow" %>
+    <% end %>
+
+
+
     <div class="text-right">
       <%= link_to "ユーザーページへ戻る", user_path(current_user) %>
     </div>
