@@ -33,7 +33,7 @@ main{
 
 main {
     min-height: calc(100vh - 50px);
-    padding-top: 40px;
+    padding-top: 60px;
     }
 
 footer {
@@ -103,7 +103,7 @@ div.field_with_errors {
 
 .fadeInDown {
     animation-name: fadeInDown;
-    animation-duration: 5s;
+    animation-duration: 3s;
     animation-fill-mode: forwards;
 }
 @keyframes fadeInDown {
@@ -118,7 +118,7 @@ div.field_with_errors {
 
 .fadeOutDown {
     animation-name: fadeOutDown;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-direction: reverse;
     animation-fill-mode: forwards;
 }
@@ -140,3 +140,8 @@ div.field_with_errors {
 .sect02{overflow: hidden;} /*横スクロールバーを隠す*/
 .slide-right {transform: translateX(200px);}
 .slide-left {transform: translateX(-200px);}
+
+.homeLogo{
+    font-size: 22px;
+    margin:0;
+}
