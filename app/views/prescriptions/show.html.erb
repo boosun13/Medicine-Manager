@@ -1,6 +1,6 @@
-<div class="row m-0">
+<div class="row m-0 main-bg">
   <%= render "users/sidemenu" %>
-  <div class="col border m-4" style="border-radius: 10px;" >
+  <div class="col border m-4" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
     <div class="border m-4 p-3 bg-light" style="border-radius: 10px; font-size:20px;">
       <p style="">
         <strong>調剤日(薬局でお薬をもらった日):</strong>
@@ -38,15 +38,19 @@
       
   </div>
 
-  <p class="text-right pr-5" style="font-size:20px;">
-    <strong>調剤薬局:</strong>
-    <%= @prescription.pharmacy %>
-  </p>
+  <div class="m-4 p-3">
+    <p class="text-right" style="font-size:20px;">
+      <strong>調剤薬局:</strong>
+      <%= @prescription.pharmacy %>
+    </p>
 
-  <%= link_to '処方元の記録変更', edit_prescription_path(@prescription), class: " btn btn-outline-primary " %>
-  <%= link_to '処方記録を削除する', prescription_path(@prescription), method: :delete, data: { confirm: '削除した記録は戻りませんが削除してよろしいですか？' } , class: " btn btn-outline-danger "%>
+    <%= link_to '処方元の記録変更', edit_prescription_path(@prescription), class: " btn btn-outline-primary " %>
+    <%= link_to '処方記録を削除する', prescription_path(@prescription), method: :delete, data: { confirm: '削除した記録は戻りませんが削除してよろしいですか？' } , class: " btn btn-outline-danger "%>
 
-  <br>
-  <%= link_to "ユーザーページへ戻る", user_path(current_user) %>
+    
+    <div class="text-right">
+      <%= link_to "ユーザーページへ戻る", user_path(current_user) %>
+    </div>
+  </div>
 
 </div>

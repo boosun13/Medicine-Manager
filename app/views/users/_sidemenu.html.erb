@@ -1,4 +1,4 @@
-<div class="sidemenu border bg-light col-md-5 col-lg-4 " style="overflow: visible;">
+<div class="sidemenu border col-md-5 col-lg-4 " style="overflow: visible;">
     <h4><%= current_user.name %><br>様、こんにちは<h4>
     <h5 class="text-right">年齢<%= render "layouts/age" %></h5>
 
@@ -7,7 +7,7 @@
 
     
 
-    <nav class="calendar1 navbar navbar-light" >
+    <nav class="calendar1 navbar border navbar-light p-1 mb-1" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
         <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
             <%= month_calendar events: @calendars do |date, calendars| %>
                 <%= date.day %>
@@ -19,12 +19,12 @@
             <% end %>
         </div>
 
-        <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="navbar-toggler mx-auto p-0 btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="height:30px; opacity:0.4;">
+            <span class="fa fa-bars px-5 py-1" ></span>
+        </div>
     </nav>
 
-    <div class="calendar2">
+    <div class="calendar2" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
         <%= month_calendar events: @calendars do |date, calendars| %>
             <%= date.day %>
                 <% calendars.each do |calendar| %>

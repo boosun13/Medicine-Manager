@@ -7,7 +7,7 @@ $('.modal-backdrop').remove();
 // Rails @status => true 画面の書き換え : false モーダルを再度表示
 // <% if @status %>
     $("#Post<%= @post.id %>").html("<%= j(render 'index', post: @post ) %>");
-    console.log("ok");
+    
 // <% else %>
     $("#newComment").html("<%= j(render 'new') %>")
     $("#newComment").find(".modal").modal('show')

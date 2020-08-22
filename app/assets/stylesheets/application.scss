@@ -36,6 +36,17 @@ main {
     padding-top: 60px;
     }
 
+.main-bg{
+    background: linear-gradient(rgba(201, 201, 201, 0.6), rgba(201, 201, 201, 0.6)),
+    url("/pic/背景.jpg");
+    background-size: 100% 100vh;
+    min-height: calc(100vh - 50px);
+}
+
+.sidemenu{
+    background: rgba(240, 240, 240, 0.8)
+}
+
 footer {
     height: 50px;
     }

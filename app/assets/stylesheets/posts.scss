@@ -1,3 +1,10 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-main{
+    background: linear-gradient(rgba(201, 201, 201, 0.6), rgba(201, 201, 201, 0.6)),
+    url("/pic/疑問.jpg");
+    background-size: 100% 100vh;
+    min-height: calc(100vh - 50px);
+}

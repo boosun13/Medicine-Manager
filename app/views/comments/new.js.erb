@@ -1,4 +1,6 @@
 console.log("OK");
-$("#newComment").html("<%= j (render 'new') %>");
-
-$("#newComment").find(".modal").modal('show')
+if ($('#newComment<%= @post.id %>').find('form[name="todoForm<%= @post.id %>"]').length){
+    $("#Post<%= @post.id %>").html("<%= j(render 'index', post: @post ) %>");
+}else{ 
+    $("#newComment<%= @post.id %>").html("<%= j (render 'new') %>");
+}

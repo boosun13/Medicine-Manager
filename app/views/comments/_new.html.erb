@@ -1,26 +1,18 @@
-<div class="modal fade" id="newComment" tabindex="-1" role="dialog" aria-labelledby="postaria">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1>問い合わせ内容</h1>
-            </div>
-                <div class="modal-body bg-light">
-                <%= form_with(url: comments_path,local: false) do |f| %>
-                    <%= @post.title %>
-                    <input type="hidden" name="post_id" value="<%= @post.id %>">
+<div class="bg-light">
+    <%= form_with(url: comments_path,local: false, html: {name: "todoForm#{@post.id}"}) do |f| %>
+        <%= @post.title %>
+        <input type="hidden" name="post_id" value="<%= @post.id %>">
 
-                    <div class="field">
-                        <%= f.text_field :content, style:"height:500px;" %>
-                        <% if @comment.errors.include?(:content) %>
-                            <p style="color: red;" class="error"><%= @comment.errors.full_messages_for(:content).first %></p>
-                        <% end %>
-                    </div>
-                    <div class="actions text-right">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <%= f.submit "投稿する" %>
-                    </div>
-                <% end %>
-            </div>
+        <div class="field m-3">
+            <%= f.text_field :content, style:"height:300px;" %>
+            <% if @comment.errors.include?(:content) %>
+                <p style="color: red;" class="error"><%= @comment.errors.full_messages_for(:content).first %></p>
+            <% end %>
         </div>
-    </div>
+        <div class="actions text-right">
+            <%= link_to "内容を投稿", new_comment_path,remote: true %>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= f.submit "投稿する" %>
+        </div>
+    <% end %>
 </div>

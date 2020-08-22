@@ -1,12 +1,13 @@
-<div class="row m-0">
+<div class="row m-0 main-bg">
     <%= render "users/sidemenu" %>
 
 
-    <div class="col text-center">
+    <div class="col text-center" >
         <h1 class="py-4">お薬の記録一覧</h1>
         <div id="prescriptionIndex" class="text-left">
             <%= render "prescriptions/index" %>
         </div>
         <%= link_to_next_page @prescriptions, 'つづきを見る', remote: true, id: 'more_link', class:"btn btn-info" %>
     </div>
+
 </div>
