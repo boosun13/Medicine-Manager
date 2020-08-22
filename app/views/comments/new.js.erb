@@ -1,6 +1,11 @@
 console.log("OK");
-if ($('#newComment<%= @post.id %>').find('form[name="todoForm<%= @post.id %>"]').length){
-    $("#Post<%= @post.id %>").html("<%= j(render 'index', post: @post ) %>");
+if ($('#newComment<%= @post.id %>').find('form[name="commentForm<%= @post.id %>"]').length){
+    $('#newComment<%= @post.id %>').find('form[name="commentForm<%= @post.id %>"]').slideUp(800);
+    setTimeout(function(){
+        $('#newComment<%= @post.id %>').find('form[name="commentForm<%= @post.id %>"]').remove();
+	},810);
 }else{ 
     $("#newComment<%= @post.id %>").html("<%= j (render 'new') %>");
+        $('#newComment<%= @post.id %>').find('form[name="commentForm<%= @post.id %>"]').hide().slideDown(700);
+
 }

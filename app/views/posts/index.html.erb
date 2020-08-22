@@ -2,7 +2,8 @@
 <div class="row post-main m-0">
 
     <div class="m-md-5 col border" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
-        <h1 class="p-4 border-bottom">
+        <h4 class="px-4 pt-4" ><%= User.find_by(id: params[:user_id]).name %>様</h4>
+        <h1 class="px-4 pb-4 pt-1 border-bottom border-dark ">
         お問い合わせ一覧</h1>
         <div class="mx-md-5 " id="postsList" >
             <%= render "postslist" %>

@@ -1,15 +1,19 @@
-<%= link_to "新規お問い合わせをする",new_user_post_path,remote: true %>
+<%= link_to "  新規で質問をする",new_user_post_path,remote: true ,class: "fa fa-question-circle btn btn-outline-secondary" %>
+<%if%>
+    <%= link_to "ユーザー管理ページ", admin_path(User.find_by(id: params[:user_id])),class:"btn btn-outline-primary" %>
+<%end%>
 <%= paginate @posts, theme: 'twitter-bootstrap-4',class:"justify-content-center" %>
 <% @posts.each do |post| %>
-    <div class="card my-1
-    <% item = post
-        @not_checked = item.notifications.find_by(checked: false) %>
-    <% if @not_checked  %>
-        bg-info
-    <% end %>
-    " >
+    <div class="card my-1">
         
         <button class="btn btn-light card-header text-left py-4 py-md-2" data-toggle="collapse" data-target="#Post<%= post.id %>" aria-expanded="ture" aria-controls="collapseExample">
+        
+            <% @notifications.where(checked: false).each do |not_checked| %>
+                <% if not_checked.item_id == post.id %>
+                    <img src="/pic/new12.gif" class="position-absolute" style="top: 2px; left: -10px;">
+                <% end %>
+            <% end %>
+
             <%= post.created_at.strftime("%Y年%m月%d日") %><br>
             <%= post.title %>
         </button>

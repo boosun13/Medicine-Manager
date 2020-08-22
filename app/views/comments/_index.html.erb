@@ -13,6 +13,6 @@
         </div>
     </div>
 <% end %>
-<%= link_to "内容を投稿", new_comment_path(post_id: post.id),remote: true %>
 <div id="newComment<%= post.id %>">
+    <%= link_to "内容を投稿", new_comment_path(post_id: post.id),remote: true %>
 </div>

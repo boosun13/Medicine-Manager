@@ -13,7 +13,7 @@
                 <%= notification.checked %>
                 
                 <h5>薬剤師：<%= notification.visiter.name %>が
-                <%= link_to notification.item.title, user_posts_path(notification.visiter)%>にコメントしました。</h5>
+                <%= link_to notification.item.title, user_posts_path(notification.item.user)%>にコメントしました。</h5>
 
                 <% if notification.checked %>
                     <%= link_to "未読に変更", notification_path(notification),method: :PATCH ,remote: true %>

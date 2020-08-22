@@ -1,17 +1,17 @@
 <div class="bg-light">
-    <%= form_with(url: comments_path,local: false, html: {name: "todoForm#{@post.id}"}) do |f| %>
-        <%= @post.title %>
+    <%= form_with(url: comments_path,local: false, html: {name: "commentForm#{@post.id}"} ) do |f| %>
+        <% @post.title %>
         <input type="hidden" name="post_id" value="<%= @post.id %>">
 
         <div class="field m-3">
-            <%= f.text_field :content, style:"height:300px;" %>
+            <%= f.text_area :content, style:"height:170px;" %>
             <% if @comment.errors.include?(:content) %>
                 <p style="color: red;" class="error"><%= @comment.errors.full_messages_for(:content).first %></p>
             <% end %>
+            
         </div>
         <div class="actions text-right">
-            <%= link_to "内容を投稿", new_comment_path,remote: true %>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= link_to "Close", new_comment_path(post_id: @post.id),remote: true, class: "btn btn-secondary" %>
             <%= f.submit "投稿する" %>
         </div>
     <% end %>

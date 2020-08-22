@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     private
 
     def set_post
-        @posts = Post.where(sender: params[:user_id]).order(created_at: :desc).page(params[:page]).per(3)
+        @posts = Post.where(sender: params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
     end
 
     def set_user

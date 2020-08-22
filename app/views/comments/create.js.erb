@@ -9,10 +9,9 @@ $('.modal-backdrop').remove();
     $("#Post<%= @post.id %>").html("<%= j(render 'index', post: @post ) %>");
     
 // <% else %>
-    $("#newComment").html("<%= j(render 'new') %>")
-    $("#newComment").find(".modal").modal('show')
+    $("#newComment<%= @post.id %>").html("<%= j (render 'new') %>");
 
     //<% if @comment.errors.include?(:content) %>
-        $('.field input').css({'background-color': '#fcc','padding': '5px','border-radius': '10px'});
+        $('.field textarea').css({'background-color': '#fcc','padding': '5px','border-radius': '10px'});
     //<% end %>
 // <% end %>

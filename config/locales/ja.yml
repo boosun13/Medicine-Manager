@@ -38,3 +38,5 @@ ja:
         pharmacy: 調剤薬局
       post:
         title: タイトル
+      comment:
+        content: 本文
