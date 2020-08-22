@@ -32,22 +32,21 @@
 
       <h6>◆処方内容◆</h6>
       <div id="medicineList">
+        <%= link_to "この処方にお薬を記録",new_prescription_medicine_path(@prescription), remote: true ,class: "btn btn-outline-info" %><br>
         <%= render "medicines/show",prescription: @prescription %>
       </div>
       
   </div>
 
-  <p style="font-size:20px;">
+  <p class="text-right pr-5" style="font-size:20px;">
     <strong>調剤薬局:</strong>
     <%= @prescription.pharmacy %>
   </p>
 
-  <%= link_to "new medicine",new_prescription_medicine_path(@prescription), remote: true %><br>
-  <%= link_to 'Destroy', prescription_path(@prescription), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <%= link_to '処方元の記録変更', edit_prescription_path(@prescription), class: " btn btn-outline-primary " %>
+  <%= link_to '処方記録を削除する', prescription_path(@prescription), method: :delete, data: { confirm: '削除した記録は戻りませんが削除してよろしいですか？' } , class: " btn btn-outline-danger "%>
 
+  <br>
+  <%= link_to "ユーザーページへ戻る", user_path(current_user) %>
 
-  <%= link_to 'Edit', edit_prescription_path(@prescription) %> |
-  <%= link_to "ユーザー詳細へ戻る", user_path(current_user) %>
-
-</div>
 </div>

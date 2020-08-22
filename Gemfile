@@ -80,3 +80,5 @@ gem 'simple_calendar', '~> 2.0'
 
 #検索機能
 gem 'ransack'
+
+gem 'dotenv-rails'
