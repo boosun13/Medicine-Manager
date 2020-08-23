@@ -49,11 +49,11 @@
 
 
     <% if current_user.prescriptions.where("id < ?", @prescription.id).order("id DESC").first.present? %>
-      <%= link_to "PREV", prescription_path(current_user.prescriptions.where("id <> ?", @prescription.id).order("id DESC").first), class: "btn_arrow_back"%>
+      <%= link_to "PREV", prescription_path(current_user.prescriptions.where("id <> ?", @prescription.id).order("id DESC").first), class: "previous"%>
     <% end %>
 
     <% if current_user.prescriptions.where("id > ?", @prescription.id).order("id ASC").first.present? %>
-      <%= link_to "NEXT",prescription_path(current_user.prescriptions.where("id > ?", @prescription.id).order("id ASC").first), class: "btn_arrow" %>
+      <%= link_to "NEXT",prescription_path(current_user.prescriptions.where("id > ?", @prescription.id).order("id ASC").first), class: "next" %>
     <% end %>
 
 

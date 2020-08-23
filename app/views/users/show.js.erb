@@ -1,2 +1,9 @@
-$("#prescriptionIndex").append("<%= escape_javascript(render partial: 'prescriptions/index' ) %>");
-$("#more_link").replaceWith("<%= escape_javascript(link_to_next_page(@prescriptions, 'つづきを見る', remote: true, id: 'more_link', class:"btn btn-info")) %>");
+
+//<% if @calendar_FB  %>
+    $("#sideM").html("<%= j (render 'calendar') %>");
+    $("#sideM").hide().fadeIn(1000);
+    $(".calendar1").find(".collapse").addClass("show");
+//<% else %>
+    $("#prescriptionIndex").append("<%= escape_javascript(render partial: 'prescriptions/index' ) %>");
+    $("#more_link").replaceWith("<%= escape_javascript(link_to_next_page(@prescriptions, 'つづきを見る', remote: true, id: 'more_link', class:"btn btn-info")) %>");
+//<%end%>

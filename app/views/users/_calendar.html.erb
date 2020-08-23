@@ -1,0 +1,27 @@
+<nav class="calendar1 navbar border navbar-light p-1 " style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
+    <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+        <%= month_calendar events: @calendars do |date, calendars| %>
+            <%= date.day %><br>
+                <% calendars.each do |calendar| %>
+                    <%= link_to  calendar,class:"btn btn-primary tab-btn border-white",data:{toggle:"tooltip"} ,title:"#{Prescription.find_by(id: calendar.id).hospital}" do %>
+                        <span class="fa fa-pills tab-icon"></span>
+                    <%end%>
+                <% end %>
+        <% end %>
+    </div>
+
+    <div class="navbar-toggler mx-auto p-0 btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="height:30px; opacity:0.4;">
+        <span class="fa fa-bars px-5 py-1" ></span>
+    </div>
+</nav>
+
+<div class="calendar2" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
+    <%= month_calendar events: @calendars do |date, calendars| %>
+        <%= date.day %><br>
+            <% calendars.each do |calendar| %>
+                    <%= link_to  calendar,class:"btn btn-primary tab-btn border-white",data:{toggle:"tooltip"} ,title:"#{Prescription.find_by(id: calendar.id).hospital}" do %>
+                        <span class="fa fa-pills tab-icon"></span>
+                    <%end%>
+            <% end %>
+    <% end %>
+</div>

@@ -6,33 +6,8 @@
     <%= link_to '処方追加', new_prescription_path , class: "btn btn-outline-info mb-5" %>
 
     
-
-    <nav class="calendar1 navbar border navbar-light p-1 " style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
-        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-            <%= month_calendar events: @calendars do |date, calendars| %>
-                <%= date.day %>
-                    <% calendars.each do |calendar| %>
-                        <br><button type="button" class="btn btn-primary p-md-1"  >
-                            <%= link_to "", calendar,class:"fa fa-pills text-light" %>
-                        </button>
-                    <% end %>
-            <% end %>
-        </div>
-
-        <div class="navbar-toggler mx-auto p-0 btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="height:30px; opacity:0.4;">
-            <span class="fa fa-bars px-5 py-1" ></span>
-        </div>
-    </nav>
-
-    <div class="calendar2" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
-        <%= month_calendar events: @calendars do |date, calendars| %>
-            <%= date.day %>
-                <% calendars.each do |calendar| %>
-                    <br><button type="button" class="btn btn-primary tab-btn border-white" >
-                        <%= link_to "", calendar,class:"fa fa-pills text-light tab-icon" %>
-                    </button>
-                <% end %>
-        <% end %>
+    <div id="sideM">
+        <%= render "users/calendar" %>
     </div>
 
 
