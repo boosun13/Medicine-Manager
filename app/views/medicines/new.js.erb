@@ -1,3 +1,26 @@
 $("#medicineModal").html("<%= j (render 'new') %>");
 
 $("#medicineModal").find(".modal").modal('show')
+
+
+//タブボタン切り替え
+$(function() {
+    $( '#normalTab' ).click( function() {
+        $('#when').find('input').attr('disabled', 10);
+        $('#external').find('input').attr('disabled', 10);
+        $('#normal').find('input').removeAttr('disabled');
+    });
+
+    $( '#whenTab' ).click( function() {
+        $('#normal').find('input').attr('disabled', 10);
+        $('#external').find('input').attr('disabled', 10);
+        $('#when').find('input').removeAttr('disabled');
+    });
+
+    $( '#externalTab' ).click( function() {
+        $('#when').find('input').attr('disabled', 10);
+        $('#normal').find('input').attr('disabled', 10);
+        $('#external').find('input').removeAttr('disabled');
+    });
+
+});

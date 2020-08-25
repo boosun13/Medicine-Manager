@@ -17,20 +17,79 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <h6>用法：</h6>
-    <%= form.text_field :usage %>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#normal" id="normalTab" class="nav-link active" data-toggle="tab">内服薬</a>
+    </li>
+    <li class="nav-item">
+      <a href="#when" id="whenTab" class="nav-link" data-toggle="tab">頓服薬</a>
+    </li>
+    <li class="nav-item">
+      <a href="#external" id="externalTab" class="nav-link" data-toggle="tab">外用薬</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="normal" class="tab-pane active bg-primary p-2">
+      <div class="field">
+        <h6>用法：</h6>
+        <%= form.text_field :usage %>
+      </div>
+
+      <div class="field">
+        <h6>処方日数：</h6>
+        <%= form.number_field :days %>
+      </div>
+
+      <div class="field">
+        <h6>用量(/1日あたり)：</h6>
+        <%= form.number_field :dose, step: "0.01"  %>
+      </div>
+    </div>
+ 
+    <div id="when" class="tab-pane bg-success p-2">
+      <div class="field">
+        <h6>用法(どんな時に)：</h6>
+        <%= form.text_field :usage ,disabled: true %>
+      </div>
+
+      <div class="field">
+        <h6>処方回数：</h6>
+        <%= form.number_field :days %>
+      </div>
+
+      <div class="field">
+        <h6>用量(1回あたり)：</h6>
+        <%= form.number_field :dose, step: "0.01"  %>
+      </div>
+    </div>
+
+    <div id="external" class="tab-pane bg-danger p-2">
+      <div class="field">
+        <h6>用法(使用するタイミング)：</h6>
+        <%= form.text_field :usage %>
+      </div>
+
+      <div class="field">
+        <h6>処方全量：</h6>
+        <%= form.number_field :days %>
+      </div>
+
+      <div class="field">
+        <h6>1日の使用回数(決まりがない場合は空欄で)：</h6>
+        <%= form.number_field :dose, step: "0.01"  %>
+      </div>
+    </div>
+
+
+
+
   </div>
 
-  <div class="field">
-    <h6>処方日数：</h6>
-    <%= form.number_field :days %>
-  </div>
 
-  <div class="field">
-    <h6>用量(/1日あたり)：</h6>
-    <%= form.text_area :dose %>
-  </div>
+
+
+
 
   <div class="field">
     <h6>効能：</h6>

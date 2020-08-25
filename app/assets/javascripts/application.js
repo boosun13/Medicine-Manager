@@ -145,6 +145,8 @@ $(document).on('turbolinks:load', function() {
     }
 });
 
+//薬登録
+
 
 
 

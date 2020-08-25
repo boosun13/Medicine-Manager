@@ -46,9 +46,9 @@
 
       <h6>◆処方内容◆</h6>
       <div id="medicineList">
-        <%= link_to "この処方にお薬を記録",new_prescription_medicine_path(@prescription), remote: true ,class: "btn btn-outline-info" %><br>
         <%= render "medicines/show",prescription: @prescription %>
       </div>
+        <%= link_to "この処方にお薬を記録",new_prescription_medicine_path(@prescription), remote: true ,class: "btn btn-outline-info" %><br>
       
   </div>
 
