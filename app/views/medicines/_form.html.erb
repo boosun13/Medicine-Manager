@@ -31,6 +31,8 @@
 
   <div class="tab-content">
     <div id="normal" class="tab-pane active bg-primary p-2">
+      <input type="hidden" name="medicine_type" value="normal">
+      
       <div class="field">
         <h6>用法：</h6>
         <%= form.text_field :usage %>
@@ -48,6 +50,7 @@
     </div>
  
     <div id="when" class="tab-pane bg-success p-2">
+      <input type="hidden" name="medicine_type" value="when" disabled="disabled">
       <div class="field">
         <h6>用法(どんな時に)：</h6>
         <%= form.text_field :usage ,disabled: true %>
@@ -55,29 +58,30 @@
 
       <div class="field">
         <h6>処方回数：</h6>
-        <%= form.number_field :days %>
+        <%= form.number_field :days ,disabled: true %>
       </div>
 
       <div class="field">
         <h6>用量(1回あたり)：</h6>
-        <%= form.number_field :dose, step: "0.01"  %>
+        <%= form.number_field :dose, step: "0.01" ,disabled: true  %>
       </div>
     </div>
 
     <div id="external" class="tab-pane bg-danger p-2">
+      <input type="hidden" name="medicine_type" value="external" disabled="disabled">
       <div class="field">
         <h6>用法(使用するタイミング)：</h6>
-        <%= form.text_field :usage %>
+        <%= form.text_field :usage ,disabled: true %>
       </div>
 
       <div class="field">
         <h6>処方全量：</h6>
-        <%= form.number_field :days %>
+        <%= form.number_field :days ,disabled: true %>
       </div>
 
       <div class="field">
         <h6>1日の使用回数(決まりがない場合は空欄で)：</h6>
-        <%= form.number_field :dose, step: "0.01"  %>
+        <%= form.number_field :dose, step: "0.01" ,disabled: true  %>
       </div>
     </div>
 
