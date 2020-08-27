@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_152743) do
+ActiveRecord::Schema.define(version: 2020_08_27_060257) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_08_26_152743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "medicine_type"
+    t.string "detail_type"
+    t.text "free_comment"
     t.index ["prescription_id"], name: "index_medicines_on_prescription_id"
   end
 

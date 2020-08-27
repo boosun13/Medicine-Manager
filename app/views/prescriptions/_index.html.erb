@@ -1,19 +1,32 @@
 <% @prescriptions.order(start_time: "DESC").each do |prescription| %>
-    <div class="card my-3" >
+    <div class="card my-3" style="opacity:0.8;">
             <%= link_to "#{prescription.start_time.strftime("%Y年%m月%d日")}調剤", prescription, class:"card-header btn btn-light text-left" %>
         <div class="card-body" >
             <blockquote class="blockquote mb-0">
                 <p><%= prescription.hospital %><br>
                     <%= prescription.doctor %>
                 </p>
-                <footer class="blockquote-footer">
-                    <% prescription.medicines.first(2).each do |medicine| %>
-                        <%= medicine.name %><br>
-                    <% end %>
-                    など
-                </footer>
             </blockquote>
         </div>
+
+        <div class="card-footer bg-secondary text-light">
+            <% if prescription.medicines.where(medicine_type: "normal").present? %>
+                <span class="fa fa-pills p-2 border border-light rounded-pill" style="background: rgba(0,123,255,0.6);"></span> <%= prescription.medicines.where(medicine_type: "normal").length %>
+            <% end %>
+
+            <% if prescription.medicines.where(medicine_type: "when").present? %>
+                <span class="fa fa-pills p-2 border border-light rounded-pill" style="background: rgba(146, 194, 146, 0.80);"></span> <%= prescription.medicines.where(medicine_type: "when").length %>
+            <% end %>
+
+            <% if prescription.medicines.where(medicine_type: "external").present? %>
+                <span class="fa fa-pills p-2 border border-light rounded-pill" style="background: rgba(173, 112, 112, 0.8);"></span> <%= prescription.medicines.where(medicine_type: "external").length %>
+            <% end %>
+
+            <% unless prescription.medicines.present? %>
+                お薬の登録なし
+            <% end %>
+        </div>
+
     </div>
 <% end %>
 

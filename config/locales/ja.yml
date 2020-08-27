@@ -29,6 +29,7 @@ ja:
     models:
       prescription: 処方
       post: お問い合わせ
+      medicine: お薬
     attributes:
       prescription:
         start_time: 調剤日
@@ -40,3 +41,5 @@ ja:
         title: タイトル
       comment:
         content: 本文
+      medicine: 
+        name: 薬品名

@@ -1,90 +1,105 @@
 <div class="modal-body">
 <%= form_with(model: [@prescription, @medicine],url: [@prescription, @medicine],local: false ) do |form| %>
-  <% if @medicine.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@medicine.errors.count, "error") %> prohibited this @medicine from being saved:</h2>
-
-      <ul>
-      <% @medicine.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <h6>薬品名：</h6>
-    <%= form.text_field :name %>
+    <%= form.text_field :name,placeholder:"例）ロキソニン60mg錠、アンテベート軟膏0.05%" %>
+    <p style="font-size:14px;">60mgや0.05%などの規格、錠や軟膏などの剤形まで入れてください</p>
+    <% if @medicine.errors.include?(:name) %>
+      <p style="color: red;"><%= @medicine.errors.full_messages_for(:name).first %></p>
+    <% end %>  
   </div>
 
   <ul class="nav nav-tabs">
-    <li class="nav-item">
+    <li class="nav-item border">
       <a href="#normal" id="normalTab" class="nav-link active" data-toggle="tab">内服薬</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item border">
       <a href="#when" id="whenTab" class="nav-link" data-toggle="tab">頓服薬</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item border">
       <a href="#external" id="externalTab" class="nav-link" data-toggle="tab">外用薬</a>
     </li>
   </ul>
 
   <div class="tab-content">
-    <div id="normal" class="tab-pane active bg-primary p-2">
-      <input type="hidden" name="medicine_type" value="normal">
+    <div id="normal" class="tab-pane active p-2" style="background: rgba(0,123,255,0.6); ">
+      <input type="hidden" name="medicine[medicine_type]" value="normal">
       
       <div class="field">
         <h6>用法：</h6>
-        <%= form.text_field :usage %>
+        <%= form.text_field :usage, style:"width:100%;",placeholder:"例）朝食後" %>
       </div>
 
-      <div class="field">
-        <h6>処方日数：</h6>
-        <%= form.number_field :days %>
+      <div class="row">
+        <div class="col field w-50">
+          <h6>処方日数：</h6>
+          <%= form.number_field :days, style:"width:100%;" %>
+        </div>
+        <div class="col field w-50">
+          <h6>数え単位：</h6>
+          <%= form.text_field :detail_type, style:"width:100%;",placeholder:"例）錠" %>
+        </div>
       </div>
 
-      <div class="field">
+      <div class="field ">
         <h6>用量(/1日あたり)：</h6>
-        <%= form.number_field :dose, step: "0.01"  %>
+        <%= form.number_field :dose, step: "0.01", style:"width:100%;"  %>
       </div>
     </div>
- 
-    <div id="when" class="tab-pane bg-success p-2">
-      <input type="hidden" name="medicine_type" value="when" disabled="disabled">
+
+    <div id="when" class="tab-pane p-2" style="background: rgba(146, 194, 146, 0.80);">
+      <input type="hidden" name="medicine[medicine_type]" value="when" disabled="disabled">
       <div class="field">
         <h6>用法(どんな時に)：</h6>
-        <%= form.text_field :usage ,disabled: true %>
+        <%= form.text_field :usage ,disabled: true, style:"width:100%;",placeholder:"例）疼痛時" %>
       </div>
 
-      <div class="field">
-        <h6>処方回数：</h6>
-        <%= form.number_field :days ,disabled: true %>
+      <div class="row">
+        <div class="col field w-50">
+          <h6>処方回数：</h6>
+          <%= form.number_field :days ,disabled: true, style:"width:100%;" %>
+        </div>
+        <div class="col field w-50">
+          <h6>数え単位：</h6>
+          <%= form.text_field :detail_type, disabled: true,placeholder:"例）錠", style:"width:100%;" %>
+        </div>
       </div>
 
       <div class="field">
         <h6>用量(1回あたり)：</h6>
-        <%= form.number_field :dose, step: "0.01" ,disabled: true  %>
+        <%= form.number_field :dose, step: "0.01" ,disabled: true, style:"width:100%;"  %>
       </div>
     </div>
 
-    <div id="external" class="tab-pane bg-danger p-2">
-      <input type="hidden" name="medicine_type" value="external" disabled="disabled">
+
+
+    <div id="external" class="tab-pane p-2" style="background: rgba(173, 112, 112, 0.8);" >
+      <input type="hidden" name="medicine[medicine_type]" value="external" disabled="disabled">
       <div class="field">
         <h6>用法(使用するタイミング)：</h6>
-        <%= form.text_field :usage ,disabled: true %>
+        <%= form.text_field :usage ,disabled: true, style:"width:100%;",placeholder:"例）朝・入浴後" %>
       </div>
 
-      <div class="field">
-        <h6>処方全量：</h6>
-        <%= form.number_field :days ,disabled: true %>
+      <div class="row">
+        <div class="col field w-50">
+          <h6>処方全量：</h6>
+          <%= form.number_field :days ,disabled: true, style:"width:100%;" %>
+        </div>
+        <div class="col field w-50">
+          <h6>数え単位：</h6>
+          <%= form.text_field :detail_type, disabled: true,placeholder:"例）g", style:"width:100%;" %>
+        </div>
       </div>
 
       <div class="field">
         <h6>1日の使用回数(決まりがない場合は空欄で)：</h6>
-        <%= form.number_field :dose, step: "0.01" ,disabled: true  %>
+        <%= form.number_field :dose ,disabled: true, style:"width:100%;"  %>
       </div>
     </div>
-
+    <% if @medicine.errors.include?(:days) || @medicine.errors.include?(:usage) || @medicine.errors.include?(:detail_type) %>
+      <p style="color: red;">赤い枠線内は必ず入力してください</p>
+    <% end %>  
 
 
 
@@ -103,6 +118,11 @@
   <div class="field">
     <h6>副作用：</h6>
     <%= form.text_area :side_effect %>
+  </div>
+
+  <div class="field">
+    <h6>その他：</h6>
+    <%= form.text_area :free_comment,placeholder:"例）薬剤師：グレープフルーツジュースと一緒に服用すると作用が増強することがあります。",style:"height:100px;" %>
   </div>
 
   <div class="actions">

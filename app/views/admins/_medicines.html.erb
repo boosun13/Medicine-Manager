@@ -1,6 +1,14 @@
 <% prescription.medicines.each_with_index do |medicine,i| %>
     <div class="card text-light my-2 mx-auto"  data-model_name="<%= medicine.model_name.singular %>"
-    data-id="<%= medicine.id %>" style="max-width:600px; background: rgba(0,123,255,0.6);" >
+    data-id="<%= medicine.id %>" style="max-width:600px; 
+    <% if medicine.medicine_type == "normal"%>
+        background: rgba(0,123,255,0.6); 
+    <% elsif medicine.medicine_type == "when" %>
+        background: rgba(146, 194, 146, 0.80);
+    <% else %>
+        background: rgba(173, 112, 112, 0.8); 
+    <% end %> ">
+    
         <div class="card-body">
         <h6><%= "#{i+1})" %><strong><%= "#{medicine.name}" %></strong></h6>
 
@@ -14,10 +22,29 @@
             </div>
         </div>
 
-        <h6><%= medicine.dose %></h6>
+    <% if medicine.medicine_type == "normal" %>
+        <h6>1日<%= medicine.dose %><%= medicine.detail_type %></h6>
         <h6><%= medicine.usage %>,<%= medicine.days %>日分</h6>
         <h6><%= medicine.effect %></h6>
-        <h6><%= medicine.side_effect %></h6>    
+        <h6><%= medicine.side_effect %></h6>
+
+    <% elsif medicine.medicine_type == "when" %> 
+        <h6>1回<%= medicine.dose %><%= medicine.detail_type %></h6>
+        <h6><%= medicine.usage %>,<%= medicine.days %>回分</h6>
+        <h6><%= medicine.effect %></h6>
+        <h6><%= medicine.side_effect %></h6>
+
+    <% elsif medicine.medicine_type == "external" %>    
+        <h6><%= medicine.usage %> 1日
+        <% if medicine.dose == nil %>
+            数
+        <% end %>
+        <%= medicine.dose %>回</h6>
+        <h6>全<%= medicine.days %><%= medicine.detail_type %></h6>
+        <h6><%= medicine.effect %></h6>
+        <h6><%= medicine.side_effect %></h6>
+    <% end %>
+    
 
         </div>
     </div>

@@ -11,4 +11,42 @@ $("#medicineList").html("<%= j(render 'medicines/show' ) %>");
 // <% else %>
 $("#medicineModal").html("<%= j(render 'new') %>")
 $("#medicineModal").find(".modal").modal('show')
+
 // <% end %>
+
+$(function() {
+    $( '#normalTab' ).click( function() {
+        $('#when').find('input').attr('disabled', 10);
+        $('#external').find('input').attr('disabled', 10);
+        $('#normal').find('input').removeAttr('disabled');
+    });
+
+    $( '#whenTab' ).click( function() {
+        $('#normal').find('input').attr('disabled', 10);
+        $('#external').find('input').attr('disabled', 10);
+        $('#when').find('input').removeAttr('disabled');
+    });
+
+    $( '#externalTab' ).click( function() {
+        $('#when').find('input').attr('disabled', 10);
+        $('#normal').find('input').attr('disabled', 10);
+        $('#external').find('input').removeAttr('disabled');
+    });
+
+
+//内服、頓服、外用を選んで開く。それ以外のものは値を0にする
+//<% if @medicine.medicine_type == "when" %>
+    $( '#whenTab' ).click();
+    $('#normal').find('input').val('');
+    $('#external').find('input').val('');
+//<% elsif @medicine.medicine_type == "external" %>
+    $( '#externalTab' ).click();
+    $('#normal').find('input').val('');
+    $('#when').find('input').val('');
+//<% else %>
+    $('#external').find('input').val('');
+    $('#when').find('input').val('');
+
+//<% end %>
+
+});
