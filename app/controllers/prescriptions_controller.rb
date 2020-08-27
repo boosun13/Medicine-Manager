@@ -14,6 +14,15 @@ class PrescriptionsController < ApplicationController
   def show
     @medicines = @prescription.medicines
     @user_id = current_user.id
+
+    @start_date = Date.today
+    if params[:start_date]
+      @start_date = params[:start_date].to_date
+    end
+
+    if params[:week]
+      @week = params[:week]
+    end
   end
 
   # GET /prescriptions/new

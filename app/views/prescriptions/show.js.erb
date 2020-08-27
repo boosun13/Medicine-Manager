@@ -1,3 +1,12 @@
+
+//<% if @week %>
+
+$("#calendarChecker<%=@week%>").html("<%= j(render 'medicines/remainder' ) %>");
+$("#remainder<%=@week%>").addClass("show");
+
+//<% else %>
 $("#sideM").html("<%= j (render 'users/calendar') %>");
 $("#sideM").hide().fadeIn(1000);
+
 $(".calendar1").find(".collapse").addClass("show");
+//<% end %>

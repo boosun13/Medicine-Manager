@@ -1,11 +1,11 @@
 <div class="row m-0 main-bg">
   <%= render "users/sidemenu" %>
 
-  <div class="col border m-md-4" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
+  <div class="col border m-md-4 p-1" style="background: rgba(255, 255, 255, 0.5); border-radius: 10px;" >
     <div class="border m-md-4 p-3 bg-light" style="border-radius: 10px; font-size:20px;">
 
       <% if current_user.prescriptions.where("id < ?", @prescription.id).order("id DESC").first.present? %>
-        <%= link_to  prescription_path(current_user.prescriptions.where("id <> ?", @prescription.id).order("id DESC").first), class: "btn btn--circle btn--circle-c btn--shadow position-absolute",style:"left: 5px; top:50px;" do %>
+        <%= link_to  prescription_path(current_user.prescriptions.where("id < ?", @prescription.id).order("id DESC").first), class: "btn btn--circle btn--circle-c btn--shadow position-absolute",style:"left: 5px; top:50px;" do %>
           <i class="fas fa-arrow-left"></i>
         <% end %>
       <% end %>
@@ -34,7 +34,7 @@
       </p>
     </div>
 
-    <div class="border m-md-4 p-3 bg-light" style="font-size:20px; border-radius: 10px;">
+    <div class="border m-md-4 py-3 px-md-3 p-1 bg-light" style="font-size:20px; border-radius: 10px;">
       <p>
         <strong>処方医師:</strong>
         <%= @prescription.doctor %>

@@ -1,12 +1,12 @@
 <div class="simple-calendar">
   <div class="calendar-heading text-center mb-2">
     
-    <%= link_to  calendar.url_for_previous_view,class:"btn btn--circle btn--circle-c btn--shadow ml-2",remote: true,style:"float: left;" do %>
+    <%= link_to  "?start_date=#{date_range.first - 1.day}",class:"btn btn--circle btn--circle-c btn--shadow ml-2",remote: true,style:"float: left;" do %>
       <i class="fas fa-arrow-left"></i>
     <% end %>
     <span class="calendar-title border p-3 bg-white" style="border-radius: 50%; float: center;"><%= start_date.year %>年 <%= t('date.month_names')[start_date.month] %></span>
 
-    <%= link_to  calendar.url_for_next_view,class:"btn btn--circle btn--circle-c btn--shadow mr-2",remote: true,style:"float: right;" do %>
+    <%= link_to  "?start_date=#{date_range.last + 1.day}",class:"btn btn--circle btn--circle-c btn--shadow mr-2",remote: true,style:"float: right;" do %>
       <i class="fas fa-arrow-right"></i>
     <% end %>
 

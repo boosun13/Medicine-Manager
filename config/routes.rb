@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:new, :create, :destroy]
-
+  
   resources :notifications, only: [ :destroy, :update ]
-
+  
+  resources :checkers, only: [:new, :create, :destroy]
 
 
   root to: "home#index"

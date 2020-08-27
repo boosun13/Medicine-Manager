@@ -8,6 +8,7 @@
   <% else %>
     background: rgba(173, 112, 112, 0.8); 
   <% end %> ">
+  
     <div class="card-body container">
       <div class="p-1 pl-3 col-11 border" style="background: rgba(255, 255, 255, 0.2); margin: -13px 0 7px -15px ; border-radius: 20px;">
         <h6>Rp.<%= "#{i+1})" %></h6>
@@ -54,6 +55,12 @@
       <% end %>
 
     </div>
+      <button class="btn btn-primary"
+        data-toggle="collapse"
+        data-target="#remainder<%=medicine.id%>"
+        aria-expand="false"
+        aria-controls="remainder<%=medicine.id%>">服薬チェッカー</button>
+      <%= render "medicines/remainder",medicine: medicine %>
   </div>
 
 <% end %>
