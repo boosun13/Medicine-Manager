@@ -26,25 +26,31 @@
     <div id="normal" class="tab-pane active p-2" style="background: rgba(0,123,255,0.6); ">
       <input type="hidden" name="medicine[medicine_type]" value="normal">
       
-      <div class="field">
-        <h6>用法：</h6>
-        <%= form.text_field :usage, style:"width:100%;",placeholder:"例）朝食後" %>
-      </div>
-
       <div class="row">
-        <div class="col field w-50">
-          <h6>処方日数：</h6>
-          <%= form.number_field :days, style:"width:100%;" %>
+        <div class="col-6 field">
+          <h6>用量(/1日あたり)：</h6>
+          <%= form.number_field :dose, step: "0.01", style:"width:100%;", min:"0"  %>
         </div>
-        <div class="col field w-50">
+        <div class="col field">
           <h6>数え単位：</h6>
           <%= form.text_field :detail_type, style:"width:100%;",placeholder:"例）錠" %>
         </div>
+        <div class="col field">
+          <h6>処方日数：</h6>
+          <%= form.number_field :days, style:"width:100%;", min:"1" %>
+        </div>
       </div>
 
-      <div class="field ">
-        <h6>用量(/1日あたり)：</h6>
-        <%= form.number_field :dose, step: "0.01", style:"width:100%;"  %>
+
+      <div class="row">
+        <div class="col-4 field">
+          <h6>1日の回数：</h6>
+          <%= form.number_field :times, style:"width:100%;", min:"1" %>
+        </div>
+        <div class="col field">
+          <h6>用法：</h6>
+            <%= form.text_field :usage, style:"width:100%;",placeholder:"例）朝食後" %>
+        </div>
       </div>
     </div>
 

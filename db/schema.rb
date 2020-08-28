@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_113618) do
+ActiveRecord::Schema.define(version: 2020_08_28_152551) do
 
   create_table "checkers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "medicine_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_113618) do
     t.string "medicine_type"
     t.string "detail_type"
     t.text "free_comment"
+    t.integer "times"
     t.index ["prescription_id"], name: "index_medicines_on_prescription_id"
   end
 

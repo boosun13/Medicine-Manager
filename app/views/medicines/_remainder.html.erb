@@ -1,7 +1,10 @@
 <% if @week %>
     <% medicine = Medicine.find_by(id: @week.to_i) %>
-    
 <% end %>
+<% unless @start_date.present? %>
+    <% @start_date =  Date.today %>
+<% end %>
+
 
 <div id="calendarChecker<%=medicine.id%>">
     <div class="py-md-1 px-md-3 collapse" id="remainder<%=medicine.id%>">
