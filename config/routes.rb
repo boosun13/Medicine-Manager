@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :prescriptions do
     resources :medicines
+    resources :checkers, only: [ :create, :destroy]
   end
   
   devise_for :users, :controllers => {
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
   
   resources :notifications, only: [ :destroy, :update ]
   
-  resources :checkers, only: [:new, :create, :destroy]
 
 
   root to: "home#index"

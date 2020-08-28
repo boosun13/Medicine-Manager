@@ -1,0 +1,26 @@
+<% if @week && @checked %>
+    <% medicine = Medicine.find_by(id: @week.to_i) %>
+    <% date = @checked %>
+<% end%>
+
+<div id="<%= medicine.id %>check<%= date %>">
+    <% if medicine.medicine_type == "when" %>
+        <!-- 頓服薬の時は1日５回数固定 -->
+        <%for i in 0..4 do%>
+            <%if medicine.checkers.where(timing: i).find_by(check_date: date) %>
+                <% medicine.checkers.where(timing: i).where(check_date: date).each do |checker| %>
+                    <%= link_to "OK" ,prescription_checker_path(@prescription, checker), method: :delete, remote: true,class: "btn btn-danger my-2",style:"" %>
+                <%end%>
+            <% else %>
+                <%= form_with(url: prescription_checkers_path(@prescription, medicine.checkers),local: false  ) do |f| %>
+                    <input type="hidden" name="medicine_id" value="<%= medicine.id %>">
+                    <input type="hidden" name="timing" value="<%=i%>">
+                    <input type="hidden" name="check_date" value="<%= date %>">
+                    <div class="actions">
+                        <%= f.submit "未" %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>

@@ -1,6 +1,7 @@
-<%if @week%>
-    <% medicine = Medicine.find_by(id: @week) %>
-<%end%>
+<% if @week %>
+    <% medicine = Medicine.find_by(id: @week.to_i) %>
+    
+<% end %>
 
 <div id="calendarChecker<%=medicine.id%>">
     <div class="py-md-1 px-md-3 collapse" id="remainder<%=medicine.id%>">
@@ -19,25 +20,11 @@
                     <%end%>
                 </div>
 
-
             <%= week_calendar  do |date| %>
                 <%= date.day %><br>
-                <input type="checkbox" name="riyu" value="1"
-                    <%if medicine.checkers.find_by(check_date: date) %>
-                        checked="checked"
-                    <%end%>>
-                <input type="checkbox" name="riyu" value="2"
-                    <%if medicine.checkers.find_by(check_date: date) %>
-                        checked="checked"
-                    <%end%>>
-                <input type="checkbox" name="riyu" value="3"
-                    <%if medicine.checkers.find_by(check_date: date) %>
-                        checked="checked"
-                    <%end%>>
-                <input type="checkbox" name="riyu" value="4"
-                    <%if medicine.checkers.find_by(check_date: date) %>
-                        checked="checked"
-                    <%end%>>
+                <%= render "checkers/new",medicine: medicine,date: date %>
+
+
 
             <% end %>
         </div>
