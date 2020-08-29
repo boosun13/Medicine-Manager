@@ -20,7 +20,7 @@
         <%= date.day %><br>
             <% calendars.each do |calendar| %>
                     <%= link_to  calendar,class:"btn btn-primary tab-btn border-white",data:{toggle:"tooltip"} ,title:"#{Prescription.find_by(id: calendar.id).hospital}" do %>
-                        <span class="fa fa-pills tab-icon"></span>
+                        <span class="fa fa-hospital-alt tab-icon"></span>
                     <%end%>
             <% end %>
     <% end %>

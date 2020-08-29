@@ -9,27 +9,25 @@
 <div id="calendarChecker<%=medicine.id%>">
     <div class="py-md-1 px-md-3 collapse" id="remainder<%=medicine.id%>">
         <div class="card card-body text-dark p-0">
-            <%=medicine.id%>
-                <div class="calendar-heading text-center">
+            <div class="calendar-heading text-center">
 
-                    <%= link_to prescription_path(@prescription.id, start_date: @start_date-7,week: medicine.id),class:"btn btn--circle btn--circle-c btn--shadow ml-2",remote: true,style:"float: left;" do %>
-                    <i class="fas fa-arrow-left"></i>
-                    <%end%>
+                <%= link_to prescription_path(@prescription.id, start_date: @start_date-7,week: medicine.id),class:"btn btn--circle btn--circle-c btn--shadow ml-2",remote: true,style:"float: left;" do %>
+                <i class="fas fa-arrow-left"></i>
+                <%end%>
 
-                    <span class="calendar-title border p-3 bg-white" style="border-radius: 50%; float: center;"><%= @start_date.year %>年 <%= t('date.month_names')[@start_date.month] %></span>
+                <span class="calendar-title border p-3 bg-white" style="border-radius: 50%; float: center;"><%= @start_date.year %>年 <%= t('date.month_names')[@start_date.month] %></span>
 
-                    <%= link_to prescription_path(@prescription.id, start_date: @start_date+7,week: medicine.id),class:"btn btn--circle btn--circle-c btn--shadow mr-2",remote: true,style:"float: right;",id:"week" do %>
-                    <i class="fas fa-arrow-right"></i>
-                    <%end%>
-                </div>
+                <%= link_to prescription_path(@prescription.id, start_date: @start_date+7,week: medicine.id),class:"btn btn--circle btn--circle-c btn--shadow mr-2",remote: true,style:"float: right;",id:"week" do %>
+                <i class="fas fa-arrow-right"></i>
+                <%end%>
+            </div>
 
             <%= week_calendar  do |date| %>
                 <%= date.day %><br>
                 <%= render "checkers/new",medicine: medicine,date: date %>
-
-
-
             <% end %>
+
+
         </div>
     </div>
 </div>

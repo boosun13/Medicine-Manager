@@ -4,25 +4,39 @@
 <% end%>
 
 <div id="<%= medicine.id %>check<%= date %>">
-    <% if medicine.medicine_type == "when" %>
+
+    <% if medicine.medicine_type == "normal" %>
+        <!-- 内服薬の時は回数ごとに表示が変わる -->
+        <% n = medicine.times %>
+    <% elsif medicine.medicine_type == "when" %>
         <!-- 頓服薬の時は1日５回数固定 -->
-        <%for i in 0..4 do%>
+        <% n = 5 %>
+    <% else %>
+        <!-- 外用薬の時は1日3回に固定 -->
+        <% n = 1 %>
+    <% end %>
+
+        <% for i in 1..n do %>
+
             <%if medicine.checkers.where(timing: i).find_by(check_date: date) %>
                 <% medicine.checkers.where(timing: i).where(check_date: date).each do |checker| %>
-                    <%= link_to "OK" ,prescription_checker_path(@prescription, checker), method: :delete, remote: true,class: "btn btn-danger my-2",style:"" %>
+                    <%= link_to "OK" ,prescription_checker_path(@prescription, checker), method: :delete, remote: true,class: "btn btn-danger my-2",style:"", id:"#{medicine.id}btn#{date}#{i}" %>
                 <%end%>
             <% else %>
                 <%= form_with(url: prescription_checkers_path(@prescription, medicine.checkers),local: false  ) do |f| %>
-                    <input type="hidden" name="medicine_id" value="<%= medicine.id %>">
-                    <input type="hidden" name="timing" value="<%=i%>">
-                    <input type="hidden" name="check_date" value="<%= date %>">
-                    <div class="actions">
+                        <input type="hidden" name="medicine_id" value="<%= medicine.id %>">
+                        <input type="hidden" name="timing" value="<%=i%>">
+                        <input type="hidden" name="check_date" value="<%= date %>">
+                        <div class="actions" id="<%=medicine.id%>btn<%= date %><%=i%>" >
                         <%= f.submit "未" %>
-                    </div>
+
+                    <% if medicine.medicine_type == "external" %>
+                        <%= f.number_field :dose, step: "0.01", style:"width:100%", min:"0" %>
+                    <% end %>
                 <% end %>
             <% end %>
+
         <% end %>
-    <% elsif medicine.medicine_type == "normal" %>
-        
-    <% end %>
+    
+
 </div>

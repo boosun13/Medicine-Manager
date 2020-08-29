@@ -1,0 +1,37 @@
+<% if @week %>
+    <% medicine = Medicine.find(@week) %>
+<% end %>
+
+<% if medicine.medicine_type == "external" %>   
+    <div class="border border-light rounded-pill position-absolute 
+    <% if medicine.days - medicine.checkers.sum(:dose)  > 0 %>
+    bg-warning text-dark
+    <% else %>
+    bg-danger 
+    <% end %>
+    px-3" style="buttom: 50px; right: 10px;">
+        <% if medicine.days - medicine.checkers.sum(:dose) <= 0 %>
+            残薬なし
+        <%else%>
+            残薬<%= medicine.days - medicine.checkers.sum(:dose) %><%= medicine.detail_type %>
+        <%end%>
+    </div>
+
+
+<% else %>
+
+    <div class="border border-light rounded-pill position-absolute 
+    <% if medicine.dose*medicine.days - medicine.checkers.length > 0 %>
+    bg-warning text-dark
+    <% else %>
+    bg-danger 
+    <% end %>
+    px-3" style="buttom: 50px; right: 10px;">
+        <% if medicine.dose*medicine.days - medicine.checkers.length <= 0 %>
+            残薬なし
+        <%else%>
+            残薬<%= medicine.dose*medicine.days - medicine.checkers.length %><%= medicine.detail_type %>
+        <%end%>
+    </div>
+
+<% end %>
