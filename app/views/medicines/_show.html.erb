@@ -31,7 +31,13 @@
           <%= render "checkers/remaind",medicine: medicine %>
         </div>
 
-        <h6 class="pr-5">1日<%= medicine.dose %><%= medicine.detail_type %> <%= medicine.usage %> <%= medicine.days %>日分</h6>
+        <h6 class="pr-5">1日
+          <% if medicine.dose - medicine.dose.to_i <= 0 %>
+            <%= medicine.dose.to_i%>
+          <% else %>
+            <%= medicine.dose %>
+          <% end %>
+          <%= medicine.detail_type %> <%= medicine.usage %> <%= medicine.days %>日分</h6>
         <h6>薬効：<%= medicine.effect %></h6>
         <h6>副作用：<%= medicine.side_effect %></h6>
         <% if medicine.free_comment.present? %>
@@ -44,7 +50,13 @@
           <%= render "checkers/remaind",medicine: medicine %>
         </div>
 
-        <h6 class="pr-5"><%= medicine.usage %>1回<%= medicine.dose %><%= medicine.detail_type %> <%= medicine.days %>回分</h6>
+        <h6 class="pr-5"><%= medicine.usage %>1回
+          <% if medicine.dose - medicine.dose.to_i <= 0 %>
+            <%= medicine.dose.to_i%>
+          <% else %>
+            <%= medicine.dose %>
+          <% end %>
+          <%= medicine.detail_type %> <%= medicine.days %>回分</h6>
         <h6>薬効：<%= medicine.effect %></h6>
         <h6>副作用：<%= medicine.side_effect %></h6>
         <% if medicine.free_comment.present? %>
@@ -56,12 +68,19 @@
         <div id="remaind<%=medicine.id%>" >
           <%= render "checkers/remaind",medicine: medicine %>
         </div>
-        
+
         <h6 class="pr-5"><%= medicine.usage %> 1日
         <% if medicine.dose == nil %>
           数
+        <% else %>
+          <% if medicine.dose - medicine.dose.to_i <= 0 %>
+            <%= medicine.dose.to_i%>
+          <% else %>
+            <%= medicine.dose %>
+          <% end %>
         <% end %>
-        <%= medicine.dose %>回 全<%= medicine.days %><%= medicine.detail_type %></h6>
+        
+        回 全<%= medicine.days %><%= medicine.detail_type %></h6>
         <h6>薬効：<%= medicine.effect %></h6>
         <h6>副作用：<%= medicine.side_effect %></h6>
         <% if medicine.free_comment.present? %>

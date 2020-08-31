@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_152551) do
+ActiveRecord::Schema.define(version: 2020_08_30_063040) do
 
   create_table "checkers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "medicine_id"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_08_28_152551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "timing"
-    t.integer "dose"
+    t.decimal "dose", precision: 10, scale: 2
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_08_28_152551) do
     t.string "name"
     t.string "usage"
     t.integer "days"
-    t.decimal "dose", precision: 10
+    t.decimal "dose", precision: 10, scale: 2
     t.text "effect"
     t.text "side_effect"
     t.bigint "prescription_id"

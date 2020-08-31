@@ -8,11 +8,15 @@
             <div class="card-header">
                 <%= notification.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
             </div>
-            <div class="card-content">
-                <%= notification.id %>
-                <%= notification.checked %>
+            <div class="card-content p-1">
+                <% notification.id %>
+                <% notification.checked %>
                 
-                <h5>薬剤師：<%= notification.visiter.name %>が
+                <h5>
+                <%if notification.visiter.admin %>
+                    薬剤師：
+                <% end %>
+                <%= notification.visiter.name %>が
                 <%= link_to notification.item.title, user_posts_path(notification.item.user)%>にコメントしました。</h5>
 
                 <% if notification.checked %>

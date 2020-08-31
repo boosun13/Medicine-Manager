@@ -140,7 +140,7 @@ $(document).on('turbolinks:load', function() {
         $('#m_doctor').removeAttr('disabled');
         $('#s_hospital').attr('disabled', 10);
         $('#m_hospital').removeAttr('disabled');
-        $('.collapse').addClass('show');
+        $('.field').find('.collapse').addClass('show');
         
     }
 });
@@ -174,3 +174,22 @@ function stopload(){
     $('#loader-bg').delay(900).fadeOut(800);
     $('#loader').delay(600).fadeOut(300);
 };
+
+$(document).on('turbolinks:load',function(){
+    var pagetop = $('#page_top');
+    // ボタン非表示
+    pagetop.hide();
+  
+    // 100px スクロールしたらボタン表示
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+        }
+    });
+    pagetop.click(function () {
+        $('body, html').animate({ scrollTop: 0 }, 500);
+        return false;
+    });
+});

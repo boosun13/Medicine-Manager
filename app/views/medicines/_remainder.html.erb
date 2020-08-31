@@ -15,7 +15,9 @@
                 <i class="fas fa-arrow-left"></i>
                 <%end%>
 
-                <span class="calendar-title border p-3 bg-white" style="border-radius: 50%; float: center;"><%= @start_date.year %>年 <%= t('date.month_names')[@start_date.month] %></span>
+                <div class="calendar-title border p-3 bg-light rounded-pill"  style="display:inline-block; float: center;">
+                    <span><%= @start_date.year %>年 <%= t('date.month_names')[@start_date.month] %></span>
+                </div>
 
                 <%= link_to prescription_path(@prescription.id, start_date: @start_date+7,week: medicine.id),class:"btn btn--circle btn--circle-c btn--shadow mr-2",remote: true,style:"float: right;",id:"week" do %>
                 <i class="fas fa-arrow-right"></i>

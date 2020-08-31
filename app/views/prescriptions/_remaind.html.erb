@@ -1,0 +1,31 @@
+<% x = 0 %>
+<% remainds = [] %>
+
+<% medicines.each do |medicine| %>
+    <% if medicine.medicine_type == "external" %> 
+        <% remaind = medicine.days - medicine.checkers.sum(:dose) %>
+    <% else %>
+        <%if medicine.times %>
+            <% remaind = medicine.dose*medicine.days - medicine.checkers.length*medicine.dose/medicine.times %>
+        <% else %>
+            <% remaind = medicine.dose*medicine.days - medicine.checkers.length*medicine.dose %>
+        <% end %>
+    <% end %>
+
+    <% remainds[x] = remaind %>
+    <% x+= 1 %>
+<% end %>
+
+<div class="fas fa-pills p-3 rounded-pill text-light border border-secondary
+<% if remainds.sum <= 0 %>
+    bg-success
+<% else %>
+    bg-danger
+<% end %>
+">
+    <%if remainds.sum <= 0 %>
+        残薬なし
+    <% else %>
+        残薬あり
+    <% end %>
+</div>

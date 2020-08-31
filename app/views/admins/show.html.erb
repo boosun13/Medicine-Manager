@@ -1,54 +1,59 @@
 <!--特定ユーザーの管理画面-->
-<div class="mx-5 bg-light border">
-<h1 class="text-center"><%= @user.name %></h1>
-
 <div id="medicineModal">
 </div>
 
-<%= link_to "+ new prescription", new_admins_prescription_path(admin_id: params[:id]) , remote: false, class: "btn btn-primary text-light text-center m-2" %><br>
-<div id="prescriptionList" class="">
-    <% @prescriptions.each_with_index do |prescription, index| %>
-        <div class="card text-center mx-auto my-3 " style="max-width:1000px;
-        <% if index%2 == 0 %>
-            background-color:#cfc5e29c;
-        <% else %>
-            background-color:#a0caa987;
-        <% end %>
-        ">
-            <div class="card-header text-left">
-                <h5 class="ml-md-5"><%= prescription.id %>調剤日: <%= prescription.start_time.strftime("%Y年%m月%d日") %><br>処方日: <%= prescription.visit_date.strftime("%Y年%m月%d日") %></h5>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title"><%= prescription.hospital %></h5>
-                <h5>処方医師: <%= prescription.doctor %></h5>
+<div class="mx-md-5 bg-light border">
+    <h1 class="text-center"><%= @user.name %></h1>
 
-                    <div class="dropdown position-absolute" style="top: 15px; right: 10%;">
-                        <button type="button" class="btn btn-outline-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v" style="font-size:30px;"></i>
+
+    <%= link_to "+ new prescription", new_admins_prescription_path(admin_id: params[:id]) , remote: false, class: "btn btn-primary text-light text-center border border-dark", style:"position: fixed; top: 107px; left: 15px; opacity:0.7; z-index:10; " %><br>
+
+    <div id="prescriptionList" class="">
+        <% @prescriptions.each_with_index do |prescription, index| %>
+            <div class="card text-center mx-auto" style="max-width:1000px;
+            <% if index%2 == 0 %>
+                background-color:#cfc5e29c;
+            <% else %>
+                background-color:#a0caa987;
+            <% end %>
+            ">
+                <div class="card-header text-left">
+                    <h5 class="ml-md-5">調剤日: <%= prescription.start_time.strftime("%Y年%m月%d日") %><br>処方日: <%= prescription.visit_date.strftime("%Y年%m月%d日") %></h5>
+                </div>
+                <div class="card-body text-left py-3 px-1 p-md-3">
+                    <h5 class="card-title"><%= prescription.hospital %></h5>
+                    <h5>処方医師: <%= prescription.doctor %></h5>
+
+                        <div class="dropdown position-absolute" style="top: 15px; right: 10%;">
+                            <button type="button" class="btn btn-outline-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v" style="font-size:30px;"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right text-middle" aria-labelledby="dropdownMenuButton">
+                                <%= link_to "編集", edit_admins_prescription_path(prescription,admin_id: params[:id]), class: "dropdown-item" %>
+                                <%= link_to "削除", admins_prescription_path(prescription,admin_id: params[:id]),  method: :delete, class: "dropdown-item text-danger", data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Medicine<%=prescription.id%>" aria-expanded="false" aria-controls="collapseExample">
+                            お薬の詳細
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right text-middle" aria-labelledby="dropdownMenuButton">
-                            <%= link_to "編集", edit_admins_prescription_path(prescription,admin_id: params[:id]), class: "dropdown-item" %>
-                            <%= link_to "削除", admins_prescription_path(prescription,admin_id: params[:id]),  method: :delete, class: "dropdown-item text-danger", data: { confirm: 'Are you sure?' } %>
-                        </div>
-                    </div>
+                        <div class="collapse" id="Medicine<%=prescription.id%>">
+                            <%= link_to "+ new medicine",new_prescription_medicine_path(prescription), remote: true, class: "btn btn-warning text-light text-center border-danger m-3" %><br>
 
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#Medicine<%=prescription.id%>" aria-expanded="false" aria-controls="collapseExample">
-                        お薬の詳細
-                    </button>
-                    <div class="collapse" id="Medicine<%=prescription.id%>">
-                        <%= link_to "+ new medicine",new_prescription_medicine_path(prescription), remote: true, class: "btn btn-warning text-light text-center border-danger m-3" %><br>
-
-                        <div id="medicineList">
-                            <%= render "medicines", prescription: prescription %>
+                            <div id="medicineList">
+                                <%= render "medicines", prescription: prescription %>
+                            </div>
                         </div>
+                    <div class="position-absolute" style="bottom: 110px; right: 20px;">
+                        <%= render "prescriptions/remaind" ,medicines: prescription.medicines %>
                     </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <strong><%= prescription.pharmacy %></strong><br>
+                    <%= prescription.created_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
+                    <%= prescription.updated_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
+                </div>
             </div>
-            <div class="card-footer text-muted">
-                <strong><%= prescription.pharmacy %></strong><br>
-                <%= prescription.created_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
-                <%= prescription.updated_at.strftime("%Y年%m月%d日 %I:%M%p") %><br>
-            </div>
-        </div>
-    <% end %>
-</div>
+        <% end %>
+    </div>
 </div>

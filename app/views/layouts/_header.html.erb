@@ -13,7 +13,7 @@
 
 <nav class="fixed-top navbar navbar-expand-md navbar-dark bg-dark" style="user-select: none;" >
     <% if user_signed_in? && @notifications.find_by(checked: false) %>
-        <div class="bg-danger text-light position-absolute text-center" id="drawer-btn" style="top: 6px; right: 57px; height: 22px; width:22px; border-radius: 50%; z-index: 10; line-height: 20px;">
+        <div class="bg-danger text-light position-absolute text-center rounded-circle" id="drawer-btn" style="top: 6px; right: 57px; height: 22px; width:22px; z-index: 10; line-height: 20px;">
             <%= render "layouts/drawer" %>
         </div>
     <% end %>
@@ -27,13 +27,18 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <% if user_signed_in? && current_user.admin? %>
-            <li class="nav-item">
-                <a class="nav-link" href="/admins">admin</a>
-            </li>
+            <% if user_signed_in? %>
+                <% if current_user.admin? %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admins">管理者ページ</a>
+                    </li>
+                <% end %>
+                <li class="nav-item">
+                    <%= link_to "お薬ページ", user_path(current_user), class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'お問い合わせ', user_posts_path(current_user), class: "nav-link" %>
+                </li>
             <li class="nav-item">
 
             </li>
@@ -46,8 +51,6 @@
                     <%= current_user.name %>
                 </a>
                 <div class="dropdown-menu p-1" aria-labelledby="navbarDropdown">
-                        <%= link_to "ユーザーページ", user_path(current_user), class: "dropdown-item" %>
-                        <%= link_to 'お問い合わせ', user_posts_path(current_user), class: "dropdown-item" %>
                     <div class="dropdown-divider"></div>
                         <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item" %>
                     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete,data: {confirm:  "本当にログアウトしますか？"} ,class: "dropdown-item bg-danger text-light rounded" %>
@@ -66,7 +69,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
             </div>
             <div class="text-right nav-link">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">サインアップ</button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal">サインアップ</button>
             </div>
         <% end %>
     </div>

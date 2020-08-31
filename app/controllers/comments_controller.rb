@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
+    before_action :user_not_first_set
 
 
     def new

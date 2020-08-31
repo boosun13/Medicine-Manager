@@ -30,6 +30,7 @@ ja:
       prescription: 処方
       post: お問い合わせ
       medicine: お薬
+      user: ユーザー
     attributes:
       prescription:
         start_time: 調剤日
@@ -43,3 +44,9 @@ ja:
         content: 本文
       medicine: 
         name: 薬品名
+      user:
+        name: 名前
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス
+        

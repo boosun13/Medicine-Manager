@@ -1,4 +1,4 @@
-<div class="">
+<div class="container">
 
 <%= form_with model: [ :admins, prescription ], local: true do |form| %>
   <%= @admin.name %>
@@ -6,7 +6,7 @@
 
   <input type="hidden" name="admin_id" value="<%= @admin.id %>">
 
-  <div class="field row">
+  <div class="field">
     <%= "調剤日(薬局でお薬をもらった日)：　" %>
     <%= form.date_field :start_time  %>
     <% if prescription.errors.include?(:start_time) %>
@@ -14,7 +14,7 @@
     <% end %>
   </div>
 
-  <div class="field row" >
+  <div class="field" >
     <%= "処方日(病院を受診した日)：　" %>
     <%= form.date_field :visit_date  %>
     <% if prescription.errors.include?(:visit_date) %>

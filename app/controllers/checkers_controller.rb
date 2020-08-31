@@ -1,5 +1,7 @@
 class CheckersController < ApplicationController
-
+    before_action :authenticate_user!
+    before_action :user_not_first_set
+    
     def create
         @checker = Checker.new
         @checker.medicine_id = params[:medicine_id].to_i

@@ -3,8 +3,35 @@
         <%= month_calendar events: @calendars do |date, calendars| %>
             <%= date.day %><br>
                 <% calendars.each do |calendar| %>
-                    <%= link_to  calendar,class:"btn btn-primary tab-btn border-white",data:{toggle:"tooltip"} ,title:"#{Prescription.find_by(id: calendar.id).hospital}" do %>
-                        <span class="fa fa-pills tab-icon"></span>
+                    <% medicines = calendar.medicines %>
+                    <% x = 0 %>
+                    <% remainds = [] %>
+
+                    <% medicines.each do |medicine| %>
+                        <% if medicine.medicine_type == "external" %> 
+                            <% remaind = medicine.days - medicine.checkers.sum(:dose) %>
+                        <% else %>
+                            <%if medicine.times %>
+                                <% remaind = medicine.dose*medicine.days - medicine.checkers.length*medicine.dose/medicine.times %>
+                            <% else %>
+                                <% remaind = medicine.dose*medicine.days - medicine.checkers.length*medicine.dose %>
+                            <% end %>
+                        <% end %>
+
+                        <% remainds[x] = remaind %>
+                        <% x+= 1 %>
+                    <% end %>
+
+
+
+                    <%= link_to  calendar,class:"btn tab-btn
+                    #{ if remainds.sum <= 0
+                        "btn-success"
+                    else
+                        "btn-danger"
+                    end}
+                    border-white",data:{toggle:"tooltip"} ,title:"#{Prescription.find_by(id: calendar.id).hospital}" do %>
+                        <span class="fa fa-hospital-alt tab-icon"></span>
                     <%end%>
                 <% end %>
         <% end %>
@@ -19,9 +46,33 @@
     <%= month_calendar events: @calendars do |date, calendars| %>
         <%= date.day %><br>
             <% calendars.each do |calendar| %>
-                    <%= link_to  calendar,class:"btn btn-primary tab-btn border-white",data:{toggle:"tooltip"} ,title:"#{Prescription.find_by(id: calendar.id).hospital}" do %>
-                        <span class="fa fa-hospital-alt tab-icon"></span>
-                    <%end%>
+                <% medicines = calendar.medicines %>
+                <% x = 0 %>
+                <% remainds = [] %>
+
+                <% medicines.each do |medicine| %>
+                    <% if medicine.medicine_type == "external" %> 
+                        <% remaind = medicine.days - medicine.checkers.sum(:dose) %>
+                    <% else %>
+                        <%if medicine.times %>
+                            <% remaind = medicine.dose*medicine.days - medicine.checkers.length*medicine.dose/medicine.times %>
+                        <% else %>
+                            <% remaind = medicine.dose*medicine.days - medicine.checkers.length*medicine.dose %>
+                        <% end %>
+                    <% end %>
+
+                    <% remainds[x] = remaind %>
+                    <% x+= 1 %>
+                <% end %>
+
+                <%= link_to  calendar,class:"btn 
+                #{ if remainds.sum <= 0
+                    "btn-success"
+                else
+                    "btn-danger"
+                end} tab-btn border-white",data:{toggle:"tooltip"} ,title:"#{Prescription.find_by(id: calendar.id).hospital}" do %>
+                    <span class="fa fa-hospital-alt tab-icon"></span>
+                <%end%>
             <% end %>
     <% end %>
 </div>

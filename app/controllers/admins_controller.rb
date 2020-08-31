@@ -44,4 +44,8 @@ class AdminsController < ApplicationController
         redirect_to root_path, notice: '権限がありません' unless current_user.admin?
     end
 
+    def user_not_first_set
+        redirect_to edit_user_registration_path, notice: 'ユーザー登録をしてください' unless current_user.birthday?
+    end
+
 end

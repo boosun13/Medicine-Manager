@@ -1,27 +1,27 @@
-<div class="container bg-light">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container bg-light p-4">
+<h2 class="border-bottom py-2">ユーザー編集</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="">
-    <%= f.label :name %><br />
+  <div class="p-2 border-bottom">
+    <h5>氏名</h5>
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
-  <div class="">
-    <%= f.label :email %><br />
+  <div class="p-2 border-bottom">
+    <h5>メールアドレス</h5>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
 
   <%if current_user.birthday %>
-    <div>
-      <p>Birthday</p>
+    <div class="p-2 border-bottom">
+      <h5>誕生日</h5>
       <%= current_user.birthday %>
-      <p>誕生日の変更はできません。間違えてしまった場合は一度ユーザーを削除してから登録しなおしてください。</P>
+      <h5>誕生日の変更はできません。間違えてしまった場合は一度ユーザーを削除してから登録しなおしてください。</h5>
     </div>
-    <p>Age</p>
-    <div class="age" >
+    <h5>年齢</h5>
+    <div class="age p-2 border-bottom" >
       <% age_month = (Time.now.month-current_user.birthday.month).floor %>
       <% if age_month == 0 %>
         <% age_month = 12 %>
@@ -40,8 +40,8 @@
       <% end %>
     </div>
   <% else %>
-  <div class="">
-      <%= f.label :birthday %><br />
+  <div class="p-2 border-bottom">
+      <h5>誕生日</h5>
       <%= f.date_select :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1)  %>
   </div>
   <% end %>
@@ -51,7 +51,7 @@
   <% end %>
 
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PassModalCenter">
+<button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#PassModalCenter">
   パスワードを変更する
 </button>
 
@@ -67,8 +67,8 @@
       </div>
       <div class="modal-body">
         
-        <div class="">
-          <%= f.label :password %> <i>(変更しない場合は空欄)</i><br />
+        <div class="py-2 border-bottom">
+          <i>新しいパスワード(変更しない場合は空欄)</i><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
           <% if @minimum_password_length %>
             <br />
@@ -76,8 +76,8 @@
           <% end %>
         </div>
 
-        <div class="">
-          <%= f.label :password_confirmation %><br />
+        <div class="py-2">
+          <i>確認のため再度入力してください</i><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
@@ -93,7 +93,7 @@
 
 
   <div class="field">
-    <%= f.label :current_password %> <i>(情報を反映する場合はパスワードを入力してください。)</i><br />
+    <i>確認パスワード(情報を反映する場合はパスワードを入力してください。)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -108,12 +108,14 @@
 
 <div class="collapse" id="collapseExample">
     <div class="border p-3 m-4">
-      <h3>Cancel my account</h3>
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <h3>アカウントを削除したら内容すべてが消去されます。</h3>
+      <p>それでもよろしいですか？ <%= button_to "アカウント削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか?" },class: "btn btn-danger", method: :delete %></p>
     </div>
 </div>
 
 <br>
-<%= link_to "ユーザー詳細へ戻る", user_path(resource) %>
+<% if current_user.birthday.present? %>
+  <%= link_to "ユーザー詳細へ戻る", user_path(resource) %>
+<% end %>
 
 </div>

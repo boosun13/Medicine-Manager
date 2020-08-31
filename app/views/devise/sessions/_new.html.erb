@@ -32,5 +32,20 @@
     <a href="#" data-toggle="modal" data-target="#fogetModal">パスワードを忘れたら</a>
   </div>
   <div class="modal-footer">
+    <div class="row border">
+      <h6>簡易ログイン</h6>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <input type="hidden" value="double0two22@gmail.com" name="user[email]" id="user_email">
+        <input type="hidden" value="123456" name="user[password]" id="user_password">
+        <%= f.submit "管理者権限",class:"btn btn-danger m-1" %>
+      <% end %>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <input type="hidden" value="shikiki_4060@yahoo.co.jp" name="user[email]" id="user_email">
+        <input type="hidden" value="134679" name="user[password]" id="user_password">
+        <%= f.submit "一般ユーザー",class:"btn btn-info m-1" %>
+      <% end %>
+    </div>
+
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   </div>

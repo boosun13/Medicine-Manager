@@ -196,6 +196,24 @@ a.btn--circle {
 
 .tab-btn:hover{
     transition: all .7s;
-    background-color:white;
-    color:rgb(0, 123, 255);
+    background-color:rgba(185, 185, 185, 0.5);
+}
+
+
+#page_top {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+}
+#page_top a {
+    opacity: 0.8;
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 20px;
+}
+#page_top a:hover {
+    background-color: #666;
+    text-decoration: none;
 }

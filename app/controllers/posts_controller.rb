@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
+    before_action :user_not_first_set
     before_action :set_user
     before_action :set_post
 
@@ -39,7 +40,6 @@ class PostsController < ApplicationController
             redirect_to root_path, notice: '権限がありません'
         end 
     end
-
 
     
 

@@ -1,5 +1,6 @@
 class PrescriptionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_not_first_set
   before_action :set_prescription, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 

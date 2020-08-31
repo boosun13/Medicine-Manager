@@ -35,4 +35,7 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def user_not_first_set
+        redirect_to edit_user_registration_path, notice: 'ユーザー登録をしてください' unless current_user.birthday?
+    end
 end
