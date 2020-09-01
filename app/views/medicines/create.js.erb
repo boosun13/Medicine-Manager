@@ -14,7 +14,7 @@ $("#medicineModal").find(".modal").modal('show')
 
 // <% end %>
 
-$(function() {
+$(document).on('turbolinks:load', function() {
     $( '#normalTab' ).click( function() {
         $('#when').find('input').attr('disabled', 10);
         $('#external').find('input').attr('disabled', 10);

@@ -22,7 +22,7 @@
 //= require popper
 //= require bootstrap-sprockets
 
-$( function(){
+$(document).on('turbolinks:load', function() {
     // リンクジャンプ前にモーダルウィンドウを閉じる。
     $( 'a' ).click( function(){
         $('.modal').modal('hide');
@@ -54,7 +54,7 @@ $( function(){
 });
 
 
-$( function () {
+$(document).on('turbolinks:load', function() {
     $(window).scroll(function () {
 
         const wHeight = $(window).height();
@@ -150,22 +150,21 @@ $(document).on('turbolinks:load', function() {
 
 
 
-$(function() {
+$(document).on('turbolinks:load', function() {
     var h = $(window).height();
     
     $('#wrap').css('display','none');
     $('#loader-bg ,#loader').height(h).css('display','block');
 });
 
-    
-$(window).on('load', function(){ //全ての読み込みが完了したら実行
+$(window).on('turbolinks:load', function() { //全ての読み込みが完了したら実行
     $('#loader-bg').delay(900).fadeOut(800);
     $('#loader').delay(600).fadeOut(300);
     $('#wrap').css('display', 'block');
 });
     
 //10秒たったら強制的にロード画面を非表示
-$(function(){
+$(document).on('turbolinks:load', function() {
     setTimeout('stopload()',10000);
 });
     
