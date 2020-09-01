@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_30_063040) do
+ActiveRecord::Schema.define(version: 2020_09_01_232745) do
 
   create_table "checkers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "medicine_id"
@@ -107,6 +107,4 @@ ActiveRecord::Schema.define(version: 2020_08_30_063040) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "medicines", "prescriptions"
-  add_foreign_key "posts", "users"
 end
