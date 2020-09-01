@@ -13,11 +13,18 @@
             </div>
 
             <div class="home-btn col-lg-4 py-5 rounded mx-auto my-5" style="width:270px;">
-                <p class="pt-3 mb-1">いますぐはじめよう</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">新規登録</button>
-                <br>
-                <p class="pt-5 mb-1">すでに登録している方はこちら</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
+                <% if current_user %>
+                    <p class="pt-3 mb-1">記録ページや服薬チェック</p>
+                    <%= link_to "記録", user_path(current_user), class: "btn btn-primary" %>
+                    <p class="pt-3 mb-1">薬剤師に質問または報告</p>
+                    <%= link_to 'やりとり', user_posts_path(current_user), class: "btn btn-info" %>
+                <% else %>
+                    <p class="pt-3 mb-1">いますぐはじめよう</p>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal">新規登録</button>
+                    <br>
+                    <p class="pt-5 mb-1">すでに登録している方はこちら</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
+                <% end %>   
             </div>
         </div>
     </div>
@@ -71,9 +78,16 @@
 </div>
 
 <div class="home-btn col-lg-4 py-5 rounded mx-auto my-5 text-center text-light" style="width:270px;">
-    <p class="pt-3 mb-1">いますぐはじめよう</p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupModal">新規登録</button>
-    <br>
-    <p class="pt-5 mb-1">すでに登録している方はこちら</p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
+    <% if current_user %>
+        <p class="pt-3 mb-1">記録ページや服薬チェック</p>
+        <%= link_to "記録", user_path(current_user), class: "btn btn-primary" %>
+        <p class="pt-3 mb-1">薬剤師に質問または報告</p>
+        <%= link_to 'やりとり', user_posts_path(current_user), class: "btn btn-info" %>
+    <% else %>
+        <p class="pt-3 mb-1">いますぐはじめよう</p>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal">新規登録</button>
+        <br>
+        <p class="pt-5 mb-1">すでに登録している方はこちら</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
+    <% end %>
 </div>
