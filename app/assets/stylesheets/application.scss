@@ -39,7 +39,7 @@ main {
 
 .main-bg{
     background: linear-gradient(rgba(201, 201, 201, 0.6), rgba(201, 201, 201, 0.6)),
-    image-url("pic/背景.jpg");
+    url("pic/背景.jpg");
     background-size: 100% 100vh;
     min-height: calc(100vh - 50px);
 }
