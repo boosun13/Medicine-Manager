@@ -7,7 +7,7 @@
     //背景を黒ずませる
     margin-top:-10px;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("top/background.jpeg");
+    url("top_page/background.jpeg");
     background-size: cover;
 }
 
@@ -15,21 +15,21 @@
 .medicineMemo{
     min-height:300px;
     background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-    url("top/medicine_memo.jpg");
+    url("top_page/medicine_memo.jpg");
     background-size: cover;
 }
 
 .medicineManage{
     min-height:300px;
     background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-    url("top/服薬.jpg");
+    url("top_page/服薬.jpg");
     background-size: cover;
 }
 
 .medicineInfo{
     min-height:300px;
     background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
-    url("top/相談.jpg");
+    url("top_page/相談.jpg");
     background-size: cover;
 }
 
