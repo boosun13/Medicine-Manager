@@ -24,7 +24,7 @@ class MedicinesController < ApplicationController
   # POST /medicines
   # POST /medicines.json
   def create
-    @medicine = @prescription.medicines.new(medicine_params)
+    @medicine = Medicine.new(medicine_params)
       if @medicine.save
         @status = true
         @medicines = @prescription.medicines
