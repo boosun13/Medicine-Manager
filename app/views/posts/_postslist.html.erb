@@ -10,7 +10,7 @@
         
             <% @notifications.where(checked: false).each do |not_checked| %>
                 <% if not_checked.item_id == post.id %>
-                    <img src="/pic/new12.gif" class="position-absolute" style="top: 2px; left: -10px;">
+                    <img src="assets/pic/new12.gif" class="position-absolute" style="top: 2px; left: -10px;">
                 <% end %>
             <% end %>
 
