@@ -87,7 +87,7 @@ class PrescriptionsController < ApplicationController
     end
 
     def set_user
-      if (@prescription.user_id != current_user.id)
+      if (@prescription.user_id != current_user.id && current_user.admin == false)
           redirect_to root_path, notice: '権限がありません'
       end 
     end
