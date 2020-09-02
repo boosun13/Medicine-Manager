@@ -4,7 +4,7 @@ $("#medicineModal").find(".modal").modal('show')
 
 
 //タブボタン切り替え
-$(document).on('turbolinks:load', function() {
+$(function() {
     $( '#normalTab' ).click( function() {
         $('#when').find('input').attr('disabled', 10);
         $('#external').find('input').attr('disabled', 10);
