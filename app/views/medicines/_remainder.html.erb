@@ -4,6 +4,9 @@
 <% unless @start_date.present? %>
     <% @start_date =  Date.today %>
 <% end %>
+<% unless @prescription.present? %>
+    <% @prescription = prescription %>
+<% end %>
 
 
 <div id="calendarChecker<%=medicine.id%>">
