@@ -6,24 +6,34 @@
 <% @posts.each do |post| %>
     <div class="card my-1">
         
-        <button class="btn btn-light card-header text-left py-4 py-md-2" data-toggle="collapse" data-target="#Post<%= post.id %>" aria-expanded="ture" aria-controls="collapseExample">
+        <button class="btn btn-light card-header text-left py-3" data-toggle="collapse" data-target="#Post<%= post.id %>" aria-expanded="ture" aria-controls="collapseExample">
         
             <% @notifications.where(checked: false).each do |not_checked| %>
                 <% if not_checked.item_id == post.id %>
                     <%= image_tag 'pic/new12.gif',class:"position-absolute", style:"top: 2px; left: -10px;" %>
                 <% end %>
             <% end %>
-
-            <%= post.created_at.strftime("%Y年%m月%d日") %><br>
-            <%= post.title %>
+            <div class="row">
+                <div class="col">
+                    <%= post.created_at.strftime("%Y年%m月%d日") %><br>
+                    <strong style="font-size:20px;"><%= post.title %></strong>
+                </div>
+                <div class="col-6 text-right" style="">
+                    <%= link_to "削除", user_post_path(post.user, post),  method: :delete,remote: true, class: "btn btn-outline-danger px-md-5 mb-3", data: { confirm: '削除すると内容は戻りません。本当に削除しますか？' } %><br>
+                    <span class="rounded p-2 text-light
+                    <% if post.user == current_user %>
+                    bg-success
+                    <% else %>
+                    bg-danger
+                    <% end %>">
+                    <%= post.user.name %>
+                    </span>
+                </div>
+            </div>
         </button>
 
-        <div class="position-absolute" style="top: 5px; right: 10%;">
-            <%= link_to "削除", user_post_path(post.user, post),  method: :delete,remote: true, class: "btn btn-outline-danger px-md-5", data: { confirm: '削除すると内容は戻りません。本当に削除しますか？' } %>
-            <div class="position-absolute"style="top: 35px;"><%= post.user.name %></div>
-        </div>
 
-        <div class="collapse card-body" id="Post<%= post.id %>" >
+        <div class="collapse card-body p-1 p-md-3" id="Post<%= post.id %>" >
             <%= render "comments/index", post: post %>
         </div>
     </div>

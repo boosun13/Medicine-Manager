@@ -31,9 +31,9 @@
     <br>
     <a href="#" data-toggle="modal" data-target="#fogetModal">パスワードを忘れたら</a>
   </div>
-  <div class="modal-footer">
-    <div class="row border">
-      <h6>簡易ログイン</h6>
+  <div class="border modal-body bg-warning">
+    <h6>簡易ログイン</h6>
+    <div class="row ">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <input type="hidden" value="admin@example.com" name="user[email]" id="user_email">
         <input type="hidden" value="134679" name="user[password]" id="user_password">
@@ -46,6 +46,8 @@
         <%= f.submit "一般ユーザー",class:"btn btn-info m-1" %>
       <% end %>
     </div>
+  </div>
+  <div class="modal-footer">
 
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   </div>

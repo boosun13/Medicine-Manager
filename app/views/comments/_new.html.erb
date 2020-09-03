@@ -1,4 +1,4 @@
-<div class="bg-light">
+<div class="bg-light pt-3 border ">
     <%= form_with(url: comments_path,local: false, html: {name: "commentForm#{@post.id}"} ) do |f| %>
         <% @post.title %>
         <input type="hidden" name="post_id" value="<%= @post.id %>">

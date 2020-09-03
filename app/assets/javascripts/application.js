@@ -22,6 +22,7 @@
 //= require popper
 //= require bootstrap-sprockets
 
+
 $( function(){
     // リンクジャンプ前にモーダルウィンドウを閉じる。
     $( 'a' ).click( function(){
@@ -175,7 +176,7 @@ function stopload(){
     $('#loader').delay(600).fadeOut(300);
 };
 
-$(document).on('turbolinks:load',function(){
+$(function(){
     var pagetop = $('#page_top');
     // ボタン非表示
     pagetop.hide();

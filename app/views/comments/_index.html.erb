@@ -4,9 +4,17 @@
             <%= comment.content %>
         </div>
         <div class="card-footer">
-            <%= comment.user.name %><br>
-            <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
-            <div class="position-absolute" style="bottom: 4px; right: 10%;">
+            <span class="rounded p-2 text-light
+                <% if comment.user == current_user %>
+                bg-success
+                <% else %>
+                bg-danger
+                <% end %>">
+                <%= comment.user.name %>
+            </span>
+            <br>
+            <p class="mb-0 mt-2"><%= comment.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></p>
+            <div class="position-absolute" style="bottom: 4px; right: 7%;">
                 <%= link_to "削除", comment_path(comment),  method: :delete,remote: true, class: "btn btn-outline-danger px-md-5", data: { confirm: '削除すると内容は戻りません。本当に削除しますか？' } %>
             </div>
 
@@ -14,6 +22,7 @@
     </div>
 <% end %>
 <div id="newComment<%= post.id %>" class="py-2">
-    <%= image_tag 'pic/mail_ab.gif' %>
-    <%= link_to "  内容を投稿", new_comment_path(post_id: post.id),remote: true, class:"btn btn-primary" %>
+    <%= link_to new_comment_path(post_id: post.id),remote: true, class:"btn btn-primary" do %>
+        <span class="fa fa-pen">内容を書く</span>
+    <% end %>
 </div>

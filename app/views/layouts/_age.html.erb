@@ -1,8 +1,8 @@
 <div class="age" >
 <% if current_user.birthday %>
-    <% age_month = (Time.now.month-current_user.birthday.month).floor %>
+    <% age_month = Time.now.month-current_user.birthday.month %>
     <% if age_month == 0 %>
-        <% age_month = 12 %>
+        <% age_month = 11 %>
     <% elsif age_month < 0 %>
         <% age_month = 12 + age_month %>
     <% end %>

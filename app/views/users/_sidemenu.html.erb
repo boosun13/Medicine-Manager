@@ -1,6 +1,12 @@
 <div class="sidemenu border col-md-5 col-lg-4 " style="overflow: visible;">
-    <h4 class="mt-4 border border-bottom "><%= current_user.name %> 様、こんにちは<h4>
-    <h5 class="text-right">年齢<%= render "layouts/age" %></h5>
+    <div class="my-4 card" >
+        <div class="card-header">
+            <h4 class=""><%= current_user.name %> 様<h4>
+        </div>
+        <div class="card-body">
+            <h5 class="text-right">年齢<%= render "layouts/age" %></h5>
+        </div>
+    </div>
 
     <h6>お薬をもらったら記録をしよう！</h6>
     <%= link_to '処方追加', new_prescription_path , class: "btn btn-outline-info mb-5" %>
