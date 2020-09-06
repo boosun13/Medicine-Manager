@@ -176,7 +176,7 @@ function stopload(){
     $('#loader').delay(600).fadeOut(300);
 };
 
-$(function(){
+$(document).on('turbolinks:load', function() {
     var pagetop = $('#page_top');
     // ボタン非表示
     pagetop.hide();

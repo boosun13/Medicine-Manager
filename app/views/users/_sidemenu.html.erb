@@ -3,7 +3,12 @@
         <div class="card-header">
             <h4 class=""><%= current_user.name %> 様<h4>
         </div>
-        <div class="card-body">
+        <div class="card-body position-relative">
+            <% if current_user.sexes == 1 %>
+                <h5 class="bg-primary text-light rounded-circle py-2 px-3 position-absolute" style="left:25px;"><span class="fa fa-male"></span></h5>
+            <% else %>
+                <h5 class="bg-danger text-light rounded-circle py-2 px-3 position-absolute" style="left:25px;"><span class="fa fa-female"></span></h5>
+            <% end %>
             <h5 class="text-right">年齢<%= render "layouts/age" %></h5>
         </div>
     </div>

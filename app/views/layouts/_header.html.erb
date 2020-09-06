@@ -12,63 +12,32 @@
 <% end %>
 
 <nav class="fixed-top navbar navbar-expand-md navbar-dark bg-dark" style="user-select: none;" >
-    <% if user_signed_in? && @notifications.find_by(checked: false) %>
-        <div class="bg-danger text-light position-absolute text-center rounded-circle" id="drawer-btn" style="top: 6px; right: 57px; height: 22px; width:22px; z-index: 10; line-height: 20px;">
-            <%= render "layouts/drawer" %>
-        </div>
-    <% end %>
-    <%= link_to 'Medicine App', root_path, class: "homeLogo btn btn-outline-light" %>
+    <%= link_to 'Medicine App', root_path, class:"fa fa-pills btn-open mr-2" %>
 
-    <button class="navbar-toggler hidden" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <nav class="nav">
-        <input type="checkbox" class="nav__cb" id="menu-cb"/>
-        <div class="nav__content">
-            <ul class="nav__items">
-            <li class="nav__item">
-                <span class="nav__item-text">
-                Home
-                </span>
-            </li>
-            <li class="nav__item">
-                <span class="nav__item-text">
-                Works
-                </span>
-            </li>
-            <li class="nav__item">
-                <span class="nav__item-text">
-                About
-                </span>
-            </li>
-            <li class="nav__item">
-                <span class="nav__item-text">
-                Contact
-                </span>
-            </li>
-            </ul>
-        </div>
-        <label class="nav__btn" for="menu-cb"></label>
-    </nav>
+    <button class="navbar-toggler mr-5 py-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars" style="font-size:30px;"></span>
     </button>
 
-    <button type="button" class="drawer-toggle btn btn-outline-warning">
-        <span class="fa fa-bell" style="font-size:30px;"></span>
-    </button>
     
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto collapse navbar-collapse" id="hidden">
-            <li class="nav-item">
+        <ul class="navbar-nav mr-auto" >
+            <li class="nav-item ">
             </li>
             <% if user_signed_in? %>
-                <li class="nav-item">
-                    <%= link_to "記録", user_path(current_user), class: "nav-link" %>
+                <li class="nav-item mx-5 my-2 m-md-1">
+                    <%= link_to user_path(current_user), class: "btn btn-outline-light" ,style:"display: block;" do %>
+                        <span class=" fa fa-pen">記録</span>
+                    <% end %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to '連絡', user_posts_path(current_user), class: "nav-link" %>
+                <li class="nav-item mx-5 my-2 m-md-1">
+                    <%= link_to  user_posts_path(current_user), class: "btn btn-outline-light" ,style:"display: block;" do %>
+                        <span class="fa fa-question">連絡</span>
+                    <% end %>
                 </li>
                 <% if current_user.admin? %>
-                    <li class="nav-item">
-                        <a class="nav-link text-danger" href="/admins">管理</a>
+                    <li class="nav-item mx-5 my-2 m-md-1">
+                        <a class="text-danger" href="/admins">管理</a>
                     </li>
                 <% end %>
             <li class="nav-item">
@@ -77,14 +46,23 @@
         </ul>
         
         <% if user_signed_in? %>
-            <div class="nav-item dropdown mx-2 mt-5 mt-lg-0">
-                <a class="nav-link dropdown-toggle text-light btn btn-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="nav-item px-3 my-2 mx-5 mr-md-5 position-relative" >
+                <a class="nav-link text-light btn btn-success" id="" role="button" data-toggle="collapse" href="#navbarDropdown" aria-expanded="false">
+                    <span class="fas fa-user"></span> 
                     <%= current_user.name %>
+                    <span class="fas fa-caret-down"></span> 
                 </a>
-                <div class="dropdown-menu p-1" aria-labelledby="navbarDropdown">
-                    <div class="dropdown-divider"></div>
-                        <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item" %>
-                    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete,data: {confirm:  "本当にログアウトしますか？"} ,class: "dropdown-item bg-danger text-light rounded" %>
+                <div class="p-2 text-center collapse position-absolute bg-dark rounded" id="navbarDropdown" style="m-auto z-index: 10000;">
+                    <div class="my-2">
+                    <%= link_to  edit_user_registration_path, class: "btn btn-dark",style:"display: block;" do %>
+                        <span class="fas fa-user-cog">編集</span>
+                    <% end %>
+                    </div>
+                    <div class="my-2">
+                    <%= link_to destroy_user_session_path, method: :delete,data: {confirm:  "本当にログアウトしますか？"} ,class: "btn btn-danger rounded" do%>
+                        <span class="fas fa-user-alt-slash">ログアウト</span>
+                    <% end %>
+                    </div>
                 </div>
             </div>
             
@@ -98,4 +76,14 @@
         <% end %>
 
     </div>
+    <% if user_signed_in? && @notifications.find_by(checked: false) %>
+        <div class="bg-danger text-light position-absolute text-center rounded-circle" id="drawer-btn" style="top: 6px; right: 40px; height: 22px; width:22px; z-index: 1000000; line-height: 20px;">
+            <%= render "layouts/drawer" %>
+        </div>
+    <% end %>
+    <% if user_signed_in? %>
+        <div type="button" class="drawer-toggle btn btn-outline-warning position-absolute" style="top: 10px; right: 4px; z-index: 100000;">
+            <span class="fa fa-bell" style="font-size:30px;"></span>
+        </div>
+    <% end %>
 </nav>
