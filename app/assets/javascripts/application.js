@@ -98,12 +98,10 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-$(document).on('turbolinks:load', function() {
-    if($('.drawer').length){
-        $('.drawer').drawer();
-    };
-});
 
+$(document).on('turbolinks:load', function() {
+            $('.drawer').drawer();
+    });
 
 $(document).on('turbolinks:load', function() {
     $( '#hospitalBtn' ).click( function() {
