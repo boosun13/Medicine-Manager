@@ -20,10 +20,10 @@
                     <%= link_to 'やりとり', user_posts_path(current_user), class: "btn btn-info" %>
                 <% else %>
                     <p class="pt-3 mb-1">いますぐはじめよう</p>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal">新規登録</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal"><span class="fa fa-user-plus"></span> 新規登録</button>
                     <br>
                     <p class="pt-5 mb-1">すでに登録している方はこちら</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal"><span class="fa fa-user-check"></span> ログイン</button>
                 <% end %>   
             </div>
         </div>
@@ -85,9 +85,9 @@
         <%= link_to 'やりとり', user_posts_path(current_user), class: "btn btn-info" %>
     <% else %>
         <p class="pt-3 mb-1">いますぐはじめよう</p>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal">新規登録</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal"><span class="fa fa-user-plus"></span> 新規登録</button>
         <br>
         <p class="pt-5 mb-1">すでに登録している方はこちら</p>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">ログイン</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal"><span class="fa fa-user-check"></span> ログイン</button>
     <% end %>
 </div>

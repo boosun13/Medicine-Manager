@@ -1,53 +1,53 @@
-  <div class="modal-header">
-    <h2 class="modal-title" id="exampleModalLabel">Log in</h2>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body bg-light">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="modal-header">
+  <h2 class="modal-title" id="exampleModalLabel">ログイン</h2>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body bg-light">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <h6>メールアドレス</h6>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <h6>パスワード</h6>
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit "Log in" %>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
       </div>
     <% end %>
-    <a href="#" type="link" data-toggle="modal" data-target="#signupModal">サインアップ</a>
-    <br>
-    <a href="#" data-toggle="modal" data-target="#fogetModal">パスワードを忘れたら</a>
-  </div>
-  <div class="border modal-body bg-warning">
-    <h6>簡易ログイン</h6>
-    <div class="row ">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <input type="hidden" value="admin@example.com" name="user[email]" id="user_email">
-        <input type="hidden" value="134679" name="user[password]" id="user_password">
-        <%= f.submit "管理者権限",class:"btn btn-danger m-1" %>
-      <% end %>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <input type="hidden" value="test@example.com" name="user[email]" id="user_email">
-        <input type="hidden" value="123456" name="user[password]" id="user_password">
-        <%= f.submit "一般ユーザー",class:"btn btn-info m-1" %>
-      <% end %>
+    <div class="actions">
+      <%= f.submit "Log in" %>
     </div>
-  </div>
-  <div class="modal-footer">
+  <% end %>
+  <a href="#" type="link" data-toggle="modal" data-target="#signupModal">サインアップ</a>
+  <br>
+  <a href="#" data-toggle="modal" data-target="#fogetModal">パスワードを忘れたら</a>
+</div>
+<div class="border modal-body bg-warning">
+  <h6>簡易ログイン</h6>
+  <div class="row ">
+    <%= form_with(url: session_path(resource_name)) do |f| %>
+      <input type="hidden" value="admin@example.com" name="user[email]" id="user_email">
+      <input type="hidden" value="134679" name="user[password]" id="user_password">
+      <%= f.submit "管理者権限",class:"btn btn-danger m-1" %>
+    <% end %>
 
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <%= form_with(url: session_path(resource_name)) do |f| %>
+      <input type="hidden" value="test@example.com" name="user[email]" id="user_email">
+      <input type="hidden" value="123456" name="user[password]" id="user_password">
+      <%= f.submit "一般ユーザー",class:"btn btn-info m-1" %>
+    <% end %>
   </div>
+</div>
+<div class="modal-footer">
+
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>

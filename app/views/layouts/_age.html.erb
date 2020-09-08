@@ -1,20 +1,20 @@
 <div class="age" >
-<% if current_user.birthday %>
-    <% age_month = Time.now.month-current_user.birthday.month %>
+<% if user.birthday %>
+    <% age_month = Time.now.month-user.birthday.month %>
     <% if age_month == 0 %>
         <% age_month = 11 %>
     <% elsif age_month < 0 %>
         <% age_month = 12 + age_month %>
     <% end %>
 
-    <% if (current_user.birthday.month >= Time.now.month) %>
-        <% if (current_user.birthday.month == Time.now.month && current_user.birthday.day <= Time.now.day) %>
-            <%= "#{Time.now.year-current_user.birthday.year}歳 0ヵ月" %>
+    <% if (user.birthday.month >= Time.now.month) %>
+        <% if (user.birthday.month == Time.now.month && user.birthday.day <= Time.now.day) %>
+            <%= "#{Time.now.year-user.birthday.year}歳 0ヵ月" %>
         <% else %>
-            <%= "#{Time.now.year-current_user.birthday.year-1}歳 #{age_month}ヵ月" %>
+            <%= "#{Time.now.year-user.birthday.year-1}歳 #{age_month}ヵ月" %>
         <% end %>
     <% else %>
-        <%= "#{Time.now.year-current_user.birthday.year}歳 #{age_month}ヵ月" %>
+        <%= "#{Time.now.year-user.birthday.year}歳 #{age_month}ヵ月" %>
     <% end %>
 <% else %>
     <h6>(未登録)</h6>

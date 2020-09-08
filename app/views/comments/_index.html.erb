@@ -1,7 +1,7 @@
 <% post.comments.each do |comment| %>
     <div class="card bg-light">
         <div class="card-content py-3 px-2">
-            <%= comment.content %>
+            <%= simple_format(comment.content) %>
         </div>
         <div class="card-footer">
             <span class="rounded p-2 text-light

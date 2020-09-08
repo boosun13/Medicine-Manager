@@ -2,11 +2,28 @@
 <div id="medicineModal">
 </div>
 
-<div class="mx-md-5 bg-light border">
-    <h1 class="text-center"><%= @user.name %></h1>
+<div class="mx-md-5 bg-light border mt-2">
+    <div class="row mt-4 px-md-5">
+        <div class="col">
+            <h1 class="text-center"><%= @user.name %></h1>
+        </div>
+        <div class="col-sm-6 row px-0">
+            <div class="col-7 text-right">
+                <%= @user.birthday %>
+                <%= render "layouts/age",user: @user %>
+            </div>
+            <div class="col-2 text-left pt-2">
+                <% if @user.sexes == 1 %>
+                    <span class="bg-primary text-light rounded-circle py-2 px-3 fa fa-male"></span>
+                <% else %>
+                    <span class="bg-danger text-light rounded-circle py-2 px-3 fa fa-female"></span>
+                <% end %>
+            </div>
+        </div>
+    </div>
 
 
-    <%= link_to "+ new prescription", new_admins_prescription_path(admin_id: params[:id]) , remote: false, class: "btn btn-primary text-light text-center border border-dark", style:"position: fixed; top: 107px; left: 15px; opacity:0.7; z-index:10; " %><br>
+    <%= link_to "+ new prescription", new_admins_prescription_path(admin_id: params[:id]) , remote: false, class: "btn btn-primary text-light text-center border border-dark", style:"position: fixed; bottom: 48px; left: 10px; opacity:0.7; z-index:10; " %><br>
 
     <div id="prescriptionList" class="">
         <% @prescriptions.each_with_index do |prescription, index| %>
@@ -30,7 +47,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right text-middle" aria-labelledby="dropdownMenuButton">
                                 <%= link_to "編集", edit_admins_prescription_path(prescription,admin_id: params[:id]), class: "dropdown-item" %>
-                                <%= link_to "削除", admins_prescription_path(prescription,admin_id: params[:id]),  method: :delete, class: "dropdown-item text-danger", data: { confirm: 'Are you sure?' } %>
+                                <%= link_to "削除", admins_prescription_path(prescription,admin_id: params[:id]),  method: :delete, class: "dropdown-item text-danger", data: { confirm: '削除すると元には戻せません。本当によろしいですか?' } %>
                             </div>
                         </div>
 
@@ -38,11 +55,11 @@
                             お薬の詳細
                         </button>
                         <div class="collapse" id="Medicine<%=prescription.id%>">
-                            <%= link_to "+ new medicine",new_prescription_medicine_path(prescription), remote: true, class: "btn btn-warning text-light text-center border-danger m-3" %><br>
-
                             <div id="medicineList">
                                 <%= render "medicines", prescription: prescription %>
                             </div>
+
+                            <%= link_to "+ new medicine",new_prescription_medicine_path(prescription), remote: true, class: "btn btn-warning text-light text-center border-danger m-1" %><br>
                         </div>
                     <div class="position-absolute" style="bottom: 110px; right: 20px;">
                         <%= render "prescriptions/remaind" ,medicines: prescription.medicines %>

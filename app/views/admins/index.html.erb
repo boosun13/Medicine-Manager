@@ -1,14 +1,9 @@
 <div class=" border my-3 mx-md-5 ">
-    <h2 class="text-center">ユーザー一覧</h2>
+    <h2 class="text-center pt-4">ユーザー一覧</h2>
     <div class="row">
-        <div class="col">
-            <div id="userList">
-                <%= render "users" %>
-            </div>
-        </div>
 
-        <div class="col m-5 ml-md-0 my-auto bg-light border" style="border-radius: 10px;max-width:450px;">
-            <h4 class="my-2">ユーザー検索</h4>
+        <div class="col-10 col-md-4 mx-auto my-md-5 mr-md-4 bg-light border order-md-2" style="border-radius: 10px;">
+            <h4 class="my-2 py-4">ユーザー検索</h4>
             <%= search_form_for @q, url:search_path ,remote: true do |f| %>
 
                 <div class="field">
@@ -23,14 +18,19 @@
 
                 <div class="field">
                     <%= f.label :admin, "権限の有無" %><br>
-                    <%= f.radio_button :admin_eq, '', {:checked => true} %>指定なし
-                    <%= f.radio_button :admin_eq, true %>管理者
-                    <%= f.radio_button :admin_eq, false %>ユーザー
+                    <label><%= f.radio_button :admin_eq, '', {:checked => true} %>指定なし</label>
+                    <label><%= f.radio_button :admin_eq, true %>管理者</label>
+                    <label><%= f.radio_button :admin_eq, false %>ユーザー</label>
                 </div>
 
                 <%= f.submit "検索", class:"btn btn-primary m-2" %>
             <% end %>
         </div>
 
+        <div class="col-md">
+            <div id="userList">
+                <%= render "users" %>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <%= paginate @users, theme: 'twitter-bootstrap-4',class:"justify-content-center" %>
 <% @users.each do |user| %>
-    <div class="card u_card btn btn-light text-left m-4 ">
+    <div class="card u_card btn btn-light text-left m-4 mr-md-1 ">
         <%= link_to  admin_path(user),class:"card-body text-dark" do %>
             <h4 class="card-title"><%= user.name %></h4>
             <h6 class="card-title"><%= user.email %></h6>

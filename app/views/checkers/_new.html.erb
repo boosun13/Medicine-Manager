@@ -20,7 +20,7 @@
 
             <%if medicine.checkers.where(timing: i).find_by(check_date: date) %>
                 <% medicine.checkers.where(timing: i).where(check_date: date).each do |checker| %>
-                    <%= link_to prescription_checker_path(@prescription, checker), method: :delete, remote: true,class: "btn btn-danger rounded-circle my-0",style:"", id:"#{medicine.id}btn#{date}#{i}" do%>
+                    <%= link_to prescription_checker_path(@prescription, checker), method: :delete, remote: true,class: "btn btn-danger rounded-circle mt-1 mx-0",style:"margin-bottom:-4px;", id:"#{medicine.id}btn#{date}#{i}" do%>
                         <span class="fa fa-check-square"></span>
                     <%end%>
                     <h6><%= checker.dose %></h6>
@@ -31,8 +31,8 @@
                         <input type="hidden" name="timing" value="<%=i%>">
                         <input type="hidden" name="check_date" value="<%= date %>">
                         <div class="actions" id="<%=medicine.id%>btn<%= date %><%=i%>" >
-                            <button type="submit" class="btn btn-success px-2 mx-1 my-1">
-                                <i class="fas fa-pills"></i>
+                            <button type="submit" class="btn btn-success px-2 my-1">
+                                <span class="fas fa-pills" style=""></span>
                             </button>
                         </div>
 
