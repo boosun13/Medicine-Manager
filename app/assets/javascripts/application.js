@@ -196,7 +196,7 @@ $(document).on('turbolinks:load', function() {
     });
 });
 
-$(function(){
+$(document).on('turbolinks:load', function() {
     $('a[href^="#"]').click(function(){
         var speed = 500;
         var href= $(this).attr("href");
