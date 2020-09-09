@@ -20,7 +20,7 @@ class OmniauthCallbacksController < ApplicationController
             end
         end
         flash[:notice] = "ログインしました"
-        redirect_to user_path(current_user)
+        redirect_to root_path
     end
     
     
