@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :user_not_first_set
   before_action :set_user
 
+  
   def index
     @users = User.all
   end
@@ -23,5 +24,6 @@ class UsersController < ApplicationController
     end 
   end
 
+  
 
 end

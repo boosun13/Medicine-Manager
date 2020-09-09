@@ -82,3 +82,5 @@ gem 'simple_calendar', '~> 2.0'
 gem 'ransack'
 
 gem 'dotenv-rails'
+#Line連携
+gem 'omniauth-line'
