@@ -27,10 +27,18 @@
       <%= f.submit "Log in" %>
     </div>
   <% end %>
-  <%= link_to "LINE Login", user_line_omniauth_authorize_path %>
+
   <a href="%" type="link" data-toggle="modal" data-target="#signupModal">サインアップ</a>
   <br>
   <a href="%" data-toggle="modal" data-target="#fogetModal">パスワードを忘れたら</a>
+  <br>
+  <%= link_to user_line_omniauth_authorize_path, id:"line-button", class:"text-left btn btn-block btn-social button",style:"max-width:320px;" do %>
+    <span class="line-img">
+        <%= image_tag "line/btn_base.png", :size => "20x20", class:"btn_base"  %>
+        <%= image_tag "line/btn_hover.png", :size => "20x20", class:"btn_hover"  %>
+        <%= image_tag "line/btn_press.png", :size => "20x20", class:"btn_press"  %>
+    </span>  LINEでログイン
+  <% end %>
 </div>
 <div class="border modal-body bg-warning">
   <h6>簡易ログイン</h6>

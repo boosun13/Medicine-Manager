@@ -52,7 +52,49 @@ body{
     background-size: cover;
 }
 
-img {
-    width:100%;
-    height: auto;
+#line-button { 
+    margin-top: 15px;
+    color: #FFFFFF;
+    font-size: 15px;
+    background-color: #00C300;  
+  }
+  
+  #line-button:hover {
+    color: #FFFFFF;
+    background-color: #00E000
+  }
+
+  #line-button:hover .btn_hover {
+    opacity: 1;
 }
+
+  #line-button:active {
+      background-color: #00B300
+    }
+    
+    #line-button:active .btn_press{
+        opacity: 1;
+    }
+
+
+  .line-img {
+      margin-right:58px;
+  }
+
+  .line-img img{
+    width: 25px;
+    height: 25px
+  }
+
+
+  .line-img{
+    position: relative;
+
+  }
+  .btn_press, .btn_hover{
+    position: absolute;
+    left: 0;
+    top: -3px;
+    opacity: 0;
+    transition: 0.2346s;
+  }
