@@ -83,4 +83,6 @@ gem 'ransack'
 
 gem 'dotenv-rails'
 #Line連携
-gem 'omniauth-line'
+gem 'omniauth-line' , :github => 'boosun13/omniauth-line'
+
+gem 'specific_install'
