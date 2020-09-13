@@ -10,8 +10,8 @@
  
 # 使用技術
 ・gemによる各種機能: deviseによるログイン機能、kaminariによるページネーション、<br>
-		　　              ransackによるDB検索機能、simple_calendarによるカレンダー表記
-・Bootstrap、SCSSを用いたスタイリング
+		　　              ransackによるDB検索機能、simple_calendarによるカレンダー表記<br>
+・Bootstrap、SCSSを用いたスタイリング<br>
 ・jQuery、Javascriptを利用したAjax実装、動的エフェクト実装
 
 
