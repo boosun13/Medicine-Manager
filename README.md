@@ -12,8 +12,8 @@
 ・gemによる各種機能: deviseによるログイン機能、kaminariによるページネーション、<br>
 		　　              ransackによるDB検索機能、simple_calendarによるカレンダー表記<br>
 ・Bootstrap、SCSSを用いたスタイリング<br>
-・jQuery、Javascriptを利用したAjax実装、動的エフェクト実装
-
+・jQuery、Javascriptを利用したAjax実装、動的エフェクト実装<br>
+・API連携を利用したログイン等の機能実装
 
 # 機能一覧
  ・電子お薬手帳
@@ -33,5 +33,5 @@
  
  
 # 今後の展開
-  API連携を利用したログイン等の機能実装予定
+  外部DBとの連携による医薬品情報の入力簡便化、正確性の向上
   
