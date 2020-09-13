@@ -86,3 +86,7 @@ gem 'dotenv-rails'
 gem 'omniauth-line' , :github => 'boosun13/omniauth-line'
 
 gem 'specific_install'
+
+group :test do
+  gem 'rspec-rails'
+end
