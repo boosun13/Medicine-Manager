@@ -39,7 +39,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    if current_user.email.include? "line@example.com"
+      resource.update_without_password(params)
+    else
+      super
+    end
   end
 
   # DELETE /resource
@@ -58,11 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def update_resource(resource, params)
-    if current_user.email.include? "line@example.com"
-      resource.update_without_password(params)
-    end
-  end
+
 
   
 
