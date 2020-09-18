@@ -1,3 +1,3 @@
 class Checker < ApplicationRecord
-    belongs_to :medicine
+  belongs_to :medicine
 end

@@ -3,7 +3,6 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
 
-  
   # GET /resource/sign_in
   def new
     self.resource = resource_class.new(sign_in_params)
@@ -12,7 +11,6 @@ class Users::SessionsController < Devise::SessionsController
     # respond_with(resource, serialize_options(resource))
     # redirect_to root_path(resource)
     render template: 'home/index'
-
   end
 
   # POST /resource/sign_in
@@ -20,7 +18,7 @@ class Users::SessionsController < Devise::SessionsController
     self.resource = warden.authenticate!(auth_options)
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
-    yield  root_path if block_given?
+    yield root_path if block_given?
     respond_with resource, location: after_sign_in_path_for(resource)
   end
 
@@ -38,5 +36,5 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     user_path(resource)
-  end 
+  end
 end

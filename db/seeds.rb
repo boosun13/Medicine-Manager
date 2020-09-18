@@ -10,14 +10,14 @@ user = User.new(
   name: '一般 テスト',
   email: 'test@example.com',
   admin: false,
-  password: '123456',
-  )
-  user.save!
+  password: '123456'
+)
+user.save!
 
 user = User.new(
   name: '管理者 テスト',
   email: 'admin@example.com',
   admin: true,
-  password: '134679',
-  )
-  user.save!
+  password: '134679'
+)
+user.save!

@@ -9,8 +9,8 @@ class Medicine < ApplicationRecord
   validates :times, presence: true, if: :normal_medicine?
 
   private
-    def normal_medicine?
-      medicine_type == "normal" 
-    end
-  
+
+  def normal_medicine?
+    medicine_type == 'normal'
+  end
 end

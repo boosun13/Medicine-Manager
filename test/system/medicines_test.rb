@@ -1,53 +1,53 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 
 class MedicinesTest < ApplicationSystemTestCase
   setup do
     @medicine = medicines(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit medicines_url
-    assert_selector "h1", text: "Medicines"
+    assert_selector 'h1', text: 'Medicines'
   end
 
-  test "creating a Medicine" do
+  test 'creating a Medicine' do
     visit medicines_url
-    click_on "New Medicine"
+    click_on 'New Medicine'
 
-    fill_in "Days", with: @medicine.days
-    fill_in "Dose", with: @medicine.dose
-    fill_in "Effect", with: @medicine.effect
-    fill_in "Prescription", with: @medicine.prescription_id
-    fill_in "Side effect", with: @medicine.side_effect
-    fill_in "Usage", with: @medicine.usage
-    click_on "Create Medicine"
+    fill_in 'Days', with: @medicine.days
+    fill_in 'Dose', with: @medicine.dose
+    fill_in 'Effect', with: @medicine.effect
+    fill_in 'Prescription', with: @medicine.prescription_id
+    fill_in 'Side effect', with: @medicine.side_effect
+    fill_in 'Usage', with: @medicine.usage
+    click_on 'Create Medicine'
 
-    assert_text "Medicine was successfully created"
-    click_on "Back"
+    assert_text 'Medicine was successfully created'
+    click_on 'Back'
   end
 
-  test "updating a Medicine" do
+  test 'updating a Medicine' do
     visit medicines_url
-    click_on "Edit", match: :first
+    click_on 'Edit', match: :first
 
-    fill_in "Days", with: @medicine.days
-    fill_in "Dose", with: @medicine.dose
-    fill_in "Effect", with: @medicine.effect
-    fill_in "Prescription", with: @medicine.prescription_id
-    fill_in "Side effect", with: @medicine.side_effect
-    fill_in "Usage", with: @medicine.usage
-    click_on "Update Medicine"
+    fill_in 'Days', with: @medicine.days
+    fill_in 'Dose', with: @medicine.dose
+    fill_in 'Effect', with: @medicine.effect
+    fill_in 'Prescription', with: @medicine.prescription_id
+    fill_in 'Side effect', with: @medicine.side_effect
+    fill_in 'Usage', with: @medicine.usage
+    click_on 'Update Medicine'
 
-    assert_text "Medicine was successfully updated"
-    click_on "Back"
+    assert_text 'Medicine was successfully updated'
+    click_on 'Back'
   end
 
-  test "destroying a Medicine" do
+  test 'destroying a Medicine' do
     visit medicines_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on 'Destroy', match: :first
     end
 
-    assert_text "Medicine was successfully destroyed"
+    assert_text 'Medicine was successfully destroyed'
   end
 end

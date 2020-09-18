@@ -38,11 +38,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
   gem 'web-console', '>= 3.3.0'
 end
 
@@ -54,41 +56,39 @@ group :test do
   # gem 'chromedriver-helper'
   gem 'webdrivers', '~> 4.0'
 
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
   gem 'database_cleaner'
-
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Bootstrap4 and jQuery
-  gem 'bootstrap', '~> 4.3.1'
-  gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 
 # devise
 gem 'devise', '~> 4.2'
 
 # kaminari
-gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'kaminari'
 
-gem 'jquery-turbolinks'
 gem 'bootstrap-sass'
+gem 'jquery-turbolinks'
 
-#バリデーションの日本語化
+# バリデーションの日本語化
 gem 'rails-i18n'
 
-#カレンダー表記
+# カレンダー表記
 gem 'simple_calendar', '~> 2.0'
 
-
-#検索機能
+# 検索機能
 gem 'ransack'
 
 gem 'dotenv-rails'
-#Line連携
-gem 'omniauth-line' , :github => 'boosun13/omniauth-line'
+# Line連携
+gem 'omniauth-line', github: 'boosun13/omniauth-line'
 
 gem 'specific_install'

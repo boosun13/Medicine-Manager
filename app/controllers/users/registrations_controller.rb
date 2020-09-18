@@ -39,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    if current_user.email.include? "line@example.com"
+    if current_user.email.include? 'line@example.com'
       resource.update_without_password(params)
     else
       super
@@ -61,10 +61,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   protected
-
-
-
-  
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params

@@ -1,8 +1,8 @@
 class PrescriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :user_not_first_set
-  before_action :set_prescription, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_prescription, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy]
 
   # GET /prescriptions
   # GET /prescriptions.json
@@ -17,13 +17,9 @@ class PrescriptionsController < ApplicationController
     @user_id = current_user.id
 
     @start_date = Date.today
-    if params[:start_date]
-      @start_date = params[:start_date].to_date
-    end
+    @start_date = params[:start_date].to_date if params[:start_date]
 
-    if params[:week]
-      @week = params[:week]
-    end
+    @week = params[:week] if params[:week]
   end
 
   # GET /prescriptions/new
@@ -32,8 +28,7 @@ class PrescriptionsController < ApplicationController
   end
 
   # GET /prescriptions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /prescriptions
   # POST /prescriptions.json
@@ -42,7 +37,7 @@ class PrescriptionsController < ApplicationController
     @prescription.user_id = current_user.id
     respond_to do |format|
       if @prescription.save
-        format.html { redirect_to @prescription, notice: 'Prescription was successfully created.' }
+        format.html { redirect_to @prescription, notice: '新規処方を作成いたしました。' }
         format.json { render :show, status: :created, location: @prescription }
       else
         format.html { render :new }
@@ -56,7 +51,7 @@ class PrescriptionsController < ApplicationController
   def update
     respond_to do |format|
       if @prescription.update(prescription_params)
-        format.html { redirect_to @prescription, notice: 'Prescription was successfully updated.' }
+        format.html { redirect_to @prescription, notice: '過去処方を修正いたしました。' }
         format.json { render :show, status: :ok, location: @prescription }
       else
         format.html { render :edit }
@@ -70,26 +65,24 @@ class PrescriptionsController < ApplicationController
   def destroy
     @prescription.destroy
     respond_to do |format|
-      format.html { redirect_to user_path(current_user), notice: 'Prescription was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user), notice: '過去処方を削除いたしました。' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_prescription
-      @prescription = Prescription.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def prescription_params
-      params.require(:prescription).permit(:start_time, :visit_date, :hospital, :doctor, :pharmacy)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_prescription
+    @prescription = Prescription.find(params[:id])
+  end
 
-    def set_user
-      if (@prescription.user_id != current_user.id && current_user.admin == false)
-          redirect_to root_path, notice: '権限がありません'
-      end 
-    end
+  # Only allow a list of trusted parameters through.
+  def prescription_params
+    params.require(:prescription).permit(:start_time, :visit_date, :hospital, :doctor, :pharmacy)
+  end
 
+  def set_user
+    redirect_to root_path, notice: '権限がありません' if @prescription.user_id != current_user.id && current_user.admin == false
+  end
 end

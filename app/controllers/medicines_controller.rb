@@ -2,15 +2,11 @@ class MedicinesController < ApplicationController
   before_action :authenticate_user!
   before_action :user_not_first_set
   before_action :set_prescription
-  before_action :set_medicine, only: [:show, :edit, :update, :destroy]
-
-
-
+  before_action :set_medicine, only: %i[show edit update destroy]
 
   # GET /medicines/1
   # GET /medicines/1.json
-  def show
-  end
+  def show; end
 
   # GET /medicines/new
   def new
@@ -18,19 +14,18 @@ class MedicinesController < ApplicationController
   end
 
   # GET /medicines/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /medicines
   # POST /medicines.json
   def create
     @medicine = @prescription.medicines.new(medicine_params)
-      if @medicine.save
-        @status = true
-        @medicines = @prescription.medicines
-      else
-        @status = false
-      end
+    if @medicine.save
+      @status = true
+      @medicines = @prescription.medicines
+    else
+      @status = false
+    end
   end
 
   # PATCH/PUT /medicines/1
@@ -48,20 +43,20 @@ class MedicinesController < ApplicationController
   # DELETE /medicines/1.json
   def destroy
     @medicine.destroy
-
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_medicine
-      @medicine = @prescription.medicines.find_by(id: params[:id])
-    end
 
-    def set_prescription
-      @prescription = Prescription.find_by(id: params[:prescription_id])
-    end
-    
-    def medicine_params
-      params.require(:medicine).permit(:name, :usage, :days, :dose, :effect, :side_effect, :prescription_id, :medicine_type,:detail_type, :free_comment,:times)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_medicine
+    @medicine = @prescription.medicines.find_by(id: params[:id])
+  end
+
+  def set_prescription
+    @prescription = Prescription.find_by(id: params[:prescription_id])
+  end
+
+  def medicine_params
+    params.require(:medicine).permit(:name, :usage, :days, :dose, :effect, :side_effect, :prescription_id, :medicine_type, :detail_type, :free_comment, :times)
+  end
 end
