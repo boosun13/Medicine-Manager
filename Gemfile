@@ -92,3 +92,8 @@ gem 'dotenv-rails'
 gem 'omniauth-line', github: 'boosun13/omniauth-line'
 
 gem 'specific_install'
+
+
+
+
+#テスト2で入れたコメントです。
