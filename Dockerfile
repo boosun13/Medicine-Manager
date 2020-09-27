@@ -1,32 +1,21 @@
 FROM ruby:2.6.6
-#日本語対応
-ENV LANG C.UTF-8
-#作業用ディレクトリを作成
-ENV ROOT_PATH /Medicine_App
-RUN mkdir -p $ROOT_PATH
-WORKDIR $ROOT_PATH
-#Railsアプリに必要なパッケージをインストールする
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-        && apt-get install -y nodejs build-essential libpq-dev\
-     && rm -rf /var/lib/apt/lists/*
-#Rspec用chromedriver
-RUN apt-get update && apt-get install -y unzip && \
-    CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
-    wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/ && \
-    unzip ~/chromedriver_linux64.zip -d ~/ && \
-    rm ~/chromedriver_linux64.zip && \
-    chown root:root ~/chromedriver && \
-    chmod 755 ~/chromedriver && \
-    mv ~/chromedriver /usr/bin/chromedriver && \
-    sh -c 'wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
-    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
-    apt-get update && apt-get install -y google-chrome-stable
+# 必要なパッケージのインストール（基本的に必要になってくるものだと思うので削らないこと）
+RUN apt-get update -qq && \
+    apt-get install -y build-essential \ 
+                       libpq-dev \        
+                       nodejs           
 
-ADD ./Medicine_App/Gemfile $ROOT_PATH/Gemfile
-ADD ./Medicine_App/Gemfile.lock $ROOT_PATH/Gemfile.lock
+# 作業ディレクトリの作成、設定
+RUN mkdir /app_name 
+##作業ディレクトリ名をAPP_ROOTに割り当てて、以下$APP_ROOTで参照
+ENV APP_ROOT /Medicine_App
+WORKDIR $APP_ROOT
 
-RUN gem install bundler
+# ホスト側（ローカル）のGemfileを追加する（ローカルのGemfileは【３】で作成）
+ADD ./Gemfile $APP_ROOT/Gemfile
+ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
+
+# Gemfileのbundle install
+RUN gem install bundler:2.1.4
 RUN bundle install
-
-
-ADD ./Medicine_App $ROOT_PATH
+ADD . $APP_ROOT

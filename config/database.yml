@@ -16,8 +16,9 @@ development:
   database: mysql_development
   pool: 5
   username: root
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: localhost
+  password: 
+  host: db
+  socket: /tmp/mysql.sock
 
 
 # Warning: The database defined as "test" will be erased and
@@ -31,8 +32,9 @@ test:
   database: test_db
   pool: 5
   username: root
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: localhost
+  password:
+  host: db
+  socket: /tmp/mysql.sock
 
 production:
   <<: *default
