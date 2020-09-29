@@ -15,9 +15,11 @@
 ・フレームワーク: Ruby on Rails<br>
 ・DB: MySQL<br>
 ・テスト: Rspec<br>
-・開発環境構築: Docker(branchを変更して導入しております。「DockerIntro」のブランチにてDockerfile、docker-compose.ymlをご参照ください。)<br>
+・開発環境構築: Docker<br>
+	※ブランチを変更して導入しております。「DockerIntro」のブランチにてDockerfile、docker-compose.ymlをご参照ください。<br>
 ・本番環境: heroku<br>
-・バージョン管理: Git/GitHub(ブランチを変えることでチーム制作を意識しております。)<br></h4>
+・バージョン管理: Git/GitHub<br>
+	※ブランチを変えることでチーム制作を意識しております。<br></h4>
 
 <その他の技術><br>
 ・gemによる各種機能: deviseによるログイン機能、kaminariによるページネーション、<br>
