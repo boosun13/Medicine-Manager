@@ -2,6 +2,7 @@
  お薬の管理アプリです。
  
 # DEMO
+ ![Top画面](app/assets/images/Top.png "Top")
  https://medicine-manager-app.herokuapp.com/
  
 # 特徴
