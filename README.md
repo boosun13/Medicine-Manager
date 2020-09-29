@@ -9,13 +9,13 @@
 
  
 # 使用技術
-・言語: Ruby
-　フレームワーク: Ruby on Rails<br>
-  DB: MySQL<br>
-  テスト: Rspec<br>
-  開発環境構築: Docker<br>
-  本番環境: heroku<br>
-　バージョン管理: Git/GitHub<br>
+・言語: Ruby<br>
+・フレームワーク: Ruby on Rails<br>
+・DB: MySQL<br>
+・テスト: Rspec<br>
+・開発環境構築: Docker<br>
+・本番環境: heroku<br>
+・バージョン管理: Git/GitHub<br>
 
 <その他の技術>
 ・gemによる各種機能: deviseによるログイン機能、kaminariによるページネーション、<br>
