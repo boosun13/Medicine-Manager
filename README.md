@@ -9,7 +9,7 @@
 
  
 # 使用技術
-・言語: Ruby<br>
+<h4>・言語: Ruby</h4><br>
 ・フレームワーク: Ruby on Rails<br>
 ・DB: MySQL<br>
 ・テスト: Rspec<br>
@@ -17,7 +17,7 @@
 ・本番環境: heroku<br>
 ・バージョン管理: Git/GitHub<br>
 
-<その他の技術>
+<その他の技術><br>
 ・gemによる各種機能: deviseによるログイン機能、kaminariによるページネーション、<br>
 		　　              ransackによるDB検索機能、simple_calendarによるカレンダー表記<br>
 ・Bootstrap、SCSSを用いたスタイリング<br>
