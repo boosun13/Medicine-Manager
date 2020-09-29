@@ -32,7 +32,7 @@ test:
   database: test_db
   pool: 5
   username: root
-  password:
+  password: 
   host: db
   socket: /tmp/mysql.sock
 
