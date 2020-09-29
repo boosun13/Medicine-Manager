@@ -9,11 +9,11 @@ class UsersController < ApplicationController
 
   def show
     @prescriptions = current_user.prescriptions.page(params[:page]).per(3)
-    @calendar_fb = if params[:start_date]
-                     true
-                   else
-                     false
-                   end
+    @calendar_fb =  if params[:start_date]
+                      true
+                    else
+                      false
+                    end
   end
 
   def set_user
